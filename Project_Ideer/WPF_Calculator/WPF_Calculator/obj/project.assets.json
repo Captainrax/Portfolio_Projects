@@ -1,11 +1,38 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {}
+    ".NETCoreApp,Version=v3.1": {
+      "CoreCLR-NCalc/2.2.70": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/NCalc.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/NCalc.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "CoreCLR-NCalc/2.2.70": {
+      "sha512": "/ZOzuf9SyLZV3tkL2/6iiltMaTjDDmt8Gu3BpTcaRvik1VIjRiqe/5Kz2X6Sub0jhYrO4MHFIXexjLbYUQfrZg==",
+      "type": "package",
+      "path": "coreclr-ncalc/2.2.70",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "coreclr-ncalc.2.2.70.nupkg.sha512",
+        "coreclr-ncalc.nuspec",
+        "lib/net45/NCalc.dll",
+        "lib/netstandard1.3/NCalc.dll",
+        "lib/netstandard2.0/NCalc.dll"
+      ]
+    }
+  },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": []
+    ".NETCoreApp,Version=v3.1": [
+      "CoreCLR-NCalc >= 2.2.70"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Captain Rax\\.nuget\\packages\\": {}
@@ -43,6 +70,12 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "dependencies": {
+          "CoreCLR-NCalc": {
+            "target": "Package",
+            "version": "[2.2.70, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",

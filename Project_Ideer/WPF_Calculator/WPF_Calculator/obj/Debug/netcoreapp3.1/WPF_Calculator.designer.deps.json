@@ -5,7 +5,24 @@
   },
   "compilationOptions": {},
   "targets": {
-    ".NETCoreApp,Version=v3.1": {}
+    ".NETCoreApp,Version=v3.1": {
+      "CoreCLR-NCalc/2.2.70": {
+        "runtime": {
+          "lib/netstandard2.0/NCalc.dll": {
+            "assemblyVersion": "3.5.0.2",
+            "fileVersion": "3.5.0.2"
+          }
+        }
+      }
+    }
   },
-  "libraries": {}
+  "libraries": {
+    "CoreCLR-NCalc/2.2.70": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/ZOzuf9SyLZV3tkL2/6iiltMaTjDDmt8Gu3BpTcaRvik1VIjRiqe/5Kz2X6Sub0jhYrO4MHFIXexjLbYUQfrZg==",
+      "path": "coreclr-ncalc/2.2.70",
+      "hashPath": "coreclr-ncalc.2.2.70.nupkg.sha512"
+    }
+  }
 }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using NCalc;
 
 namespace WPF_Calculator
 {
@@ -25,8 +26,9 @@ namespace WPF_Calculator
             InitializeComponent();
         }
         double FirstNumber;
+        double SecondNumber;
         string Operation;
-
+        
         private void Btn0_Click(object sender, RoutedEventArgs e)
         {
             Display.Text = Display.Text += "0";
@@ -72,18 +74,6 @@ namespace WPF_Calculator
             Display.Text = Display.Text += ".";
         }
 
-        private void BtnDivide_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                FirstNumber = Convert.ToDouble(Display.Text);
-            }
-            catch (Exception)
-            {
-            }
-            Display.Text = "";
-            Operation = "/";
-        }
         private void BtnPlus_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -109,6 +99,18 @@ namespace WPF_Calculator
             Display.Text = "";
             Operation = "-";
         }
+        private void BtnDivide_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                FirstNumber = Convert.ToDouble(Display.Text);
+            }
+            catch (Exception)
+            {
+            }
+            Display.Text = "";
+            Operation = "/";
+        }
         private void BtnMultiply_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -121,43 +123,53 @@ namespace WPF_Calculator
             Display.Text = "";
             Operation = "*";
         }
-        double SecondNumber;
         private void BtnEqual_Click(object sender, RoutedEventArgs e)
         {
             double Result;
             try
             {
-                SecondNumber = Convert.ToDouble(Display.Text);
+                    SecondNumber = Convert.ToDouble(Display.Text);
             }
             catch (Exception)
             {
             }
-            
-            if (Operation == "+")
-            {
-                Result = FirstNumber + SecondNumber;
-                Display.Text = Convert.ToString(Result);
-                FirstNumber = Result;
-                LastResult.Content = "Current Result: " + Result;
-            } else if (Operation == "-")
-            {
-                Result = FirstNumber - SecondNumber;
-                Display.Text = Convert.ToString(Result);
-                FirstNumber = Result;
-                LastResult.Content = "Current Result: " + Result;
-            } else if (Operation == "/")
-            {
-                Result = FirstNumber / SecondNumber;
-                Display.Text = Convert.ToString(Result);
-                FirstNumber = Result;
-                LastResult.Content = "Current Result: " + Result;
-            } else if (Operation == "*")
-            {
-                Result = FirstNumber * SecondNumber;
-                Display.Text = Convert.ToString(Result);
-                FirstNumber = Result;
-                LastResult.Content = "Current Result: " + Result;
-            }
+
+            NCalc.Expression ee = new NCalc.Expression(FirstNumber + Operation + SecondNumber);
+            Result = Convert.ToDouble( ee.Evaluate());
+
+            Display.Text = Convert.ToString(Result);
+            LastResult.Content = "Current Result: " + FirstNumber + Operation + SecondNumber + " = " + Result;
+            SecondNumber = Result;
+            //MessageBox.Show(Convert.ToString(ble));
+
+            //switch (Operation)
+            //{
+            //    case "+":
+            //        Result = FirstNumber + SecondNumber;
+            //        //Display.Text = Convert.ToString(Result);
+            //        FirstNumber = Result;
+            //        LastResult.Content = "Current Result: " + Result;
+            //        break;
+            //    case "-":
+            //        Result = FirstNumber - SecondNumber;
+            //        Display.Text = Convert.ToString(Result);
+            //        FirstNumber = Result;
+            //        LastResult.Content = "Current Result: " + Result;
+            //        break;
+            //    case "/":
+            //        Result = FirstNumber / SecondNumber;
+            //        Display.Text = Convert.ToString(Result);
+            //        FirstNumber = Result;
+            //        LastResult.Content = "Current Result: " + Result;
+            //        break;
+            //    case "*":
+            //        Result = FirstNumber * SecondNumber;
+            //        Display.Text = Convert.ToString(Result);
+            //        FirstNumber = Result;
+            //        LastResult.Content = "Current Result: " + Result;
+            //        break;
+            //}
+
         }
         private void BtnClear_Click(object sender, RoutedEventArgs e)
         {
@@ -169,7 +181,22 @@ namespace WPF_Calculator
         }
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
-            Display.Text = Display.Text.Remove(Display.Text.Length - 1);
+            try
+            {
+                Display.Text = Display.Text.Remove(Display.Text.Length - 1);
+                if (Display.Text.Length < 1)
+                {
+                    SecondNumber = 0;
+                }
+                else
+                {
+                    SecondNumber = Convert.ToDouble(Display.Text);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }
