@@ -24,8 +24,8 @@ namespace WPF_Calculator
         {
             InitializeComponent();
         }
-        //double FirstNumber;
-        //string Operation;
+        double FirstNumber;
+        string Operation;
 
 
 
@@ -76,62 +76,56 @@ namespace WPF_Calculator
 
         private void BtnDivide_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
                 Display.Text = Display.Text += "/";
-            } catch (Exception) {
-
-            }
         }
         private void BtnPlus_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                Display.Text = Display.Text += "+";
+                FirstNumber = Convert.ToDouble(Display.Text);
             }
             catch (Exception)
             {
-               
-               
             }
-            
+            Display.Text = "";
+            Operation = "+";
+
         }
         private void BtnMinus_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
                 Display.Text = Display.Text += "-";
-            }
-            catch (Exception)
-            {
-
-               
-            }
             
         }
         private void BtnMultiply_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
                 Display.Text = Display.Text += "*";
-            } catch (Exception) {
-
-                
-            }
 
         }
+        double SecondNumber;
         private void BtnEqual_Click(object sender, RoutedEventArgs e)
         {
+            double Result;
             try
             {
-                Display.Text = Display.Text += "=";
+                SecondNumber = Convert.ToDouble(Display.Text);
             }
             catch (Exception)
             {
-
-
             }
-
+            
+            if (Operation == "+")
+            {
+                Result = FirstNumber + SecondNumber;
+                Display.Text = Convert.ToString(Result);
+                SecondNumber = Result;
+            }
+        }
+        private void BtnClear_Click(object sender, RoutedEventArgs e)
+        {
+            Display.Text = "";
+            Operation = "";
+            FirstNumber = 0;
+            SecondNumber = 0;
         }
     }
 }

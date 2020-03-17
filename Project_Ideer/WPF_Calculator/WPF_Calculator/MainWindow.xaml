@@ -45,12 +45,10 @@
         <Button Content="X" Click="BtnMultiply_Click" Grid.Column="3" Grid.Row="2" Width="40" Height="30"/>
 
         <Button Content="/" Click="BtnDivide_Click" Grid.Column="3" Grid.Row="1"  Width="40" Height="30"/>
-        
+
         <Button Content="=" Click="BtnEqual_Click" Grid.Column="3" Grid.Row="5"  Width="40" Height="30"/>
 
-        <Label Content="Results:" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Grid.Column="2" Height="28" Width="56"/>
-
-        <Label Name="Result" VerticalAlignment="Top" FontSize="12" HorizontalAlignment="Center" Width="40" Grid.Column="3" Height="10"/>
+        <Button Content="C" Click="BtnClear_Click" Grid.Column="0" Grid.Row="5"  Width="40" Height="30"/>
 
     </Grid>
 </Window>
