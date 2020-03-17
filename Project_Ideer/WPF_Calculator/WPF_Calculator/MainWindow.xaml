@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Calculator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="200" Width="300">
+        Title="MainWindow" Height="200" Width="350">
     <Grid>
 
         <Grid.RowDefinitions>
@@ -19,21 +19,21 @@
             <ColumnDefinition Width="25*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBox VerticalContentAlignment="Center" TextAlignment="Center" Name="numberA" Width="60" Height="30" Grid.Column="0" Grid.Row="0">w</TextBox>
+        <TextBox VerticalContentAlignment="Center" TextAlignment="Center" Name="numberA" Width="60" Height="30" Grid.Column="0" Grid.Row="0"></TextBox>
 
-        <TextBox VerticalContentAlignment="Center" TextAlignment="Center" Name="numberB" Width="60" Height="30" Grid.Column="1" Grid.Row="0">w</TextBox>
+        <TextBox VerticalContentAlignment="Center" TextAlignment="Center" Name="numberB" Width="60" Height="30" Grid.Column="1" Grid.Row="0"></TextBox>
 
-        <Button Width="60" Height="20" Grid.Column="0" Grid.Row="1">Add</Button>
+        <Button Content="+" Click="BtnPlus_Click" Grid.Column="0" Grid.Row="1"/>
 
-        <Button Width="60" Height="20" Grid.Column="1" Grid.Row="1">Subtract</Button>
+        <Button Content="-" Click="BtnMinus_Click" Grid.Column="1" Grid.Row="1"/>
 
-        <Button Width="60" Height="20" Grid.Column="2" Grid.Row="1">Multiply</Button>
+        <Button Content="*" Click="BtnMultiply_Click" Grid.Column="2" Grid.Row="1"/>
 
-        <Button Content="Divide" Click="BtnDivide_Click" Grid.Column="3" Grid.Row="1"/>
+        <Button Content="/" Click="BtnDivide_Click" Grid.Column="3" Grid.Row="1"/>
 
-        <Label VerticalAlignment="Center" FontSize="14" HorizontalAlignment="Right" Grid.Column="2">Results:</Label>
+        <Label Content="Results:" VerticalAlignment="Center" FontSize="14" HorizontalAlignment="Right" Grid.Column="2"></Label>
 
-        <Label Name="Result" VerticalAlignment="Center" FontSize="12" HorizontalAlignment="Center" Width="40" Grid.Column="3">00</Label>
+        <Label Name="Result" VerticalAlignment="Center" FontSize="12" HorizontalAlignment="Center" Width="40" Grid.Column="3"></Label>
 
     </Grid>
 </Window>

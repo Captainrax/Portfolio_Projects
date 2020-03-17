@@ -26,7 +26,19 @@ namespace WPF_Calculator
         }
         private void BtnDivide_Click(object sender, RoutedEventArgs e)
         {
-            Result.Content = "test";
+            Result.Content = Convert.ToDouble(numberA.Text) / Convert.ToDouble(numberB.Text);
+        }
+        private void BtnPlus_Click(object sender, RoutedEventArgs e)
+        {
+            Result.Content = Convert.ToDouble(numberA.Text) + Convert.ToDouble(numberB.Text);
+        }
+        private void BtnMinus_Click(object sender, RoutedEventArgs e)
+        {
+            Result.Content = Convert.ToDouble(numberA.Text) - Convert.ToDouble(numberB.Text);
+        }
+        private void BtnMultiply_Click(object sender, RoutedEventArgs e)
+        {
+            Result.Content = Convert.ToDouble(numberA.Text) * Convert.ToDouble(numberB.Text);
         }
     }
 }
