@@ -76,7 +76,15 @@ namespace WPF_Calculator
 
         private void BtnDivide_Click(object sender, RoutedEventArgs e)
         {
-                Display.Text = Display.Text += "/";
+            try
+            {
+                FirstNumber = Convert.ToDouble(Display.Text);
+            }
+            catch (Exception)
+            {
+            }
+            Display.Text = "";
+            Operation = "/";
         }
         private void BtnPlus_Click(object sender, RoutedEventArgs e)
         {
@@ -93,13 +101,27 @@ namespace WPF_Calculator
         }
         private void BtnMinus_Click(object sender, RoutedEventArgs e)
         {
-                Display.Text = Display.Text += "-";
-            
+            try
+            {
+                FirstNumber = Convert.ToDouble(Display.Text);
+            }
+            catch (Exception)
+            {
+            }
+            Display.Text = "";
+            Operation = "-";
         }
         private void BtnMultiply_Click(object sender, RoutedEventArgs e)
         {
-                Display.Text = Display.Text += "*";
-
+            try
+            {
+                FirstNumber = Convert.ToDouble(Display.Text);
+            }
+            catch (Exception)
+            {
+            }
+            Display.Text = "";
+            Operation = "*";
         }
         double SecondNumber;
         private void BtnEqual_Click(object sender, RoutedEventArgs e)
@@ -117,7 +139,26 @@ namespace WPF_Calculator
             {
                 Result = FirstNumber + SecondNumber;
                 Display.Text = Convert.ToString(Result);
-                SecondNumber = Result;
+                FirstNumber = Result;
+                LastResult.Content = "Current Result: " + Result;
+            } else if (Operation == "-")
+            {
+                Result = FirstNumber - SecondNumber;
+                Display.Text = Convert.ToString(Result);
+                FirstNumber = Result;
+                LastResult.Content = "Current Result: " + Result;
+            } else if (Operation == "/")
+            {
+                Result = FirstNumber / SecondNumber;
+                Display.Text = Convert.ToString(Result);
+                FirstNumber = Result;
+                LastResult.Content = "Current Result: " + Result;
+            } else if (Operation == "*")
+            {
+                Result = FirstNumber * SecondNumber;
+                Display.Text = Convert.ToString(Result);
+                FirstNumber = Result;
+                LastResult.Content = "Current Result: " + Result;
             }
         }
         private void BtnClear_Click(object sender, RoutedEventArgs e)
@@ -126,6 +167,7 @@ namespace WPF_Calculator
             Operation = "";
             FirstNumber = 0;
             SecondNumber = 0;
+            LastResult.Content = "Current Result: ";
         }
     }
 }

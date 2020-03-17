@@ -23,32 +23,33 @@
             <ColumnDefinition Width="25*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBox VerticalContentAlignment="Center" TextAlignment="Center" Name="Display" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4"/>
+        <TextBox VerticalContentAlignment="Center" TextAlignment="Center" FontSize="20" Name="Display" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4"/>
+        <Label VerticalContentAlignment="Top" HorizontalContentAlignment="Center" Name="LastResult" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Content="Current Result: "/>
 
-        <Button Content="1" Click="Btn1_Click" Grid.Column="0" Grid.Row="4" Width="40" Height="30"/>
-        <Button Content="2" Click="Btn2_Click" Grid.Column="1" Grid.Row="4" Width="40" Height="30"/>
-        <Button Content="3" Click="Btn3_Click" Grid.Column="2" Grid.Row="4" Width="40" Height="30"/>
-        <Button Content="4" Click="Btn4_Click" Grid.Column="0" Grid.Row="3" Width="40" Height="30"/>
-        <Button Content="5" Click="Btn5_Click" Grid.Column="1" Grid.Row="3" Width="40" Height="30"/>
-        <Button Content="6" Click="Btn6_Click" Grid.Column="2" Grid.Row="3" Width="40" Height="30"/>
-        <Button Content="7" Click="Btn7_Click" Grid.Column="0" Grid.Row="2" Width="40" Height="30"/>
-        <Button Content="8" Click="Btn8_Click" Grid.Column="1" Grid.Row="2" Width="40" Height="30"/>
-        <Button Content="9" Click="Btn9_Click" Grid.Column="2" Grid.Row="2" Width="40" Height="30"/>
-        <Button Content="0" Click="Btn0_Click" Grid.Column="1" Grid.Row="5" Width="40" Height="30"/>
-        <Button Content="." Click="BtnDot_Click" Grid.Column="2" Grid.Row="5" Width="40" Height="30"/>
+        <Button Content="1" Click="Btn1_Click" Grid.Column="0" Grid.Row="4"/>
+        <Button Content="2" Click="Btn2_Click" Grid.Column="1" Grid.Row="4"/>
+        <Button Content="3" Click="Btn3_Click" Grid.Column="2" Grid.Row="4"/>
+        <Button Content="4" Click="Btn4_Click" Grid.Column="0" Grid.Row="3"/>
+        <Button Content="5" Click="Btn5_Click" Grid.Column="1" Grid.Row="3"/>
+        <Button Content="6" Click="Btn6_Click" Grid.Column="2" Grid.Row="3"/>
+        <Button Content="7" Click="Btn7_Click" Grid.Column="0" Grid.Row="2"/>
+        <Button Content="8" Click="Btn8_Click" Grid.Column="1" Grid.Row="2"/>
+        <Button Content="9" Click="Btn9_Click" Grid.Column="2" Grid.Row="2"/>
+        <Button Content="0" Click="Btn0_Click" Grid.Column="1" Grid.Row="5"/>
+        <Button Content="." Click="BtnDot_Click" Grid.Column="2" Grid.Row="5"/>
 
 
-        <Button Content="+" Click="BtnPlus_Click" Grid.Column="3" Grid.Row="4"  Width="40" Height="30"/>
+        <Button Content="+" Click="BtnPlus_Click" Grid.Column="3" Grid.Row="4"/>
 
-        <Button Content="-" Click="BtnMinus_Click" Grid.Column="3" Grid.Row="3" Width="40" Height="30"/>
+        <Button Content="-" Click="BtnMinus_Click" Grid.Column="3" Grid.Row="3"/>
 
-        <Button Content="X" Click="BtnMultiply_Click" Grid.Column="3" Grid.Row="2" Width="40" Height="30"/>
+        <Button Content="X" Click="BtnMultiply_Click" Grid.Column="3" Grid.Row="2"/>
 
-        <Button Content="/" Click="BtnDivide_Click" Grid.Column="3" Grid.Row="1"  Width="40" Height="30"/>
+        <Button Content="/" Click="BtnDivide_Click" Grid.Column="3" Grid.Row="1"/>
 
-        <Button Content="=" Click="BtnEqual_Click" Grid.Column="3" Grid.Row="5"  Width="40" Height="30"/>
+        <Button Content="=" Click="BtnEqual_Click" Grid.Column="3" Grid.Row="5"/>
 
-        <Button Content="C" Click="BtnClear_Click" Grid.Column="0" Grid.Row="5"  Width="40" Height="30"/>
+        <Button Content="C" Click="BtnClear_Click" Grid.Column="0" Grid.Row="5"/>
 
     </Grid>
 </Window>
