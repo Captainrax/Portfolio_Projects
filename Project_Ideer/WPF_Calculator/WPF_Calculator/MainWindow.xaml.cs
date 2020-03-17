@@ -27,8 +27,6 @@ namespace WPF_Calculator
         double FirstNumber;
         string Operation;
 
-
-
         private void Btn0_Click(object sender, RoutedEventArgs e)
         {
             Display.Text = Display.Text += "0";

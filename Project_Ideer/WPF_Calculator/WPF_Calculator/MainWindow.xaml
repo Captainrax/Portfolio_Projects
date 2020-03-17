@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Calculator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="300">
+        Title="MainWindow" Height="400" Width="300" Opacity="0.90"
+        FontSize="20">
     <Grid>
 
         <Grid.RowDefinitions>
@@ -23,8 +24,8 @@
             <ColumnDefinition Width="25*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBox VerticalContentAlignment="Center" TextAlignment="Center" FontSize="20" Name="Display" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4"/>
-        <Label VerticalContentAlignment="Top" HorizontalContentAlignment="Center" Name="LastResult" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Content="Current Result: "/>
+        <TextBox VerticalContentAlignment="Center" TextAlignment="Center" FontSize="26" Name="Display" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4"/>
+        <Label VerticalContentAlignment="Top" HorizontalContentAlignment="Center" FontSize="14" Opacity="0.8" Name="LastResult" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Content="Current Result: "/>
 
         <Button Content="1" Click="Btn1_Click" Grid.Column="0" Grid.Row="4"/>
         <Button Content="2" Click="Btn2_Click" Grid.Column="1" Grid.Row="4"/>

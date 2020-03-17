@@ -6,4 +6,9 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Disabled_Megumin_Square_PNG.png" />
+    <None Remove="Profile_Picture.gif" />
+  </ItemGroup>
+
 </Project>
