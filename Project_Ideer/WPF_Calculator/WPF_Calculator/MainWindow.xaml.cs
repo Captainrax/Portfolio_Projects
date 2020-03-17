@@ -167,5 +167,9 @@ namespace WPF_Calculator
             SecondNumber = 0;
             LastResult.Content = "Current Result: ";
         }
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            Display.Text = Display.Text.Remove(Display.Text.Length - 1);
+        }
     }
 }

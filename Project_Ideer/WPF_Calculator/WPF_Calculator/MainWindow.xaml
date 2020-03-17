@@ -51,6 +51,7 @@
         <Button Content="=" Click="BtnEqual_Click" Grid.Column="3" Grid.Row="5"/>
 
         <Button Content="C" Click="BtnClear_Click" Grid.Column="0" Grid.Row="5"/>
+        <Button Content="←" Click="BtnBack_Click" Grid.Column="2" Grid.Row="1"/>
 
     </Grid>
 </Window>
