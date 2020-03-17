@@ -5,12 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Calculator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="200" Width="350">
+        Title="MainWindow" Height="400" Width="300">
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="120*"/>
-            <RowDefinition Height="200*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="25*"/>
@@ -19,21 +23,34 @@
             <ColumnDefinition Width="25*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBox VerticalContentAlignment="Center" TextAlignment="Center" Name="numberA" Width="60" Height="30" Grid.Column="0" Grid.Row="0"></TextBox>
+        <TextBox VerticalContentAlignment="Center" TextAlignment="Center" Name="Display" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4"/>
 
-        <TextBox VerticalContentAlignment="Center" TextAlignment="Center" Name="numberB" Width="60" Height="30" Grid.Column="1" Grid.Row="0"></TextBox>
+        <Button Content="1" Click="Btn1_Click" Grid.Column="0" Grid.Row="4" Width="40" Height="30"/>
+        <Button Content="2" Click="Btn2_Click" Grid.Column="1" Grid.Row="4" Width="40" Height="30"/>
+        <Button Content="3" Click="Btn3_Click" Grid.Column="2" Grid.Row="4" Width="40" Height="30"/>
+        <Button Content="4" Click="Btn4_Click" Grid.Column="0" Grid.Row="3" Width="40" Height="30"/>
+        <Button Content="5" Click="Btn5_Click" Grid.Column="1" Grid.Row="3" Width="40" Height="30"/>
+        <Button Content="6" Click="Btn6_Click" Grid.Column="2" Grid.Row="3" Width="40" Height="30"/>
+        <Button Content="7" Click="Btn7_Click" Grid.Column="0" Grid.Row="2" Width="40" Height="30"/>
+        <Button Content="8" Click="Btn8_Click" Grid.Column="1" Grid.Row="2" Width="40" Height="30"/>
+        <Button Content="9" Click="Btn9_Click" Grid.Column="2" Grid.Row="2" Width="40" Height="30"/>
+        <Button Content="0" Click="Btn0_Click" Grid.Column="1" Grid.Row="5" Width="40" Height="30"/>
+        <Button Content="." Click="BtnDot_Click" Grid.Column="2" Grid.Row="5" Width="40" Height="30"/>
 
-        <Button Content="+" Click="BtnPlus_Click" Width="30" Height="20" Grid.Column="0" Grid.Row="1"/>
 
-        <Button Content="-" Click="BtnMinus_Click" Width="30" Height="20" Grid.Column="1" Grid.Row="1"/>
+        <Button Content="+" Click="BtnPlus_Click" Grid.Column="3" Grid.Row="4"  Width="40" Height="30"/>
 
-        <Button Content="*" Click="BtnMultiply_Click" Width="30" Height="20" Grid.Column="2" Grid.Row="1"/>
+        <Button Content="-" Click="BtnMinus_Click" Grid.Column="3" Grid.Row="3" Width="40" Height="30"/>
 
-        <Button Content="/" Click="BtnDivide_Click" Width="30" Height="20" Grid.Column="3" Grid.Row="1"/>
+        <Button Content="X" Click="BtnMultiply_Click" Grid.Column="3" Grid.Row="2" Width="40" Height="30"/>
 
-        <Label Content="Results:" VerticalAlignment="Center" FontSize="14" HorizontalAlignment="Right" Grid.Column="2"></Label>
+        <Button Content="/" Click="BtnDivide_Click" Grid.Column="3" Grid.Row="1"  Width="40" Height="30"/>
+        
+        <Button Content="=" Click="BtnEqual_Click" Grid.Column="3" Grid.Row="5"  Width="40" Height="30"/>
 
-        <Label Name="Result" VerticalAlignment="Center" FontSize="12" HorizontalAlignment="Center" Width="40" Grid.Column="3"></Label>
+        <Label Content="Results:" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Grid.Column="2" Height="28" Width="56"/>
+
+        <Label Name="Result" VerticalAlignment="Top" FontSize="12" HorizontalAlignment="Center" Width="40" Grid.Column="3" Height="10"/>
 
     </Grid>
 </Window>

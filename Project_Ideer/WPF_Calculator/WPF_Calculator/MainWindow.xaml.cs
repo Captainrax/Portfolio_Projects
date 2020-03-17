@@ -24,30 +24,83 @@ namespace WPF_Calculator
         {
             InitializeComponent();
         }
+        //double FirstNumber;
+        //string Operation;
+
+
+
+        private void Btn0_Click(object sender, RoutedEventArgs e)
+        {
+            Display.Text = Display.Text += "0";
+        }
+        private void Btn1_Click(object sender, RoutedEventArgs e)
+        {
+            Display.Text = Display.Text += "1";
+        }
+        private void Btn2_Click(object sender, RoutedEventArgs e)
+        {
+            Display.Text = Display.Text += "2";
+        }
+        private void Btn3_Click(object sender, RoutedEventArgs e)
+        {
+            Display.Text = Display.Text += "3";
+        }
+        private void Btn4_Click(object sender, RoutedEventArgs e)
+        {
+            Display.Text = Display.Text += "4";
+        }
+        private void Btn5_Click(object sender, RoutedEventArgs e)
+        {
+            Display.Text = Display.Text += "5";
+        }
+        private void Btn6_Click(object sender, RoutedEventArgs e)
+        {
+            Display.Text = Display.Text += "6";
+        }
+        private void Btn7_Click(object sender, RoutedEventArgs e)
+        {
+            Display.Text = Display.Text += "7";
+        }
+        private void Btn8_Click(object sender, RoutedEventArgs e)
+        {
+            Display.Text = Display.Text += "8";
+        }
+        private void Btn9_Click(object sender, RoutedEventArgs e)
+        {
+            Display.Text = Display.Text += "9";
+        }
+        private void BtnDot_Click(object sender, RoutedEventArgs e)
+        {
+            Display.Text = Display.Text += ".";
+        }
+
         private void BtnDivide_Click(object sender, RoutedEventArgs e)
         {
-            try {
-                Result.Content = Convert.ToDouble(numberA.Text) / Convert.ToDouble(numberB.Text);
+            try
+            {
+                Display.Text = Display.Text += "/";
             } catch (Exception) {
 
             }
         }
         private void BtnPlus_Click(object sender, RoutedEventArgs e)
         {
-            try {
-                Result.Content = Convert.ToDouble(numberA.Text) + Convert.ToDouble(numberB.Text);
+            try
+            {
+                Display.Text = Display.Text += "+";
             }
             catch (Exception)
             {
-
+               
                
             }
             
         }
         private void BtnMinus_Click(object sender, RoutedEventArgs e)
         {
-            try {
-                Result.Content = Convert.ToDouble(numberA.Text) - Convert.ToDouble(numberB.Text);
+            try
+            {
+                Display.Text = Display.Text += "-";
             }
             catch (Exception)
             {
@@ -58,13 +111,27 @@ namespace WPF_Calculator
         }
         private void BtnMultiply_Click(object sender, RoutedEventArgs e)
         {
-            try {
-                Result.Content = Convert.ToDouble(numberA.Text) * Convert.ToDouble(numberB.Text);
+            try
+            {
+                Display.Text = Display.Text += "*";
             } catch (Exception) {
 
                 
             }
-            
+
+        }
+        private void BtnEqual_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Display.Text = Display.Text += "=";
+            }
+            catch (Exception)
+            {
+
+
+            }
+
         }
     }
 }
