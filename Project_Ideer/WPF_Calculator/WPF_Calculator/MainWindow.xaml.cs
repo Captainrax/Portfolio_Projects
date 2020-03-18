@@ -77,88 +77,22 @@ namespace WPF_Calculator
 
         private void BtnPlus_Click(object sender, RoutedEventArgs e)
         {
-            if (InProgress == true)
-            {
-                SecondNumber = Convert.ToDouble(Display.Text);
-                InProgress = false;
-            }
-            else
-            {
-                try
-                {
-                    FirstNumber = Convert.ToDouble(Display.Text);
-                    InProgress = true;
-                }
-                catch (Exception)
-                {
-                }
-            }
-            Display.Text = "";
+            Operator_SetNumbers();
             Operation = "+";
-
         }
         private void BtnMinus_Click(object sender, RoutedEventArgs e)
         {
-            if (InProgress == true)
-            {
-                SecondNumber = Convert.ToDouble(Display.Text);
-                InProgress = false;
-            }
-            else
-            {
-                try
-                {
-                    FirstNumber = Convert.ToDouble(Display.Text);
-                    InProgress = true;
-                }
-                catch (Exception)
-                {
-                }
-            }
-            Display.Text = "";
+            Operator_SetNumbers();
             Operation = "-";
         }
         private void BtnDivide_Click(object sender, RoutedEventArgs e)
         {
-            if (InProgress == true)
-            {
-                SecondNumber = Convert.ToDouble(Display.Text);
-                InProgress = false;
-            }
-            else
-            {
-                try
-                {
-                    FirstNumber = Convert.ToDouble(Display.Text);
-                    InProgress = true;
-                }
-                catch (Exception)
-                {
-                }
-            }
-            Display.Text = "";
+            Operator_SetNumbers();
             Operation = "/";
         }
         private void BtnMultiply_Click(object sender, RoutedEventArgs e)
         {
-            if(InProgress == true)
-            {
-                SecondNumber = Convert.ToDouble(Display.Text);
-                InProgress = false;
-            } else
-            {
-                try
-                {
-                    FirstNumber = Convert.ToDouble(Display.Text);
-                    InProgress = true;
-                }
-                catch (Exception)
-                {
-                }
-            }
-
-
-            Display.Text = "";
+            Operator_SetNumbers();
             Operation = "*";
         }
         private void BtnEqual_Click(object sender, RoutedEventArgs e)
@@ -170,8 +104,9 @@ namespace WPF_Calculator
                 {
                     SecondNumber = Convert.ToDouble(Display.Text);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    MessageBox.Show(ex.Message);
                 }
             } else {
                 try
@@ -179,8 +114,9 @@ namespace WPF_Calculator
                     FirstNumber = Convert.ToDouble(Display.Text);
                     InProgress = true;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    MessageBox.Show(ex.Message);
                 }
             }
             // calculates both numbers using the set operator, Using NClac Library
@@ -214,10 +150,33 @@ namespace WPF_Calculator
                     SecondNumber = Convert.ToDouble(Display.Text);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
         }
+        // sets numbers according to current state
+        private void Operator_SetNumbers()
+        {
+            if (InProgress == true)
+            {
+                try {
+                    SecondNumber = Convert.ToDouble(Display.Text);
+                    InProgress = false;
+                } catch (Exception ex) {
+                    MessageBox.Show(ex.Message);
+                }
+            } else {
+                try {
+                    FirstNumber = Convert.ToDouble(Display.Text);
+                    InProgress = true;
+                } catch (Exception ex) {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            Display.Text = "";
+        }
+
+
     }
 }
