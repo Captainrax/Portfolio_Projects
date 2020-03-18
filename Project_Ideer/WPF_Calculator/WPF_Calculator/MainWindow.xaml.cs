@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,12 +25,14 @@ namespace WPF_Calculator
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new ViewModel();
         }
         double FirstNumber;
         double SecondNumber;
         string Operation;
         bool InProgress = false;
-        
+        double Result;
+
         private void Btn0_Click(object sender, RoutedEventArgs e)
         {
             Display.Text = Display.Text += "0";
@@ -97,7 +100,6 @@ namespace WPF_Calculator
         }
         private void BtnEqual_Click(object sender, RoutedEventArgs e)
         {
-            double Result;
             if ( InProgress == true)
             {
                 try
@@ -135,6 +137,7 @@ namespace WPF_Calculator
             SecondNumber = 0;
             LastResult.Content = "Current Result: ";
             InProgress = false;
+            Result = 0;
         }
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
@@ -176,7 +179,53 @@ namespace WPF_Calculator
             }
             Display.Text = "";
         }
+        private void Area_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //MessageBox.Show(Area_Selection.SelectedItem.ToString());
+
+            double temp_result;
+
+            if (FirstNumber == 0 || SecondNumber == 0)
+            {
+                temp_result = Convert.ToDouble(Display.Text);
+            } else
+            {
+                temp_result = Result;
+            }
+
+            switch (Area_Selection.SelectedItem.ToString())
+            {
+                case "Circle":
+                    Display.Text = Convert.ToString(Math.PI * (temp_result * temp_result));
+                    MessageBox.Show(Area_Selection.SelectedItem.ToString());
+                    break;
+                case "Square":
+
+                    break;
+                case "Trapez":
+
+                    break;
+                case "Cone":
+
+                    break;
+            }
+        }
 
 
+    }
+    public class ViewModel
+    {
+        public ObservableCollection<string> Area_Content { get; set; }
+
+        public ViewModel()
+        {
+            Area_Content = new ObservableCollection<string>
+            {
+            "Circle",
+            "Square",
+            "Trapez",
+            "Cone"
+            };
+        }
     }
 }

@@ -27,33 +27,8 @@
         <TextBox VerticalContentAlignment="Center" TextAlignment="Center" FontSize="26" Name="Display" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4"/>
         <Label VerticalContentAlignment="Top" HorizontalContentAlignment="Center" FontSize="14" Opacity="0.8" Name="LastResult" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Content="Current Result: "/>
 
-        <ComboBox Name="Area_Selection" SelectionChanged="Area_SelectionChanged" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="10">
-            <ComboBoxItem Name="Circle" >
-                <StackPanel Orientation="Horizontal">
-                    <!--<Image Source="/WpfTutorialSamples;component/Images/bullet_red.png" />-->
-                    <TextBlock Text="Circle"/>
-                </StackPanel>
-            </ComboBoxItem>
-            <ComboBoxItem Name="Square">
-                <StackPanel Orientation="Horizontal">
-                    <!--<Image Source="/WpfTutorialSamples;component/Images/bullet_green.png" />-->
-                    <TextBlock Text="Square"/>
-                </StackPanel>
-            </ComboBoxItem>
-            <ComboBoxItem Name="Trapez">
-                <StackPanel Orientation="Horizontal">
-                    <!--<Image Source="/WpfTutorialSamples;component/Images/bullet_blue.png" />-->
-                    <TextBlock Text="Trapez"/>
-                </StackPanel>
-            </ComboBoxItem>
-            <ComboBoxItem Name="Cone">
-                <StackPanel Orientation="Horizontal">
-                    <!--<Image Source="/WpfTutorialSamples;component/Images/bullet_blue.png" />-->
-                    <TextBlock Text="Cone"/>
-                </StackPanel>
-            </ComboBoxItem>
-        </ComboBox>
-        
+        <ComboBox SelectionChanged="Area_SelectionChanged" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="10" x:Name="Area_Selection" ItemsSource="{Binding Area_Content}"/>
+
         <Button Content="1" Click="Btn1_Click" Grid.Column="0" Grid.Row="4" BorderBrush="#FF00FFF3" Margin="1"/>
         <Button Content="2" Click="Btn2_Click" Grid.Column="1" Grid.Row="4" BorderBrush="#FF00FFF3" Margin="1"/>
         <Button Content="3" Click="Btn3_Click" Grid.Column="2" Grid.Row="4" BorderBrush="#FF00FFF3" Margin="1"/>
