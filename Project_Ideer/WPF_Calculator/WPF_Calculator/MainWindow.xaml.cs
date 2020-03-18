@@ -77,12 +77,21 @@ namespace WPF_Calculator
 
         private void BtnPlus_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (InProgress == true)
             {
-                FirstNumber = Convert.ToDouble(Display.Text);
+                SecondNumber = Convert.ToDouble(Display.Text);
+                InProgress = false;
             }
-            catch (Exception)
+            else
             {
+                try
+                {
+                    FirstNumber = Convert.ToDouble(Display.Text);
+                    InProgress = true;
+                }
+                catch (Exception)
+                {
+                }
             }
             Display.Text = "";
             Operation = "+";
@@ -90,24 +99,42 @@ namespace WPF_Calculator
         }
         private void BtnMinus_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (InProgress == true)
             {
-                FirstNumber = Convert.ToDouble(Display.Text);
+                SecondNumber = Convert.ToDouble(Display.Text);
+                InProgress = false;
             }
-            catch (Exception)
+            else
             {
+                try
+                {
+                    FirstNumber = Convert.ToDouble(Display.Text);
+                    InProgress = true;
+                }
+                catch (Exception)
+                {
+                }
             }
             Display.Text = "";
             Operation = "-";
         }
         private void BtnDivide_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (InProgress == true)
             {
-                FirstNumber = Convert.ToDouble(Display.Text);
+                SecondNumber = Convert.ToDouble(Display.Text);
+                InProgress = false;
             }
-            catch (Exception)
+            else
             {
+                try
+                {
+                    FirstNumber = Convert.ToDouble(Display.Text);
+                    InProgress = true;
+                }
+                catch (Exception)
+                {
+                }
             }
             Display.Text = "";
             Operation = "/";
