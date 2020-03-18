@@ -18,3 +18,4 @@ F:\Github\SKP_Projects\Project_Ideer\WPF_Calculator\WPF_Calculator\obj\Debug\net
 F:\Github\SKP_Projects\Project_Ideer\WPF_Calculator\WPF_Calculator\bin\Debug\netcoreapp3.1\NCalc.dll
 F:\Github\SKP_Projects\Project_Ideer\WPF_Calculator\WPF_Calculator\obj\Debug\netcoreapp3.1\WPF_Calculator.csproj.CoreCompileInputs.cache
 F:\Github\SKP_Projects\Project_Ideer\WPF_Calculator\WPF_Calculator\obj\Debug\netcoreapp3.1\WPF_Calculator.csproj.CopyComplete
+F:\Github\SKP_Projects\Project_Ideer\WPF_Calculator\WPF_Calculator\obj\Debug\netcoreapp3.1\WPF_Calculator.csprojAssemblyReference.cache

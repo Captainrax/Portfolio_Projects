@@ -28,6 +28,7 @@ namespace WPF_Calculator
         double FirstNumber;
         double SecondNumber;
         string Operation;
+        bool InProgress = false;
         
         private void Btn0_Click(object sender, RoutedEventArgs e)
         {
@@ -113,63 +114,55 @@ namespace WPF_Calculator
         }
         private void BtnMultiply_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if(InProgress == true)
             {
-                FirstNumber = Convert.ToDouble(Display.Text);
-            }
-            catch (Exception)
+                SecondNumber = Convert.ToDouble(Display.Text);
+                InProgress = false;
+            } else
             {
+                try
+                {
+                    FirstNumber = Convert.ToDouble(Display.Text);
+                    InProgress = true;
+                }
+                catch (Exception)
+                {
+                }
             }
+
+
             Display.Text = "";
             Operation = "*";
         }
         private void BtnEqual_Click(object sender, RoutedEventArgs e)
         {
             double Result;
-            try
+            if ( InProgress == true)
             {
+                try
+                {
                     SecondNumber = Convert.ToDouble(Display.Text);
+                }
+                catch (Exception)
+                {
+                }
+            } else {
+                try
+                {
+                    FirstNumber = Convert.ToDouble(Display.Text);
+                    InProgress = true;
+                }
+                catch (Exception)
+                {
+                }
             }
-            catch (Exception)
-            {
-            }
-
+            // calculates both numbers using the set operator, Using NClac Library
             NCalc.Expression ee = new NCalc.Expression(FirstNumber + Operation + SecondNumber);
             Result = Convert.ToDouble( ee.Evaluate());
 
             Display.Text = Convert.ToString(Result);
             LastResult.Content = "Current Result: " + FirstNumber + Operation + SecondNumber + " = " + Result;
             SecondNumber = Result;
-            //MessageBox.Show(Convert.ToString(ble));
-
-            //switch (Operation)
-            //{
-            //    case "+":
-            //        Result = FirstNumber + SecondNumber;
-            //        //Display.Text = Convert.ToString(Result);
-            //        FirstNumber = Result;
-            //        LastResult.Content = "Current Result: " + Result;
-            //        break;
-            //    case "-":
-            //        Result = FirstNumber - SecondNumber;
-            //        Display.Text = Convert.ToString(Result);
-            //        FirstNumber = Result;
-            //        LastResult.Content = "Current Result: " + Result;
-            //        break;
-            //    case "/":
-            //        Result = FirstNumber / SecondNumber;
-            //        Display.Text = Convert.ToString(Result);
-            //        FirstNumber = Result;
-            //        LastResult.Content = "Current Result: " + Result;
-            //        break;
-            //    case "*":
-            //        Result = FirstNumber * SecondNumber;
-            //        Display.Text = Convert.ToString(Result);
-            //        FirstNumber = Result;
-            //        LastResult.Content = "Current Result: " + Result;
-            //        break;
-            //}
-
         }
         private void BtnClear_Click(object sender, RoutedEventArgs e)
         {
@@ -178,6 +171,7 @@ namespace WPF_Calculator
             FirstNumber = 0;
             SecondNumber = 0;
             LastResult.Content = "Current Result: ";
+            InProgress = false;
         }
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
