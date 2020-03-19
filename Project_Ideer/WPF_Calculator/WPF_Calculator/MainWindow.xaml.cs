@@ -254,7 +254,7 @@ namespace WPF_Calculator
                     }
                     break;
                 case "Cone":
-                    AreaInputDialog areaInput_Cone = new AreaInputDialog("Enter Radius", "Enter Slant Height", "");
+                    AreaInputDialog areaInput_Cone = new AreaInputDialog("Enter Radius", "Enter Height", "");
                     areaInput_Cone.txtAnswer3.Height = 0;
                     areaInput_Cone.LabelQuestion3.Height = 0;
                     areaInput_Cone.ShowDialog();
