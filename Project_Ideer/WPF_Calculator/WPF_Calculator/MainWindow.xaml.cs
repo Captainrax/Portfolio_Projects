@@ -179,11 +179,10 @@ namespace WPF_Calculator
             }
             Display.Text = "";
         }
-       
+        // ToDo: create other event handler for selecting an item, currently you cant do the same option twice in a row
+        // handles Area Events
         private void Area_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //MessageBox.Show(Area_Selection.SelectedItem.ToString());
-
             double temp_result;
 
             try {
@@ -283,6 +282,7 @@ namespace WPF_Calculator
 
 
     }
+    // datacontext for Area calculation dropdown menu
     public class ViewModel
     {
         public ObservableCollection<string> Area_Content { get; set; }
