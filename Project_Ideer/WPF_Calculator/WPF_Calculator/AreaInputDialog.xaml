@@ -3,17 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPF_Calculator"
         mc:Ignorable="d"
         Title="AreaInputDialog"
         WindowStartupLocation="CenterScreen"
         ContentRendered="Window_ContentRendered"
-        Height="200"
-        Width="300">
-    <Grid Margin="15">
+        SizeToContent="WidthAndHeight" MinWidth="300">
+    <Grid Margin="8">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -22,16 +20,20 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Column="1" Grid.Row="1">
+        <StackPanel Grid.Column="1" Grid.Row="0" MinWidth="250">
             <Label Name="LabelQuestion1" Content="Question:"/>
-            <TextBox Name="txtAnswer1" MinWidth="250" Text="Answer"/>
+            <TextBox Name="txtAnswer1" Text="Answer"/>
         </StackPanel>
-        <StackPanel Grid.Column="1" Grid.Row="2">
+        <StackPanel Grid.Column="1" Grid.Row="1" MinWidth="250">
             <Label Name="LabelQuestion2" Content="Question:"/>
-            <TextBox Name="txtAnswer2" MinWidth="250" Text="Answer"/>
+            <TextBox Name="txtAnswer2" Text="Answer"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="2" MinWidth="250">
+            <Label Name="LabelQuestion3" Content="Question:"/>
+            <TextBox Name="txtAnswer3"  Text="Answer"/>
         </StackPanel>
         
-        <WrapPanel Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,15,0,0">
+        <WrapPanel Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,10,0,0">
             <Button Content="Ok" IsDefault="True" Name="btnDialogOk" Click="btnDialogOk_Click" MinWidth="60" Margin="0,0,10,0"/>
             <Button Content="Cancel" Name="btnDialogCancel" Click="btnDialogCancel_Click" IsCancel="True" MinWidth="60"/>
         </WrapPanel>

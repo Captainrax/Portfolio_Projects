@@ -202,12 +202,16 @@ namespace WPF_Calculator
             switch (Area_Selection.SelectedItem.ToString())
             {
                 case "Circle":
-                    AreaInputDialog areaInput = new AreaInputDialog("Enter Radius", "");
+                    AreaInputDialog areaInput = new AreaInputDialog("Enter Radius", "", "");
                     areaInput.txtAnswer2.Height = 0;
+                    areaInput.LabelQuestion2.Height = 0;
+                    areaInput.txtAnswer3.Height = 0;
+                    areaInput.LabelQuestion3.Height = 0;
                     areaInput.ShowDialog();
                     try {
                         if(areaInput.Answer1 != "")
                         {
+                            // PI x (Radius x Radius)
                             Display.Text = Convert.ToString(Math.PI * (Convert.ToDouble(areaInput.Answer1) * Convert.ToDouble(areaInput.Answer1)));
                         }
                     }   catch (Exception ex) {
@@ -216,12 +220,15 @@ namespace WPF_Calculator
 
                     break;
                 case "Rectangle":
-                    AreaInputDialog areaInput_Square = new AreaInputDialog("Enter Height", "Enter Width");
+                    AreaInputDialog areaInput_Square = new AreaInputDialog("Enter Height", "Enter Width", "");
+                    areaInput_Square.txtAnswer3.Height = 0;
+                    areaInput_Square.LabelQuestion3.Height = 0;
                     areaInput_Square.ShowDialog();
                     try
                     {
                         if (areaInput_Square.Answer1 != "")
                         {
+                            // Height x Width
                             Display.Text = Convert.ToString(Convert.ToDouble(areaInput_Square.Answer1) * Convert.ToDouble(areaInput_Square.Answer2));
                         }
                     }
@@ -231,10 +238,45 @@ namespace WPF_Calculator
                     }
                     break;
                 case "Trapez":
-
+                    AreaInputDialog areaInput_Trapez = new AreaInputDialog("Enter Base 1", "Enter Base 2", "Enter Height");
+                    areaInput_Trapez.ShowDialog();
+                    try
+                    {
+                        if (areaInput_Trapez.Answer1 != "")
+                        {
+                            // (base 1 + base 2) / 2 x height
+                            Display.Text = Convert.ToString((Convert.ToDouble(areaInput_Trapez.Answer1) + Convert.ToDouble(areaInput_Trapez.Answer2)) / 2 * Convert.ToDouble(areaInput_Trapez.Answer3));
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                     break;
                 case "Cone":
+                    AreaInputDialog areaInput_Cone = new AreaInputDialog("Enter Radius", "Enter Slant Height", "");
+                    areaInput_Cone.txtAnswer3.Height = 0;
+                    areaInput_Cone.LabelQuestion3.Height = 0;
+                    areaInput_Cone.ShowDialog();
+                    try
+                    {
+                        if (areaInput_Cone.Answer1 != "")
+                        {
+                            // L = √( H^2 + R^2 )
+                            // Area^2 = PI x R x (R + L)
 
+                            double R = Convert.ToDouble(areaInput_Cone.Answer1);
+                            double H = Convert.ToDouble(areaInput_Cone.Answer2);
+
+                            double L = Math.Sqrt( Math.Pow(H,2) + Math.Pow(R,2));
+
+                            Display.Text = Convert.ToString(Math.PI * R * (R + L));
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                     break;
             }
         }
