@@ -195,7 +195,7 @@ namespace WPF_Calculator
                 {
                     temp_result = Result;
                 }
-            } catch (Exception ex)  {
+            } catch (Exception)  {
                 //MessageBox.Show(ex.Message);
             }
 
@@ -203,25 +203,26 @@ namespace WPF_Calculator
             {
                 case "Circle":
                     AreaInputDialog areaInput = new AreaInputDialog("Enter Radius", "");
+                    areaInput.txtAnswer2.Height = 0;
                     areaInput.ShowDialog();
                     try {
-                        if(areaInput.Answer != "")
+                        if(areaInput.Answer1 != "")
                         {
-                            Display.Text = Convert.ToString(Math.PI * (Convert.ToDouble(areaInput.Answer) * Convert.ToDouble(areaInput.Answer)));
+                            Display.Text = Convert.ToString(Math.PI * (Convert.ToDouble(areaInput.Answer1) * Convert.ToDouble(areaInput.Answer1)));
                         }
                     }   catch (Exception ex) {
                         MessageBox.Show(ex.Message);
                     }
 
                     break;
-                case "Square":
-                    AreaInputDialog areaInput_Square = new AreaInputDialog("Enter Radius", "");
+                case "Rectangle":
+                    AreaInputDialog areaInput_Square = new AreaInputDialog("Enter Height", "Enter Width");
                     areaInput_Square.ShowDialog();
                     try
                     {
-                        if (areaInput_Square.Answer != "")
+                        if (areaInput_Square.Answer1 != "")
                         {
-                            Display.Text = Convert.ToString(Math.PI * (Convert.ToDouble(areaInput_Square.Answer) * Convert.ToDouble(areaInput_Square.Answer)));
+                            Display.Text = Convert.ToString(Convert.ToDouble(areaInput_Square.Answer1) * Convert.ToDouble(areaInput_Square.Answer2));
                         }
                     }
                     catch (Exception ex)
@@ -249,7 +250,7 @@ namespace WPF_Calculator
             Area_Content = new ObservableCollection<string>
             {
             "Circle",
-            "Square",
+            "Rectangle",
             "Trapez",
             "Cone"
             };

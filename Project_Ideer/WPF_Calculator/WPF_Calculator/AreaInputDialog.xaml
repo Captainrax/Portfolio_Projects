@@ -19,12 +19,19 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <Label Name="lblQuestion" Grid.Column="1">Question:</Label>
-        <TextBox Name="txtAnswer" Grid.Column="1" Grid.Row="1" MinWidth="250">Answer</TextBox>
-
-        <WrapPanel Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,15,0,0">
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <Label Name="LabelQuestion1" Content="Question:"/>
+            <TextBox Name="txtAnswer1" MinWidth="250" Text="Answer"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="2">
+            <Label Name="LabelQuestion2" Content="Question:"/>
+            <TextBox Name="txtAnswer2" MinWidth="250" Text="Answer"/>
+        </StackPanel>
+        
+        <WrapPanel Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,15,0,0">
             <Button Content="Ok" IsDefault="True" Name="btnDialogOk" Click="btnDialogOk_Click" MinWidth="60" Margin="0,0,10,0"/>
             <Button Content="Cancel" Name="btnDialogCancel" Click="btnDialogCancel_Click" IsCancel="True" MinWidth="60"/>
         </WrapPanel>

@@ -17,11 +17,13 @@ namespace WPF_Calculator
     /// </summary>
     public partial class AreaInputDialog : Window
     {
-		public AreaInputDialog(string question, string defaultAnswer = "")
+		public AreaInputDialog(string question1, string question2, string defaultAnswer = "")
 		{
 			InitializeComponent();
-			lblQuestion.Content = question;
-			txtAnswer.Text = defaultAnswer;
+			LabelQuestion1.Content = question1;
+			LabelQuestion2.Content = question2;
+			txtAnswer1.Text = defaultAnswer;
+			txtAnswer2.Text = defaultAnswer;
 		}
 		
 
@@ -35,13 +37,17 @@ namespace WPF_Calculator
 		}
 		private void Window_ContentRendered(object sender, EventArgs e)
 		{
-			txtAnswer.SelectAll();
-			txtAnswer.Focus();
+			txtAnswer1.SelectAll();
+			txtAnswer1.Focus();
 		}
 
-		public string Answer
+		public string Answer1
 		{
-			get { return txtAnswer.Text; }
+			get { return txtAnswer1.Text; }
+		}
+		public string Answer2
+		{
+			get { return txtAnswer2.Text; }
 		}
 	}
 }
