@@ -179,28 +179,55 @@ namespace WPF_Calculator
             }
             Display.Text = "";
         }
+       
         private void Area_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //MessageBox.Show(Area_Selection.SelectedItem.ToString());
 
             double temp_result;
 
-            if (FirstNumber == 0 || SecondNumber == 0)
-            {
-                temp_result = Convert.ToDouble(Display.Text);
-            } else
-            {
-                temp_result = Result;
+            try {
+                if (FirstNumber == 0 || SecondNumber == 0)
+                {
+                    temp_result = Convert.ToDouble(Display.Text);
+                }
+                else
+                {
+                    temp_result = Result;
+                }
+            } catch (Exception ex)  {
+                //MessageBox.Show(ex.Message);
             }
 
             switch (Area_Selection.SelectedItem.ToString())
             {
                 case "Circle":
-                    Display.Text = Convert.ToString(Math.PI * (temp_result * temp_result));
-                    MessageBox.Show(Area_Selection.SelectedItem.ToString());
+                    AreaInputDialog areaInput = new AreaInputDialog("Enter Radius", "");
+                    areaInput.ShowDialog();
+                    try {
+                        if(areaInput.Answer != "")
+                        {
+                            Display.Text = Convert.ToString(Math.PI * (Convert.ToDouble(areaInput.Answer) * Convert.ToDouble(areaInput.Answer)));
+                        }
+                    }   catch (Exception ex) {
+                        MessageBox.Show(ex.Message);
+                    }
+
                     break;
                 case "Square":
-
+                    AreaInputDialog areaInput_Square = new AreaInputDialog("Enter Radius", "");
+                    areaInput_Square.ShowDialog();
+                    try
+                    {
+                        if (areaInput_Square.Answer != "")
+                        {
+                            Display.Text = Convert.ToString(Math.PI * (Convert.ToDouble(areaInput_Square.Answer) * Convert.ToDouble(areaInput_Square.Answer)));
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                     break;
                 case "Trapez":
 
