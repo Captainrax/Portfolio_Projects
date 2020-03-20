@@ -6,18 +6,25 @@ namespace Console_GuessingGame
     {
         static void Main(string[] args)
         {
+            GuessGame();
+        }
+
+        private static void GuessGame()
+        {
             Random random = new Random();
 
             int num = random.Next(1, 101);
 
-            // Debug
-            Console.WriteLine(num);
-            Console.WriteLine(" ");
+            int count = 3;
 
-            int count = 0;
-
-            while (true)
+            while (count > 0)
             {
+                Console.Clear();
+
+                // Debug
+                //Console.WriteLine(num);
+
+                Console.WriteLine("Guesses Left: " + count);
                 Console.Write("Guess Number: ");
                 int guess = 0;
 
@@ -30,7 +37,7 @@ namespace Console_GuessingGame
                     Console.WriteLine("thats not a number!");
                 }
 
-                count++;
+                count--;
 
                 if (guess > num)
                 {
@@ -46,9 +53,14 @@ namespace Console_GuessingGame
                     break;
                 }
 
+                if (count < 1)
+                {
+                    Console.WriteLine("you lost!");
+                }
             }
-            Console.WriteLine("you guessed " + count + " times!");
             Console.ReadKey();
         }
+
+
     }
 }
