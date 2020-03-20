@@ -1,0 +1,13 @@
+F:\Github\SKP_Projects\Project_Ideer\Console_GuessingGame\Console_GuessingGame\bin\Debug\netcoreapp3.1\Console_GuessingGame.exe
+F:\Github\SKP_Projects\Project_Ideer\Console_GuessingGame\Console_GuessingGame\bin\Debug\netcoreapp3.1\Console_GuessingGame.deps.json
+F:\Github\SKP_Projects\Project_Ideer\Console_GuessingGame\Console_GuessingGame\bin\Debug\netcoreapp3.1\Console_GuessingGame.runtimeconfig.json
+F:\Github\SKP_Projects\Project_Ideer\Console_GuessingGame\Console_GuessingGame\bin\Debug\netcoreapp3.1\Console_GuessingGame.runtimeconfig.dev.json
+F:\Github\SKP_Projects\Project_Ideer\Console_GuessingGame\Console_GuessingGame\bin\Debug\netcoreapp3.1\Console_GuessingGame.dll
+F:\Github\SKP_Projects\Project_Ideer\Console_GuessingGame\Console_GuessingGame\bin\Debug\netcoreapp3.1\Console_GuessingGame.pdb
+F:\Github\SKP_Projects\Project_Ideer\Console_GuessingGame\Console_GuessingGame\obj\Debug\netcoreapp3.1\Console_GuessingGame.csprojAssemblyReference.cache
+F:\Github\SKP_Projects\Project_Ideer\Console_GuessingGame\Console_GuessingGame\obj\Debug\netcoreapp3.1\Console_GuessingGame.csproj.CoreCompileInputs.cache
+F:\Github\SKP_Projects\Project_Ideer\Console_GuessingGame\Console_GuessingGame\obj\Debug\netcoreapp3.1\Console_GuessingGame.AssemblyInfoInputs.cache
+F:\Github\SKP_Projects\Project_Ideer\Console_GuessingGame\Console_GuessingGame\obj\Debug\netcoreapp3.1\Console_GuessingGame.AssemblyInfo.cs
+F:\Github\SKP_Projects\Project_Ideer\Console_GuessingGame\Console_GuessingGame\obj\Debug\netcoreapp3.1\Console_GuessingGame.dll
+F:\Github\SKP_Projects\Project_Ideer\Console_GuessingGame\Console_GuessingGame\obj\Debug\netcoreapp3.1\Console_GuessingGame.pdb
+F:\Github\SKP_Projects\Project_Ideer\Console_GuessingGame\Console_GuessingGame\obj\Debug\netcoreapp3.1\Console_GuessingGame.genruntimeconfig.cache
