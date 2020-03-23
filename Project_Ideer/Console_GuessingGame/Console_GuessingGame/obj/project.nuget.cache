@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "wdKD+yz7jy782GK5I3L6QjRYJyv4iEWgDmaGlKyoceODUtepni3U61H/+A+iPbHIAi17yEGbD4q6HbP6KTVJaQ==",
+  "dgSpecHash": "L6OoBUuhZ4+a0yXJ/pJde8rkpHD0lpwoghQMkxekET/M9eWIsM7rTHPCCAhO4V4zCjTsl+lr7z51wxOcrZr1+Q==",
   "success": true,
   "projectFilePath": "F:\\Github\\SKP_Projects\\Project_Ideer\\Console_GuessingGame\\Console_GuessingGame\\Console_GuessingGame.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Captain Rax\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

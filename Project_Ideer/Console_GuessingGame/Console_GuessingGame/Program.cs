@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading;
 
@@ -13,6 +15,7 @@ namespace Console_GuessingGame
         }
 
         public static int WinStreak;
+        public static string WinStreakName;
 
         public static void MainMenu()
         {
@@ -115,6 +118,9 @@ namespace Console_GuessingGame
                     }
                     else if (repeat == "N" || repeat == "n")
                     {
+                        Console.WriteLine("input name: ");
+                        WinStreakName = Console.ReadLine();
+                        Save();
                         break;
                     }
                     Console.Clear();
@@ -145,7 +151,15 @@ namespace Console_GuessingGame
 
             }
         }
+        static void Save()
+        {
+            StreamWriter file = new StreamWriter(Path.Combine(Environment.CurrentDirectory, "HighScore.json"));
 
+            string json = JsonConvert.SerializeObject(WinStreakName + " / " + WinStreak, Formatting.Indented);
+
+            file.WriteLine(json);
+            file.Close();
+        }
 
     }
 }
