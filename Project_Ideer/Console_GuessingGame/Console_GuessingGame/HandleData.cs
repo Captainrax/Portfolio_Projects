@@ -21,7 +21,7 @@ namespace Console_GuessingGame
             file.WriteLine(json);
             file.Close();
         }
-        public static List<HighScoreObject.Unit> Load()
+        public static void Load()
         {
             if (!File.Exists(filename))
             {
@@ -38,8 +38,6 @@ namespace Console_GuessingGame
             {
                 DataBase.Add(p);
             }
-
-            return DataBase;
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Console_GuessingGame
     {
         static void Main(string[] args)
         {
-            HandleData.DataBase = HandleData.Load();
+            HandleData.Load();
             MainMenu();
         }
 
@@ -162,10 +162,12 @@ namespace Console_GuessingGame
         {
             Console.Clear();
             Console.WriteLine("LeaderBoards: ");
+            List<HighScoreObject.Unit> templistt = HandleData.DataBase;
 
-            foreach(HighScoreObject.Unit U in HandleData.DataBase)
+            foreach (HighScoreObject.Unit U in templistt.ToList())
             {
-                Console.WriteLine(U.Name + " / " + U.Score);
+                Console.WriteLine(U.Name + " / " + templistt.Max(u => u.Score));
+                templistt.Remove(U);
             }
             Console.ReadKey();
         }
