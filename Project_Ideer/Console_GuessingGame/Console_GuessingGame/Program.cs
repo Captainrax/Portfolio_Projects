@@ -11,6 +11,7 @@ namespace Console_GuessingGame
     {
         static void Main(string[] args)
         {
+            HandleData.DataBase = HandleData.Load();
             MainMenu();
         }
 
@@ -120,7 +121,9 @@ namespace Console_GuessingGame
                     {
                         Console.WriteLine("input name: ");
                         WinStreakName = Console.ReadLine();
-                        Save();
+                        HighScoreObject.Unit tempunit = new HighScoreObject.Unit(WinStreakName, WinStreak);
+                        HandleData.DataBase.Add(tempunit);
+                        HandleData.Commit();
                         break;
                     }
                     Console.Clear();
@@ -150,15 +153,6 @@ namespace Console_GuessingGame
                 }
 
             }
-        }
-        static void Save()
-        {
-            StreamWriter file = new StreamWriter(Path.Combine(Environment.CurrentDirectory, "HighScore.json"));
-
-            string json = JsonConvert.SerializeObject(WinStreakName + " / " + WinStreak, Formatting.Indented);
-
-            file.WriteLine(json);
-            file.Close();
         }
 
     }
