@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 
 namespace Console_GuessingGame
 {
@@ -16,7 +17,7 @@ namespace Console_GuessingGame
         public static void MainMenu()
         {
             // variable to keep track of the current Item, and a simple counter.
-            short curItem = 0, c;
+            short CurrentItem = 0;
 
             ConsoleKeyInfo key;
 
@@ -26,12 +27,12 @@ namespace Console_GuessingGame
             {
                 Console.Clear();
 
-                for (c = 0; c < menuItems.Length; c++)
+                for (int c = 0; c < menuItems.Length; c++)
                 {
                     // if the current item number is variable c, tab out this option.
-                    if (curItem == c)
+                    if (CurrentItem == c)
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.ForegroundColor = ConsoleColor.Cyan;
                         Console.WriteLine(menuItems[c]);
                         Console.ResetColor();
                     } 
@@ -46,16 +47,22 @@ namespace Console_GuessingGame
 
                 if (key.Key.ToString() == "DownArrow")
                 {
-                    curItem++;
-                    if (curItem > menuItems.Length - 1) curItem = 0;
+                    CurrentItem++;
+                    if (CurrentItem > menuItems.Length - 1)
+                    {
+                        CurrentItem = 0;
+                    }
                 }
                 else if (key.Key.ToString() == "UpArrow")
                 {
-                    curItem--;
-                    if (curItem < 0) curItem = Convert.ToInt16(menuItems.Length - 1);
+                    CurrentItem--;
+                    if (CurrentItem < 0)
+                    {
+                        CurrentItem = Convert.ToInt16(menuItems.Length - 1);
+                    }
                 } else if (key.Key.ToString() == "Enter")
                 {
-                    switch (curItem.ToString())
+                    switch (CurrentItem.ToString())
                     {
                         case "0":
                             GuessGame();
@@ -78,21 +85,53 @@ namespace Console_GuessingGame
         {
             Random random = new Random();
 
-            int num = random.Next(1, 101);
+            int num = random.Next(1, 11);
 
             int GuessCount = 3;
 
-            while (GuessCount > 0)
+            int guess = 0;
+
+            while (GuessCount >= 0)
             {
                 Console.Clear();
 
                 // Debug
                 //Console.WriteLine(num);
 
+                if( guess == num) {
+                    WinStreak++;
+                    Console.WriteLine("Guess Correct!");
+                    GuessCount = GuessCount + 3;
+                    num = random.Next(1, 11);
+                } else if (GuessCount < 1) {
+                    WinStreak = 0;
+                    Console.WriteLine("you lose! play agian? (Y/N)");
+                    Console.Write(": ");
+                    string repeat = Console.ReadLine();
+                    if (repeat == "Y" || repeat == "y")
+                    {
+                        GuessCount = GuessCount + 3;
+                        num = random.Next(1, 11);
+                    }
+                    else if (repeat == "N" || repeat == "n")
+                    {
+                        break;
+                    }
+                    Console.Clear();
+                }
+
+                if (guess > num)
+                {
+                    Console.WriteLine("smaller.");
+                }
+                else if (guess < num)
+                {
+                    Console.WriteLine("bigger.");
+                }
+                Console.WriteLine("Current WinStreak: " + WinStreak);
                 Console.WriteLine("Guesses Left: " + GuessCount);
                 Console.Write("Guess Number: ");
 
-                int guess = 0;
 
                 try
                 {
@@ -104,32 +143,7 @@ namespace Console_GuessingGame
                     Console.WriteLine("thats not a number!");
                 }
 
-                if (GuessCount < 3)
-                {
-                    if (guess > num)
-                    {
-                        Console.WriteLine("smaller.");
-                    }
-                    else if (guess < num)
-                    {
-                        Console.WriteLine("bigger.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("you win!");
-                        WinStreak++;
-                        break;
-                    }
-
-                }
-
-                if (GuessCount < 1)
-                {
-                    Console.WriteLine("you lost!");
-                    break;
-                }
             }
-            Console.ReadKey();
         }
 
 
