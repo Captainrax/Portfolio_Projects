@@ -25,7 +25,8 @@ namespace Console_GuessingGame
 
             ConsoleKeyInfo key;
 
-            string[] menuItems = { "New Game", "Two", "Three", "Exit" };
+            // Menu option Names
+            string[] menuItems = { "New Game", "LeaderBoard", "Three", "Exit" };
 
             while(true)
             {
@@ -72,7 +73,7 @@ namespace Console_GuessingGame
                             GuessGame();
                             break;
                         case "1":
-
+                            LeaderBoard();
                             break;
                         case "2":
 
@@ -112,13 +113,16 @@ namespace Console_GuessingGame
                     Console.WriteLine("you lose! play agian? (Y/N)");
                     Console.Write(": ");
                     string repeat = Console.ReadLine();
+
                     if (repeat == "Y" || repeat == "y")
                     {
-                        GuessCount = GuessCount + 3;
+                        // New game
+                        GuessCount += 3;
                         num = random.Next(1, 11);
                     }
                     else if (repeat == "N" || repeat == "n")
                     {
+                        // Saves current game to HighScore.json
                         Console.WriteLine("input name: ");
                         WinStreakName = Console.ReadLine();
                         HighScoreObject.Unit tempunit = new HighScoreObject.Unit(WinStreakName, WinStreak);
@@ -153,6 +157,17 @@ namespace Console_GuessingGame
                 }
 
             }
+        }
+        public static void LeaderBoard()
+        {
+            Console.Clear();
+            Console.WriteLine("LeaderBoards: ");
+
+            foreach(HighScoreObject.Unit U in HandleData.DataBase)
+            {
+                Console.WriteLine(U.Name + " / " + U.Score);
+            }
+            Console.ReadKey();
         }
 
     }
