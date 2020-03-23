@@ -23,6 +23,10 @@ namespace Console_GuessingGame
         }
         public static List<HighScoreObject.Unit> Load()
         {
+            if (!File.Exists(filename))
+            {
+                Commit();
+            }
 
             string fileName = filename;
 
