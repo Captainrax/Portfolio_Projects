@@ -173,11 +173,17 @@ namespace Console_GuessingGame
 
             foreach (HighScoreObject.Unit U in templist.OrderByDescending(unit => unit.Score))
             {
-                Console.WriteLine(counter + " - " + U.Name + " / " + U.Score);
+                Console.Write(counter + " - ");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.Write(U.Name);
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.Write(" / " + U.Score);
+                Console.WriteLine("");
                 //templist.Remove(U);
                 counter++;
             }
             Console.ReadKey();
+            Console.ForegroundColor = ConsoleColor.Gray;
         }
 
     }
