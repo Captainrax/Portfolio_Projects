@@ -123,11 +123,17 @@ namespace Console_GuessingGame
                     else if (repeat == "N" || repeat == "n")
                     {
                         // Saves current game to HighScore.json
-                        Console.WriteLine("input name: ");
-                        WinStreakName = Console.ReadLine();
-                        HighScoreObject.Unit tempunit = new HighScoreObject.Unit(WinStreakName, WinStreak);
-                        HandleData.DataBase.Add(tempunit);
-                        HandleData.Commit();
+                        if (WinStreak > 1)
+                        {
+                            Console.WriteLine("input name: ");
+                            WinStreakName = Console.ReadLine();
+                            if (WinStreakName.Count() >= 1)
+                            {
+                                HighScoreObject.Unit tempunit = new HighScoreObject.Unit(WinStreakName, WinStreak);
+                                HandleData.DataBase.Add(tempunit);
+                                HandleData.Commit();
+                            }
+                        }
                         break;
                     }
                     Console.Clear();
@@ -158,13 +164,11 @@ namespace Console_GuessingGame
 
             }
         }
-        // this is being dumb, fix it
         public static void LeaderBoard()
         {
             Console.Clear();
             Console.WriteLine("LeaderBoards: ");
-            List<HighScoreObject.Unit> templist = new List<HighScoreObject.Unit>();
-            templist = HandleData.DataBase.ToList();
+            List<HighScoreObject.Unit> templist = HandleData.DataBase.ToList();
 
             foreach (HighScoreObject.Unit U in templist.ToList())
             {
