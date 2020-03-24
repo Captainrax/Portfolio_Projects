@@ -109,7 +109,6 @@ namespace Console_GuessingGame
                     GuessCount = GuessCount + 3;
                     num = random.Next(1, 11);
                 } else if (GuessCount < 1) {
-                    WinStreak = 0;
                     Console.WriteLine("you lose! play agian? (Y/N)");
                     Console.Write(": ");
                     string repeat = Console.ReadLine();
@@ -119,6 +118,7 @@ namespace Console_GuessingGame
                         // New game
                         GuessCount += 3;
                         num = random.Next(1, 11);
+                        WinStreak = 0;
                     }
                     else if (repeat == "N" || repeat == "n")
                     {
@@ -169,11 +169,13 @@ namespace Console_GuessingGame
             Console.Clear();
             Console.WriteLine("LeaderBoards: ");
             List<HighScoreObject.Unit> templist = HandleData.DataBase.ToList();
+            int counter = 1;
 
-            foreach (HighScoreObject.Unit U in templist.ToList())
+            foreach (HighScoreObject.Unit U in templist.OrderByDescending(unit => unit.Score))
             {
-                Console.WriteLine(U.Name + " / " + templist.Max(u => u.Score));
-                templist.Remove(U);
+                Console.WriteLine(counter + " - " + U.Name + " / " + U.Score);
+                //templist.Remove(U);
+                counter++;
             }
             Console.ReadKey();
         }
