@@ -76,7 +76,7 @@ namespace Console_GuessingGame
                             LeaderBoard();
                             break;
                         case "2":
-
+                            Tutorial();
                             break;
                         case "3":
                             Environment.Exit(0);
@@ -104,6 +104,7 @@ namespace Console_GuessingGame
                 //Console.WriteLine(num);
 
                 if( guess == num) {
+                    // Guessed correct, +3 guesses, new guess number 0 / 10
                     WinStreak++;
                     Console.WriteLine("Guess Correct!");
                     GuessCount = GuessCount + 3;
@@ -176,14 +177,28 @@ namespace Console_GuessingGame
                 Console.Write(counter + " - ");
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write(U.Name);
-                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.ResetColor();
                 Console.Write(" / " + U.Score);
                 Console.WriteLine("");
                 //templist.Remove(U);
                 counter++;
             }
             Console.ReadKey();
-            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.ResetColor();
+        }
+        public static void Tutorial()
+        {
+            Console.Clear();
+            Console.WriteLine("Guess a number between 0 / 10.");
+            Console.WriteLine("Guessing correctly rewards you with 3 more guesses.");
+            Console.Write("Once you run out of guesses you can input your");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write(" name ");
+            Console.ResetColor();
+            Console.Write("to be entered unto the leaderboard.");
+            Console.WriteLine("");
+            Console.WriteLine("if you enter nothing you will not be entered.");
+            Console.ReadKey();
         }
 
     }
