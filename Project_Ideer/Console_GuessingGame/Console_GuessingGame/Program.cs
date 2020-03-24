@@ -123,7 +123,7 @@ namespace Console_GuessingGame
                     else if (repeat == "N" || repeat == "n")
                     {
                         // Saves current game to HighScore.json
-                        if (WinStreak >= 1)
+                        if (WinStreak > 1)
                         {
                             Console.WriteLine("input name: ");
                             WinStreakName = Console.ReadLine();
