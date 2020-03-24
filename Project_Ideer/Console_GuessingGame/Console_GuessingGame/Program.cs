@@ -158,16 +158,18 @@ namespace Console_GuessingGame
 
             }
         }
+        // this is being dumb, fix it
         public static void LeaderBoard()
         {
             Console.Clear();
             Console.WriteLine("LeaderBoards: ");
-            List<HighScoreObject.Unit> templistt = HandleData.DataBase;
+            List<HighScoreObject.Unit> templist = new List<HighScoreObject.Unit>();
+            templist = HandleData.DataBase.ToList();
 
-            foreach (HighScoreObject.Unit U in templistt.ToList())
+            foreach (HighScoreObject.Unit U in templist.ToList())
             {
-                Console.WriteLine(U.Name + " / " + templistt.Max(u => u.Score));
-                templistt.Remove(U);
+                Console.WriteLine(U.Name + " / " + templist.Max(u => u.Score));
+                templist.Remove(U);
             }
             Console.ReadKey();
         }
