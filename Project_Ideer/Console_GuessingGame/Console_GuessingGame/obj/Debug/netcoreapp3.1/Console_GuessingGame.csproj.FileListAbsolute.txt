@@ -12,3 +12,4 @@ F:\Github\SKP_Projects\Project_Ideer\Console_GuessingGame\Console_GuessingGame\o
 F:\Github\SKP_Projects\Project_Ideer\Console_GuessingGame\Console_GuessingGame\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 F:\Github\SKP_Projects\Project_Ideer\Console_GuessingGame\Console_GuessingGame\obj\Debug\netcoreapp3.1\Console_GuessingGame.csproj.CoreCompileInputs.cache
 F:\Github\SKP_Projects\Project_Ideer\Console_GuessingGame\Console_GuessingGame\obj\Debug\netcoreapp3.1\Console_GuessingGame.csproj.CopyComplete
+F:\Github\SKP_Projects\Project_Ideer\Console_GuessingGame\Console_GuessingGame\obj\Debug\netcoreapp3.1\Console_GuessingGame.csprojAssemblyReference.cache

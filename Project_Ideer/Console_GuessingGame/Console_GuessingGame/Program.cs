@@ -26,7 +26,7 @@ namespace Console_GuessingGame
             ConsoleKeyInfo key;
 
             // Menu option Names
-            string[] menuItems = { "New Game", "LeaderBoard", "Three", "Exit" };
+            string[] menuItems = { "New Game", "LeaderBoard", "Tutorial", "Exit" };
 
             while(true)
             {
@@ -47,7 +47,7 @@ namespace Console_GuessingGame
                     }
                 }
 
-                // Waits until the user presses a key, and puts it into an object key.
+                // Select menu
                 key = Console.ReadKey(true);
 
                 if (key.Key.ToString() == "DownArrow")
@@ -89,20 +89,22 @@ namespace Console_GuessingGame
         private static void GuessGame()
         {
             Random random = new Random();
-
+            // numbers to guess between ( both numbers get -1 )
             int num = random.Next(1, 11);
-
+            // number of guesses the player gets at the start
             int GuessCount = 3;
-
+            // current guess
             int guess = 0;
-
+            // game loop
             while (GuessCount >= 0)
             {
+                bool nomore = false;
                 Console.Clear();
 
                 // Debug
                 //Console.WriteLine(num);
 
+                // checks if game is over ie. 0 guesses left
                 if( guess == num) {
                     // Guessed correct, +3 guesses, new guess number 0 / 10
                     WinStreak++;
@@ -110,53 +112,79 @@ namespace Console_GuessingGame
                     GuessCount = GuessCount + 3;
                     num = random.Next(1, 11);
                 } else if (GuessCount < 1) {
-                    Console.WriteLine("you lose! play agian? (Y/N)");
-                    Console.Write(": ");
-                    string repeat = Console.ReadLine();
+                    // bool for making sure the player presses Y/n or N/n
+                    bool c = true;
+                    while (c == true)
+                    {
+                        Console.WriteLine("you lose! play agian? (Y/N)");
+                        Console.Write(": ");
 
-                    if (repeat == "Y" || repeat == "y")
-                    {
-                        // New game
-                        GuessCount += 3;
-                        num = random.Next(1, 11);
-                        WinStreak = 0;
-                    }
-                    else if (repeat == "N" || repeat == "n")
-                    {
-                        // Saves current game to HighScore.json
-                        if (WinStreak >= 1)
+                        string repeat = Console.ReadLine();
+
+                        if (repeat == "Y" || repeat == "y")
                         {
-                            Console.WriteLine("input name: ");
-                            WinStreakName = Console.ReadLine();
-                            if (WinStreakName.Count() >= 1)
-                            {
-                                HighScoreObject.Unit tempunit = new HighScoreObject.Unit(WinStreakName, WinStreak);
-                                HandleData.DataBase.Add(tempunit);
-                                HandleData.Commit();
-                            }
+                            // New game
+                            GuessCount += 3;
+                            num = random.Next(1, 11);
+                            guess = 0;
+                            WinStreak = 0;
+                            c = false;
                         }
+                        else if (repeat == "N" || repeat == "n")
+                        {
+                            // Saves current game to HighScore.json
+                            if (WinStreak >= 1)
+                            {
+                                Console.WriteLine("input name: ");
+                                WinStreakName = Console.ReadLine();
+                                if (WinStreakName.Count() >= 1)
+                                {
+                                    HighScoreObject.Unit tempunit = new HighScoreObject.Unit(WinStreakName, WinStreak);
+                                    HandleData.DataBase.Add(tempunit);
+                                    HandleData.Commit();
+                                }
+                            }
+                            // resets game
+                            guess = 0;
+                            WinStreak = 0;
+                            c = false;
+                            nomore = true;
+                        }
+                        Console.Clear();
+                    }
+                    // breaks out of the game if you typed "N / n"
+                    if (nomore == true)
+                    {
                         break;
                     }
-                    Console.Clear();
+                }
+                if(guess != 0)
+                {
+                    if (guess > num)
+                    {
+                        Console.WriteLine("The number is smaller.");
+                    }
+                    else if (guess < num)
+                    {
+                        Console.WriteLine("the number is bigger.");
+                    }
                 }
 
-                if (guess > num)
-                {
-                    Console.WriteLine("smaller.");
-                }
-                else if (guess < num)
-                {
-                    Console.WriteLine("bigger.");
-                }
                 Console.WriteLine("Current WinStreak: " + WinStreak);
                 Console.WriteLine("Guesses Left: " + GuessCount);
                 Console.Write("Guess Number: ");
 
-
+                // takes player guess
                 try
                 {
                     guess = Convert.ToInt32(Console.ReadLine());
-                    GuessCount--;
+                    if(guess < 0 || guess > 10)
+                    {
+
+                    } else
+                    {
+                        GuessCount--;
+                    }
                 }
                 catch
                 {
@@ -169,6 +197,7 @@ namespace Console_GuessingGame
         {
             Console.Clear();
             Console.WriteLine("LeaderBoards: ");
+            // copies current list into templist, just incase i was gonna remove anything
             List<HighScoreObject.Unit> templist = HandleData.DataBase.ToList();
             int counter = 1;
 

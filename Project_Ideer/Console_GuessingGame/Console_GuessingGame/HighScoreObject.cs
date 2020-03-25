@@ -6,12 +6,12 @@ namespace Console_GuessingGame
 {
     class HighScoreObject
     {
-        interface IInterface
+        interface IHighScore
         {
             string Name { get; set; }
             int Score { get; set; }
         }
-        public class Unit : IInterface
+        public class Unit : IHighScore
         {
             public string Name { get; set; }
             public int Score { get; set; }
