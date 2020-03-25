@@ -77,6 +77,57 @@ namespace WPF_Calculator
         {
             Display.Text = Display.Text += ".";
         }
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.NumPad0 || e.Key == Key.D0)
+            {
+                Display.Text = Display.Text += "0";
+            }
+            if (e.Key == Key.NumPad1 || e.Key == Key.D1)
+            {
+                Display.Text = Display.Text += "1";
+            }
+            if (e.Key == Key.NumPad2 || e.Key == Key.D2)
+            {
+                Display.Text = Display.Text += "2";
+            }
+            if (e.Key == Key.NumPad3 || e.Key == Key.D3)
+            {
+                Display.Text = Display.Text += "3";
+            }
+            if (e.Key == Key.NumPad4 || e.Key == Key.D4)
+            {
+                Display.Text = Display.Text += "4";
+            }
+            if (e.Key == Key.NumPad5 || e.Key == Key.D5)
+            {
+                Display.Text = Display.Text += "5";
+            }
+            if (e.Key == Key.NumPad6 || e.Key == Key.D6)
+            {
+                Display.Text = Display.Text += "6";
+            }
+            if (e.Key == Key.NumPad7 || e.Key == Key.D7)
+            {
+                Display.Text = Display.Text += "7";
+            }
+            if (e.Key == Key.NumPad8 || e.Key == Key.D8)
+            {
+                Display.Text = Display.Text += "8";
+            }
+            if (e.Key == Key.NumPad9 || e.Key == Key.D9)
+            {
+                Display.Text = Display.Text += "9";
+            }
+            if (e.Key == Key.OemPeriod)
+            {
+                Display.Text = Display.Text += ".";
+            }
+            if (e.Key == Key.Enter)
+            {
+                EQUALS();
+            }
+        }
 
         private void BtnPlus_Click(object sender, RoutedEventArgs e)
         {
@@ -100,7 +151,11 @@ namespace WPF_Calculator
         }
         private void BtnEqual_Click(object sender, RoutedEventArgs e)
         {
-            if ( InProgress == true)
+            EQUALS();
+        }
+        private void EQUALS()
+        {
+            if (InProgress == true)
             {
                 try
                 {
@@ -110,7 +165,9 @@ namespace WPF_Calculator
                 {
                     MessageBox.Show(ex.Message);
                 }
-            } else {
+            }
+            else
+            {
                 try
                 {
                     FirstNumber = Convert.ToDouble(Display.Text);
@@ -123,7 +180,7 @@ namespace WPF_Calculator
             }
             // calculates both numbers using the set operator, Using NClac Library
             NCalc.Expression ee = new NCalc.Expression(FirstNumber + Operation + SecondNumber);
-            Result = Convert.ToDouble( ee.Evaluate());
+            Result = Convert.ToDouble(ee.Evaluate());
 
             Display.Text = Convert.ToString(Result);
             LastResult.Content = "Current Result: " + FirstNumber + Operation + SecondNumber + " = " + Result;
@@ -237,7 +294,7 @@ namespace WPF_Calculator
                     }
                     break;
                 case "Trapez":
-                    AreaInputDialog areaInput_Trapez = new AreaInputDialog("Enter Base 1", "Enter Base 2", "Enter Height");
+                    AreaInputDialog areaInput_Trapez = new AreaInputDialog("Enter Parrallel line 1", "Enter Parrallel line 2", "Enter Height");
                     areaInput_Trapez.ShowDialog();
                     try
                     {
