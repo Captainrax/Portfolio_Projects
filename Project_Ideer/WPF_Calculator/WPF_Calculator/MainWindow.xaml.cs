@@ -79,53 +79,81 @@ namespace WPF_Calculator
         }
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.NumPad0 || e.Key == Key.D0)
-            {
-                Display.Text = Display.Text += "0";
-            }
-            if (e.Key == Key.NumPad1 || e.Key == Key.D1)
-            {
-                Display.Text = Display.Text += "1";
-            }
-            if (e.Key == Key.NumPad2 || e.Key == Key.D2)
-            {
-                Display.Text = Display.Text += "2";
-            }
-            if (e.Key == Key.NumPad3 || e.Key == Key.D3)
-            {
-                Display.Text = Display.Text += "3";
-            }
-            if (e.Key == Key.NumPad4 || e.Key == Key.D4)
-            {
-                Display.Text = Display.Text += "4";
-            }
-            if (e.Key == Key.NumPad5 || e.Key == Key.D5)
-            {
-                Display.Text = Display.Text += "5";
-            }
-            if (e.Key == Key.NumPad6 || e.Key == Key.D6)
-            {
-                Display.Text = Display.Text += "6";
-            }
-            if (e.Key == Key.NumPad7 || e.Key == Key.D7)
-            {
-                Display.Text = Display.Text += "7";
-            }
-            if (e.Key == Key.NumPad8 || e.Key == Key.D8)
-            {
-                Display.Text = Display.Text += "8";
-            }
-            if (e.Key == Key.NumPad9 || e.Key == Key.D9)
-            {
-                Display.Text = Display.Text += "9";
-            }
-            if (e.Key == Key.OemPeriod)
-            {
-                Display.Text = Display.Text += ".";
-            }
             if (e.Key == Key.Enter)
             {
                 EQUALS();
+            }
+            else if (e.Key == Key.Back)
+            {
+                BackSpace();
+            }
+            else if (e.Key == Key.Delete)
+            {
+                Clear();
+            }
+            else if (e.Key == Key.OemPlus || e.Key == Key.Add)
+            {
+                Operator_SetNumbers();
+                Operation = "+";
+            }
+            else if (e.Key == Key.OemMinus || e.Key == Key.Subtract)
+            {
+                Operator_SetNumbers();
+                Operation = "-";
+            }
+            else if (e.Key == Key.Divide)
+            {
+                Operator_SetNumbers();
+                Operation = "/";
+            }
+            else if (e.Key == Key.Multiply)
+            {
+                Operator_SetNumbers();
+                Operation = "*";
+            }
+            else if (e.Key == Key.NumPad0 || e.Key == Key.D0)
+            {
+                Display.Text = Display.Text += "0";
+            }
+            else if (e.Key == Key.NumPad1 || e.Key == Key.D1)
+            {
+                Display.Text = Display.Text += "1";
+            }
+            else if (e.Key == Key.NumPad2 || e.Key == Key.D2)
+            {
+                Display.Text = Display.Text += "2";
+            }
+            else if (e.Key == Key.NumPad3 || e.Key == Key.D3)
+            {
+                Display.Text = Display.Text += "3";
+            }
+            else if (e.Key == Key.NumPad4 || e.Key == Key.D4)
+            {
+                Display.Text = Display.Text += "4";
+            }
+            else if (e.Key == Key.NumPad5 || e.Key == Key.D5)
+            {
+                Display.Text = Display.Text += "5";
+            }
+            else if (e.Key == Key.NumPad6 || e.Key == Key.D6)
+            {
+                Display.Text = Display.Text += "6";
+            }
+            else if (e.Key == Key.NumPad7 || e.Key == Key.D7)
+            {
+                Display.Text = Display.Text += "7";
+            }
+            else if (e.Key == Key.NumPad8 || e.Key == Key.D8)
+            {
+                Display.Text = Display.Text += "8";
+            }
+            else if (e.Key == Key.NumPad9 || e.Key == Key.D9)
+            {
+                Display.Text = Display.Text += "9";
+            } 
+            else if (e.Key == Key.OemPeriod || e.Key == Key.Decimal)
+            {
+                Display.Text = Display.Text += ".";
             }
         }
 
@@ -188,6 +216,14 @@ namespace WPF_Calculator
         }
         private void BtnClear_Click(object sender, RoutedEventArgs e)
         {
+            Clear();
+        }
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            BackSpace();
+        }
+        private void Clear()
+        {
             Display.Text = "";
             Operation = "";
             FirstNumber = 0;
@@ -196,7 +232,7 @@ namespace WPF_Calculator
             InProgress = false;
             Result = 0;
         }
-        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        private void BackSpace()
         {
             try
             {
@@ -214,6 +250,7 @@ namespace WPF_Calculator
             {
                 MessageBox.Show(ex.Message);
             }
+
         }
         // sets numbers according to current state
         private void Operator_SetNumbers()
