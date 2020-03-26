@@ -28,7 +28,7 @@
         <TextBox VerticalContentAlignment="Center" TextAlignment="Center" FontSize="26" Name="Display" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4"/>
         <Label VerticalContentAlignment="Top" HorizontalContentAlignment="Center" FontSize="14" Opacity="0.8" Name="LastResult" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Content="Current Result: "/>
 
-        <ComboBox SelectionChanged="Area_SelectionChanged" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="10" x:Name="Area_Selection" ItemsSource="{Binding Area_Content}"/>
+        <ComboBox DropDownClosed="Area_DropDownClosed" SelectionChanged="Area_SelectionChanged" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="10" x:Name="Area_Selection" ItemsSource="{Binding Area_Content}"/>
 
         <Button Focusable="False" Content="1" Click="Btn1_Click" Grid.Column="0" Grid.Row="4" BorderBrush="#FF00FFF3" Margin="1"/>
         <Button Focusable="False" Content="2" Click="Btn2_Click" Grid.Column="1" Grid.Row="4" BorderBrush="#FF00FFF3" Margin="1"/>

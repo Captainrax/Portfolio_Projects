@@ -79,6 +79,7 @@ namespace WPF_Calculator
         }
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
+            // maybe change this to a switch instead?
             if (e.Key == Key.Enter)
             {
                 EQUALS();
@@ -273,13 +274,30 @@ namespace WPF_Calculator
             }
             Display.Text = "";
         }
-        // ToDo: create other event handler for selecting an item, currently you cant do the same option twice in a row
-        // handles Area Events
+        // Handles Area Events
+        private bool ResetSelection = true;
+        private void Area_DropDownClosed(object sender, EventArgs e)
+        {
+            if (ResetSelection == true)
+            {
+                Area_Calculations();
+            }
+            ResetSelection = true;
+        }
         private void Area_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // sets ResetSelection to false if a different ComboBoxItem is selected
+            ComboBox cmb = sender as ComboBox;
+            ResetSelection = !cmb.IsDropDownOpen;
+            Area_Calculations();
+        }
+        // Handles the Area Calculations within the dropdownmenu
+        private void Area_Calculations()
         {
             double temp_result;
 
-            try {
+            try
+            {
                 if (FirstNumber == 0 || SecondNumber == 0)
                 {
                     temp_result = Convert.ToDouble(Display.Text);
@@ -288,7 +306,9 @@ namespace WPF_Calculator
                 {
                     temp_result = Result;
                 }
-            } catch (Exception)  {
+            }
+            catch (Exception)
+            {
                 //MessageBox.Show(ex.Message);
             }
 
@@ -301,13 +321,16 @@ namespace WPF_Calculator
                     areaInput.txtAnswer3.Height = 0;
                     areaInput.LabelQuestion3.Height = 0;
                     areaInput.ShowDialog();
-                    try {
-                        if(areaInput.Answer1 != "")
+                    try
+                    {
+                        if (areaInput.Answer1 != "")
                         {
                             // PI x (Radius x Radius)
                             Display.Text = Convert.ToString(Math.PI * (Convert.ToDouble(areaInput.Answer1) * Convert.ToDouble(areaInput.Answer1)));
                         }
-                    }   catch (Exception ex) {
+                    }
+                    catch (Exception ex)
+                    {
                         MessageBox.Show(ex.Message);
                     }
 
@@ -361,7 +384,7 @@ namespace WPF_Calculator
                             double R = Convert.ToDouble(areaInput_Cone.Answer1);
                             double H = Convert.ToDouble(areaInput_Cone.Answer2);
 
-                            double L = Math.Sqrt( Math.Pow(H,2) + Math.Pow(R,2));
+                            double L = Math.Sqrt(Math.Pow(H, 2) + Math.Pow(R, 2));
 
                             Display.Text = Convert.ToString(Math.PI * R * (R + L));
                         }
@@ -372,6 +395,7 @@ namespace WPF_Calculator
                     }
                     break;
             }
+
         }
 
 
