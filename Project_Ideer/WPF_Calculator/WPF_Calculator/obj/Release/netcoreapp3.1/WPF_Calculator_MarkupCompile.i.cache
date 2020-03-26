@@ -4,11 +4,11 @@
 winexe
 C#
 .cs
-F:\Github\SKP_Projects\Project_Ideer\WPF_Calculator\WPF_Calculator\obj\Debug\netcoreapp3.1\
+F:\Github\SKP_Projects\Project_Ideer\WPF_Calculator\WPF_Calculator\obj\Release\netcoreapp3.1\
 WPF_Calculator
 none
 false
-TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
+TRACE;RELEASE;NETCOREAPP;NETCOREAPP3_1
 F:\Github\SKP_Projects\Project_Ideer\WPF_Calculator\WPF_Calculator\App.xaml
 2-2064913164
 
@@ -16,5 +16,5 @@ F:\Github\SKP_Projects\Project_Ideer\WPF_Calculator\WPF_Calculator\App.xaml
 193957548857
 AreaInputDialog.xaml;MainWindow.xaml;
 
-True
+False
 
