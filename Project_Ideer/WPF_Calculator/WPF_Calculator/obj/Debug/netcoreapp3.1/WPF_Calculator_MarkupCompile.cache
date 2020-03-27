@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 F:\Github\SKP_Projects\Project_Ideer\WPF_Calculator\WPF_Calculator\App.xaml
-2-2064913164
+3-2101836935
 
-4-867721671
+51347865539
 193957548857
-AreaInputDialog.xaml;MainWindow.xaml;
+AreaInputDialog.xaml;AreaPolygonDialog.xaml;MainWindow.xaml;
 
 False
 

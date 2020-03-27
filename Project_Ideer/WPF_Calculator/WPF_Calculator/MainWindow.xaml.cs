@@ -294,28 +294,11 @@ namespace WPF_Calculator
         // Handles the Area Calculations within the dropdownmenu
         private void Area_Calculations()
         {
-            double temp_result;
-
-            try
-            {
-                if (FirstNumber == 0 || SecondNumber == 0)
-                {
-                    temp_result = Convert.ToDouble(Display.Text);
-                }
-                else
-                {
-                    temp_result = Result;
-                }
-            }
-            catch (Exception)
-            {
-                //MessageBox.Show(ex.Message);
-            }
 
             switch (Area_Selection.SelectedItem.ToString())
             {
                 case "Circle":
-                    AreaInputDialog areaInput = new AreaInputDialog("Enter Radius", "", "");
+                    AreaInputDialog areaInput = new AreaInputDialog("Enter Radius");
                     areaInput.txtAnswer2.Height = 0;
                     areaInput.LabelQuestion2.Height = 0;
                     areaInput.txtAnswer3.Height = 0;
@@ -394,10 +377,50 @@ namespace WPF_Calculator
                         MessageBox.Show(ex.Message);
                     }
                     break;
+                case "Polygon":
+                    AreaPolygonDialog AreaInput_Polygon = new AreaPolygonDialog("Enter X", "Enter Y");
+                    AreaInput_Polygon.ShowDialog();
+                    try
+                    {
+                        if (AreaInput_Polygon.Answer1 != "")
+                        {
+                            double X1 = Convert.ToDouble(AreaInput_Polygon.Answer1);
+                            double Y1 = Convert.ToDouble(AreaInput_Polygon.Answer2);
+                            double X2 = Convert.ToDouble(AreaInput_Polygon.Answer3);
+                            double Y2 = Convert.ToDouble(AreaInput_Polygon.Answer4);
+                            double X3 = Convert.ToDouble(AreaInput_Polygon.Answer5);
+                            double Y3 = Convert.ToDouble(AreaInput_Polygon.Answer6);
+                            double X4 = Convert.ToDouble(AreaInput_Polygon.Answer7);
+                            double Y4 = Convert.ToDouble(AreaInput_Polygon.Answer8);
+                            //double X5 = Convert.ToDouble(AreaInput_Polygon.Answer9);
+                            //double Y5 = Convert.ToDouble(AreaInput_Polygon.Answer10);
+                            //double X6 = Convert.ToDouble(AreaInput_Polygon.Answer11);
+                            //double Y6 = Convert.ToDouble(AreaInput_Polygon.Answer12);
+                            double[] xpts = new double[4] {X1,X2,X3,X4 };
+                            double[] ypts = new double[4] { Y1, Y2, Y3, Y4 }; 
+                            double result = PolygonArea(xpts, ypts, 4);
+                            Display.Text = Convert.ToString(result);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    break;
             }
 
         }
-
+        private double PolygonArea(double[] X, double[] Y, int NumPoints)
+        {
+            double Area = 0;
+            int J = NumPoints-1;
+            for (int i = 0; i < NumPoints; i++)
+            {
+                Area += (Convert.ToDouble(X.GetValue(J)) + Convert.ToDouble( X.GetValue(i))) * (Convert.ToDouble(Y.GetValue(J)) - Convert.ToDouble(Y.GetValue(i)));
+                J = i;  //j is previous vertex to i
+            }
+            return Area / 2;
+        }
 
     }
     // datacontext for Area calculation dropdown menu
@@ -412,7 +435,8 @@ namespace WPF_Calculator
             "Circle",
             "Rectangle",
             "Trapez",
-            "Cone"
+            "Cone",
+            "Polygon"
             };
         }
     }

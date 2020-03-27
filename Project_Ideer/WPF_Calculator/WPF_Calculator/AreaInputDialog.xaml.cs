@@ -27,7 +27,12 @@ namespace WPF_Calculator
 			txtAnswer2.Text = defaultAnswer;
 			txtAnswer3.Text = defaultAnswer;
 		}
-		
+		public AreaInputDialog(string question1, string defaultAnswer = "")
+		{
+			InitializeComponent();
+			LabelQuestion1.Content = question1;
+			txtAnswer1.Text = defaultAnswer;
+		}
 
 		private void btnDialogOk_Click(object sender, RoutedEventArgs e)
 		{

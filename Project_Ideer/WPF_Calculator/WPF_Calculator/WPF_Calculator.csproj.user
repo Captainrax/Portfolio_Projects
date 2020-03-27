@@ -12,9 +12,15 @@
     <Compile Update="AreaInputDialog.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="AreaPolygonDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="AreaInputDialog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AreaPolygonDialog.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
