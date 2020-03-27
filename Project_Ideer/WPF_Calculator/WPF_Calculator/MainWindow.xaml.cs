@@ -384,22 +384,75 @@ namespace WPF_Calculator
                     {
                         if (AreaInput_Polygon.Answer1 != "")
                         {
-                            double X1 = Convert.ToDouble(AreaInput_Polygon.Answer1);
-                            double Y1 = Convert.ToDouble(AreaInput_Polygon.Answer2);
-                            double X2 = Convert.ToDouble(AreaInput_Polygon.Answer3);
-                            double Y2 = Convert.ToDouble(AreaInput_Polygon.Answer4);
-                            double X3 = Convert.ToDouble(AreaInput_Polygon.Answer5);
-                            double Y3 = Convert.ToDouble(AreaInput_Polygon.Answer6);
-                            double X4 = Convert.ToDouble(AreaInput_Polygon.Answer7);
-                            double Y4 = Convert.ToDouble(AreaInput_Polygon.Answer8);
-                            //double X5 = Convert.ToDouble(AreaInput_Polygon.Answer9);
-                            //double Y5 = Convert.ToDouble(AreaInput_Polygon.Answer10);
-                            //double X6 = Convert.ToDouble(AreaInput_Polygon.Answer11);
-                            //double Y6 = Convert.ToDouble(AreaInput_Polygon.Answer12);
-                            double[] xpts = new double[4] {X1,X2,X3,X4 };
-                            double[] ypts = new double[4] { Y1, Y2, Y3, Y4 }; 
-                            double result = PolygonArea(xpts, ypts, 4);
-                            Display.Text = Convert.ToString(result);
+                            if (AreaInput_Polygon.Answer7 == "")
+                            {
+                                // 3 points
+                                double X1 = Convert.ToDouble(AreaInput_Polygon.Answer1);
+                                double Y1 = Convert.ToDouble(AreaInput_Polygon.Answer2);
+                                double X2 = Convert.ToDouble(AreaInput_Polygon.Answer3);
+                                double Y2 = Convert.ToDouble(AreaInput_Polygon.Answer4);
+                                double X3 = Convert.ToDouble(AreaInput_Polygon.Answer5);
+                                double Y3 = Convert.ToDouble(AreaInput_Polygon.Answer6);
+                                double[] xpts = new double[3] { X1, X2, X3};
+                                double[] ypts = new double[3] { Y1, Y2, Y3};
+                                double result = PolygonArea(xpts, ypts, 3);
+                                Display.Text = Convert.ToString(result);
+                            }
+                            else if (AreaInput_Polygon.Answer9 == "")
+                            {
+                                // 4 points
+                                double X1 = Convert.ToDouble(AreaInput_Polygon.Answer1);
+                                double Y1 = Convert.ToDouble(AreaInput_Polygon.Answer2);
+                                double X2 = Convert.ToDouble(AreaInput_Polygon.Answer3);
+                                double Y2 = Convert.ToDouble(AreaInput_Polygon.Answer4);
+                                double X3 = Convert.ToDouble(AreaInput_Polygon.Answer5);
+                                double Y3 = Convert.ToDouble(AreaInput_Polygon.Answer6);
+                                double X4 = Convert.ToDouble(AreaInput_Polygon.Answer7);
+                                double Y4 = Convert.ToDouble(AreaInput_Polygon.Answer8);
+                                double[] xpts = new double[4] { X1, X2, X3, X4 };
+                                double[] ypts = new double[4] { Y1, Y2, Y3, Y4 };
+                                double result = PolygonArea(xpts, ypts, 4);
+                                Display.Text = Convert.ToString(result);
+                            }
+                            else if(AreaInput_Polygon.Answer11 == "")
+                            {
+                                // 5 points
+                                double X1 = Convert.ToDouble(AreaInput_Polygon.Answer1);
+                                double Y1 = Convert.ToDouble(AreaInput_Polygon.Answer2);
+                                double X2 = Convert.ToDouble(AreaInput_Polygon.Answer3);
+                                double Y2 = Convert.ToDouble(AreaInput_Polygon.Answer4);
+                                double X3 = Convert.ToDouble(AreaInput_Polygon.Answer5);
+                                double Y3 = Convert.ToDouble(AreaInput_Polygon.Answer6);
+                                double X4 = Convert.ToDouble(AreaInput_Polygon.Answer7);
+                                double Y4 = Convert.ToDouble(AreaInput_Polygon.Answer8);
+                                double X5 = Convert.ToDouble(AreaInput_Polygon.Answer9);
+                                double Y5 = Convert.ToDouble(AreaInput_Polygon.Answer10);
+                                double[] xpts = new double[5] { X1, X2, X3, X4, X5 };
+                                double[] ypts = new double[5] { Y1, Y2, Y3, Y4, Y5 };
+                                double result = PolygonArea(xpts, ypts, 5);
+                                Display.Text = Convert.ToString(result);
+                            }
+                            else
+                            {
+                                // 6 points
+                                double X1 = Convert.ToDouble(AreaInput_Polygon.Answer1);
+                                double Y1 = Convert.ToDouble(AreaInput_Polygon.Answer2);
+                                double X2 = Convert.ToDouble(AreaInput_Polygon.Answer3);
+                                double Y2 = Convert.ToDouble(AreaInput_Polygon.Answer4);
+                                double X3 = Convert.ToDouble(AreaInput_Polygon.Answer5);
+                                double Y3 = Convert.ToDouble(AreaInput_Polygon.Answer6);
+                                double X4 = Convert.ToDouble(AreaInput_Polygon.Answer7);
+                                double Y4 = Convert.ToDouble(AreaInput_Polygon.Answer8);
+                                double X5 = Convert.ToDouble(AreaInput_Polygon.Answer9);
+                                double Y5 = Convert.ToDouble(AreaInput_Polygon.Answer10);
+                                double X6 = Convert.ToDouble(AreaInput_Polygon.Answer11);
+                                double Y6 = Convert.ToDouble(AreaInput_Polygon.Answer12);
+                                double[] xpts = new double[6] { X1, X2, X3, X4, X5, X6 };
+                                double[] ypts = new double[6] { Y1, Y2, Y3, Y4, Y5, Y6 };
+                                double result = PolygonArea(xpts, ypts, 6);
+                                Display.Text = Convert.ToString(result);
+                            }
+
                         }
                     }
                     catch (Exception ex)
