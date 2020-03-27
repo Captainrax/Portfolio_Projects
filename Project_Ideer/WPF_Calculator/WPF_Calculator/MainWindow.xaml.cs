@@ -382,7 +382,7 @@ namespace WPF_Calculator
                     AreaInput_Polygon.ShowDialog();
                     try
                     {
-                        if (AreaInput_Polygon.Answer1 != "")
+                        if (AreaInput_Polygon.Answer1 != "") // this looks a little silly with all the ReUse, should probably make this prettier with like a method or somthing.
                         {
                             if (AreaInput_Polygon.Answer7 == "")
                             {

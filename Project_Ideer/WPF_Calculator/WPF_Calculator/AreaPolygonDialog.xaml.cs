@@ -22,6 +22,8 @@ namespace WPF_Calculator
 			InitializeComponent();
 			LabelQuestion1.Content = question1;
 			LabelQuestion2.Content = question2;
+			// tooltip text
+			TooltipInfo.Text = "Input each Point of a Polygon as a Coordinate System. \n Example \n p1(x1,y1) \n p2(x1,y5) \n p3(x5,y5) \n p4(x5,y1) \n for a Polygon with 4 points";
 		}
 		private void btnDialogOk_Click(object sender, RoutedEventArgs e)
 		{
