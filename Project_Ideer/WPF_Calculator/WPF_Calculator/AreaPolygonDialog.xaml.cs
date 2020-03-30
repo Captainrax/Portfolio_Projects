@@ -12,11 +12,11 @@ using System.Windows.Shapes;
 
 namespace WPF_Calculator
 {
-    /// <summary>
-    /// Interaction logic for AreaPolygonDialog.xaml
-    /// </summary>
-    public partial class AreaPolygonDialog : Window
-    {
+	/// <summary>
+	/// Interaction logic for AreaPolygonDialog.xaml
+	/// </summary>
+	public partial class AreaPolygonDialog : Window
+	{
 		public AreaPolygonDialog(string question1, string question2)
 		{
 			InitializeComponent();

@@ -1,0 +1,23 @@
+[
+    {
+        "PizzaName": "Pizza1wwwwwwwwwwwwwww2www3wwww1",
+        "Ingredients": "Pep, oniwwwwwwdwwwwwond",
+        "Size": 1,
+        "Price": 10,
+        "Serial": 1
+    },
+    {
+        "PizzaName": "Pizza2",
+        "Ingredients": "Cheese, onion",
+        "Size": 1,
+        "Price": 20,
+        "Serial": 2
+    },
+    {
+        "PizzaName": "Pizza3",
+        "Ingredients": "Ham, onion",
+        "Size": 1,
+        "Price": 30,
+        "Serial": 3
+    }
+]
