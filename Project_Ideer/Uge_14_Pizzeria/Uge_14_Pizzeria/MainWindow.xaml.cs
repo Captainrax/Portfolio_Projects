@@ -44,14 +44,21 @@ namespace Uge_14_Pizzeria
                 if(DataTemplates.SizeSmall == true)
                 {
                     pizzasize = "Small";
+                    selectedunit.SizeSmall = true;
                 } else if (DataTemplates.SizeLarge == true)
                 {
                     pizzasize = "Large";
                     pizzaprice += 10;
+                    selectedunit.SizeLarge = true;
                 }
 
 
                 ListView2.Items.Add(selectedunit.PizzaName + " " + selectedunit.Ingredients + " - " + pizzasize + " - " + pizzaprice + "Kr");
+
+
+
+
+
                 CheckOutList.Add(selectedunit);
             }
             catch (Exception)
