@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Uge_14_Pizzeria"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="400">
+        Title="MainWindow" Height="600" Width="800">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -17,7 +17,7 @@
     <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Name="MainwindowGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100*" />
-            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="50*" />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -25,12 +25,16 @@
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
 
-        <ListView ItemTemplate="{StaticResource UnitClass}" ItemsSource="{Binding}" HorizontalAlignment="Stretch" Margin="2" Name="listView1" VerticalAlignment="Stretch" Grid.Row="0" Grid.ColumnSpan="2">
-
+        <ListView ItemTemplate="{StaticResource UnitClass}" ItemsSource="{Binding}" HorizontalAlignment="Stretch" Margin="2" Name="listView1" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="0">
+         
+        </ListView>
+        <ListView Grid.Row="0" Grid.Column="1" Margin="2" Name="ListView2">
+            
         </ListView>
 
-        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top"  MinHeight="30">
-            <Button Content="CheckOut"  Name="BtnCheckOut"    Click="BtnCheckOut_Click" Height="30" />
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top"  MinHeight="30" Orientation="Horizontal">
+            <Button Content="AddToCheckOut"  Name="BtnAddToCheckOut"    Click="BtnAddToCheckOut_Click" Height="30" />
+            <Button Content="CheckOut"  Name="BtnCheckOut"    Click="BtnCheckOut_Click" Height="30" Margin="100,0,0,0" />
         </StackPanel>
 
     </Grid>

@@ -22,6 +22,7 @@ namespace Uge_14_Pizzeria
     public partial class MainWindow : Window
     {
         public static ObservableCollection<Unit> templist;
+        public static ObservableCollection<Unit> CheckOutList = new ObservableCollection<Unit>();
         DAL DAL_Object = new DAL();
 
         public MainWindow()
@@ -29,13 +30,57 @@ namespace Uge_14_Pizzeria
             InitializeComponent();
             templist = DAL_Object.Get();
             this.DataContext = templist;
+            ListView2.DataContext = CheckOutList;
+        }
+        private void BtnAddToCheckOut_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedunit = (Unit)listView1.SelectedItem;
+
+            try
+            {
+                CheckOutList.Add(selectedunit);
+                string pizzasize = "";
+                int pizzaprice = selectedunit.Price;
+                if(selectedunit.SizeSmall == true)
+                {
+                    pizzasize = "Small";
+                } else if (selectedunit.SizeLarge == true)
+                {
+                    pizzasize = "Large";
+                    pizzaprice += 10;
+                }
+                ListView2.Items.Add(selectedunit.PizzaName + " " + selectedunit.Ingredients + " - " + pizzasize + " - " + pizzaprice + "Kr");
+            }
+            catch (Exception)
+            {
+
+                //throw;
+            }
         }
         private void BtnCheckOut_Click(object sender, RoutedEventArgs e)
         {
-            var selectedunit = (Unit)listView1.SelectedItem;
-            
-            
-            MessageBox.Show(selectedunit.PizzaName + " - " + selectedunit.Ingredients + " - " + DataTemplates.PizzaSize);
+            //var selectedunit = (Unit)listView1.SelectedItem;
+            int totalprice = 0;
+
+            try
+            {
+                foreach(Unit U in CheckOutList)
+                {
+                    if(U.SizeLarge == true)
+                    {
+                        totalprice += U.Price + 10;
+                    } else if (U.SizeSmall == true)
+                    {
+                        totalprice += U.Price;
+                    }
+                }
+                MessageBox.Show("Total Price: " + totalprice.ToString() + " Kr.");
+            }
+            catch (Exception)
+            {
+
+                //throw;
+            }
         }
     }
 }

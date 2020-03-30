@@ -18,10 +18,8 @@
             <TextBlock Grid.Row="0" Grid.Column="0" Height="23" HorizontalAlignment="Left" Text="{Binding Path=PizzaName, StringFormat=Pizza: {0}}"   VerticalAlignment="Center" />
             <TextBlock Grid.Row="1" Grid.Column="0" Height="23" HorizontalAlignment="Left" Text="{Binding Path=Ingredients, StringFormat=Ingredients: {0}}"    VerticalAlignment="Center" />
             <TextBlock Grid.Row="2" Grid.Column="0" Height="23" HorizontalAlignment="Left" Text="{Binding Path=Price, StringFormat=Price: {0}}"    VerticalAlignment="Center" />
-            <StackPanel Grid.Row="3" Grid.Column="0" Orientation="Horizontal">
-                <RadioButton Name="SizeSmall" Checked="SizeSmall_Checked" Height="23" GroupName="Size" HorizontalAlignment="Left" VerticalAlignment="Center"> Small </RadioButton>
-                <RadioButton Checked="SizeLarge_Checked" Height="23" GroupName="Size" HorizontalAlignment="Left" VerticalAlignment="Center"> Large </RadioButton>
-            </StackPanel>
+            <ComboBox SelectionChanged="Size_SelectionChanged" Grid.Column="0" Grid.Row="3"  Margin="10" Name="SizeSelection" ItemsSource="{Binding Sizes}"/>
+            
         </Grid>
     </DataTemplate>
 </ResourceDictionary>

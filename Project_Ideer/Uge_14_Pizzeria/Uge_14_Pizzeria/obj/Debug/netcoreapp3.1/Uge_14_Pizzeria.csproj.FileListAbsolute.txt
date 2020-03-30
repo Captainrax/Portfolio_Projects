@@ -1,3 +1,4 @@
+F:\Github\SKP_Projects\Project_Ideer\Uge_14_Pizzeria\Uge_14_Pizzeria\obj\Debug\netcoreapp3.1\DataTemplates.g.cs
 F:\Github\SKP_Projects\Project_Ideer\Uge_14_Pizzeria\Uge_14_Pizzeria\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 F:\Github\SKP_Projects\Project_Ideer\Uge_14_Pizzeria\Uge_14_Pizzeria\obj\Debug\netcoreapp3.1\App.g.cs
 F:\Github\SKP_Projects\Project_Ideer\Uge_14_Pizzeria\Uge_14_Pizzeria\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
@@ -20,4 +21,3 @@ F:\Github\SKP_Projects\Project_Ideer\Uge_14_Pizzeria\Uge_14_Pizzeria\obj\Debug\n
 F:\Github\SKP_Projects\Project_Ideer\Uge_14_Pizzeria\Uge_14_Pizzeria\obj\Debug\netcoreapp3.1\Uge_14_Pizzeria.dll
 F:\Github\SKP_Projects\Project_Ideer\Uge_14_Pizzeria\Uge_14_Pizzeria\obj\Debug\netcoreapp3.1\Uge_14_Pizzeria.pdb
 F:\Github\SKP_Projects\Project_Ideer\Uge_14_Pizzeria\Uge_14_Pizzeria\obj\Debug\netcoreapp3.1\Uge_14_Pizzeria.genruntimeconfig.cache
-F:\Github\SKP_Projects\Project_Ideer\Uge_14_Pizzeria\Uge_14_Pizzeria\obj\Debug\netcoreapp3.1\DataTemplates.g.cs

@@ -10,7 +10,8 @@ namespace Uge_14_Pizzeria
     {
         string PizzaName { get; set; }
         string Ingredients { get; set; }
-        int Size { get; set; }
+        bool SizeSmall { get; set; }
+        bool SizeLarge { get; set; }
         int Price { get; set; }
         int Serial { get; set; }
     }
@@ -19,16 +20,18 @@ namespace Uge_14_Pizzeria
     {
         public string PizzaName { get; set; }
         public string Ingredients { get; set; }
-        public int Size { get; set; }
+        public bool SizeSmall { get; set; }
+        public bool SizeLarge { get; set; }
         public int Price { get; set; }
         public int Serial { get; set; }
 
         // Constructor
-        public Unit(String PizzaName, string Ingredients, int Size, int Price)
+        public Unit(String PizzaName, string Ingredients, bool SizeSmall, bool SizeLarge, int Price)
         {
             this.PizzaName = PizzaName;
             this.Ingredients = Ingredients;
-            this.Size = Size;
+            this.SizeSmall = SizeSmall;
+            this.SizeLarge = SizeLarge;
             this.Price = Price;
         }
     }
