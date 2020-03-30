@@ -32,6 +32,7 @@ namespace Uge_14_Pizzeria
             this.DataContext = templist;
             ListView2.DataContext = CheckOutList;
         }
+        // add selected pizza to checkout list
         private void BtnAddToCheckOut_Click(object sender, RoutedEventArgs e)
         {
             var selectedunit = (Unit)listView1.SelectedItem;
@@ -44,11 +45,13 @@ namespace Uge_14_Pizzeria
                 if(DataTemplates.SizeSmall == true)
                 {
                     pizzasize = "Small";
+                    selectedunit.SizeLarge = false;
                     selectedunit.SizeSmall = true;
                 } else if (DataTemplates.SizeLarge == true)
                 {
                     pizzasize = "Large";
                     pizzaprice += 10;
+                    selectedunit.SizeSmall = false;
                     selectedunit.SizeLarge = true;
                 }
 
@@ -67,14 +70,16 @@ namespace Uge_14_Pizzeria
                 //throw;
             }
         }
+        // display total price of checkout List
         private void BtnCheckOut_Click(object sender, RoutedEventArgs e)
         {
             //var selectedunit = (Unit)listView1.SelectedItem;
-            int totalprice = 0;
 
+            // this is completety fucked for some reason, number ends up bigger than it should
             try
             {
-                foreach(Unit U in CheckOutList)
+                int totalprice = 0;
+                foreach (Unit U in CheckOutList)
                 {
                     if(U.SizeLarge == true)
                     {
@@ -85,6 +90,7 @@ namespace Uge_14_Pizzeria
                     }
                 }
                 MessageBox.Show("Total Price: " + totalprice.ToString() + " Kr.");
+                totalprice = 0;
             }
             catch (Exception)
             {

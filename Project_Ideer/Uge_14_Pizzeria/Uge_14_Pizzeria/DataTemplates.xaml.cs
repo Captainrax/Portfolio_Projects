@@ -29,5 +29,15 @@ namespace Uge_14_Pizzeria
             SizeSmall = false;
             SizeLarge = true;
         }
+        // this needs fixing so when you change size for one, it dosnt change size for everyone.
+        private void Size_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            //switch (SizeSelection.SelectedItem.ToString())
+            //{
+            //    case "Circle":
+
+            //        break;
+            //}
+        }
     }
 }

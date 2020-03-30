@@ -18,7 +18,7 @@
             <TextBlock Grid.Row="0" Grid.Column="0" Height="23" HorizontalAlignment="Left" Text="{Binding Path=PizzaName, StringFormat=Pizza: {0}}"   VerticalAlignment="Center" />
             <TextBlock Grid.Row="1" Grid.Column="0" Height="23" HorizontalAlignment="Left" Text="{Binding Path=Ingredients, StringFormat=Ingredients: {0}}"    VerticalAlignment="Center" />
             <TextBlock Grid.Row="2" Grid.Column="0" Height="23" HorizontalAlignment="Left" Text="{Binding Path=Price, StringFormat=Price: {0}}"    VerticalAlignment="Center" />
-            <ComboBox SelectedIndex="0" Grid.Column="0" Grid.Row="3"  Margin="10" Name="SizeSelection">
+            <ComboBox SelectionChanged="Size_SelectionChanged" SelectedIndex="0" Grid.Column="0" Grid.Row="3"  Margin="10" Name="SizeSelection">
                 <ComboBoxItem Selected="Small_Selected">Small</ComboBoxItem>
                 <ComboBoxItem Selected="Large_Selected">Large</ComboBoxItem>
             </ComboBox>
