@@ -3,14 +3,14 @@
         "PizzaName": "Pizza1",
         "Ingredients": "Pep, onion",
         "SizeSmall": false,
-        "SizeLarge": true,
+        "SizeLarge": false,
         "Price": 10,
         "Serial": 1
     },
     {
         "PizzaName": "Pizza2",
         "Ingredients": "Cheese, onion",
-        "SizeSmall": true,
+        "SizeSmall": false,
         "SizeLarge": false,
         "Price": 20,
         "Serial": 2
@@ -18,7 +18,7 @@
     {
         "PizzaName": "Pizza3",
         "Ingredients": "Ham, onion",
-        "SizeSmall": true,
+        "SizeSmall": false,
         "SizeLarge": false,
         "Price": 30,
         "Serial": 3

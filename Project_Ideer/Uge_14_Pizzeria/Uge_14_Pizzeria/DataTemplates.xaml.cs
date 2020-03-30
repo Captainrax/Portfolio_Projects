@@ -18,29 +18,16 @@ namespace Uge_14_Pizzeria
             InitializeComponent();
         }
 
-        private void Size_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Small_Selected(object sender, RoutedEventArgs e)
         {
-            //switch (SizeSelection.SelectedItem.ToString())
-            //{
-            //    case "Circle":
-
-            //        break;
-            //}
+            SizeLarge = false;
+            SizeSmall = true;
         }
 
-    }
-    // datacontext for Area calculation dropdown menu
-    public class ViewModel
-    {
-        public ObservableCollection<string> Sizes { get; set; }
-
-        public ViewModel()
+        private void Large_Selected(object sender, RoutedEventArgs e)
         {
-            Sizes = new ObservableCollection<string>
-            {
-            "Small",
-            "Large"
-            };
+            SizeSmall = false;
+            SizeLarge = true;
         }
     }
 }

@@ -38,18 +38,21 @@ namespace Uge_14_Pizzeria
 
             try
             {
-                CheckOutList.Add(selectedunit);
+
                 string pizzasize = "";
                 int pizzaprice = selectedunit.Price;
-                if(selectedunit.SizeSmall == true)
+                if(DataTemplates.SizeSmall == true)
                 {
                     pizzasize = "Small";
-                } else if (selectedunit.SizeLarge == true)
+                } else if (DataTemplates.SizeLarge == true)
                 {
                     pizzasize = "Large";
                     pizzaprice += 10;
                 }
+
+
                 ListView2.Items.Add(selectedunit.PizzaName + " " + selectedunit.Ingredients + " - " + pizzasize + " - " + pizzaprice + "Kr");
+                CheckOutList.Add(selectedunit);
             }
             catch (Exception)
             {
