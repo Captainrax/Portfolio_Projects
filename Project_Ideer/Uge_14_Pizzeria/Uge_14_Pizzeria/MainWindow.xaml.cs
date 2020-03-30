@@ -33,7 +33,9 @@ namespace Uge_14_Pizzeria
         private void BtnCheckOut_Click(object sender, RoutedEventArgs e)
         {
             var selectedunit = (Unit)listView1.SelectedItem;
-            MessageBox.Show(selectedunit.PizzaName + " - " + selectedunit.Price);
+            
+            
+            MessageBox.Show(selectedunit.PizzaName + " - " + selectedunit.Ingredients + " - " + DataTemplates.PizzaSize);
         }
     }
 }
