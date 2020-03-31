@@ -25,9 +25,10 @@
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
 
-        <ListView ItemTemplate="{StaticResource UnitClass}" ItemsSource="{Binding}" HorizontalAlignment="Stretch" Margin="2" Name="listView1" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="0">
+        <ListView ItemTemplate="{StaticResource PizzaClass}" ItemsSource="{Binding}" HorizontalAlignment="Stretch" Margin="2" Name="listView1" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="0">
          
         </ListView>
+        
         <ListView Grid.Row="0" Grid.Column="1" Margin="2" Name="ListView2">
             
         </ListView>

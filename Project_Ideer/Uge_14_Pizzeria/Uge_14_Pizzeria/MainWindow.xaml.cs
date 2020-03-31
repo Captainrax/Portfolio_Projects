@@ -21,27 +21,39 @@ namespace Uge_14_Pizzeria
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static ObservableCollection<Unit> templist;
-        public static ObservableCollection<Unit> CheckOutList = new ObservableCollection<Unit>();
+        public static ObservableCollection<Pizza> templist;
+        public static ObservableCollection<Pizza> CheckOutList = new ObservableCollection<Pizza>();
         DAL DAL_Object = new DAL();
 
         public MainWindow()
         {
             InitializeComponent();
             templist = DAL_Object.Get();
+
+            var tomatoSauce = new Ingredient() { Name = "TomatoSauce", Price = 5, Type = "Sauce" };
+
+            var pizza1 = new Pizza("Pizza4",true,false)
+            {
+                Price = 20,
+                Ingredients = new ObservableCollection<Ingredient>(),
+                Serial = GenerateSerial()
+            };
+            pizza1.Ingredients.Add(tomatoSauce);
+
+            templist.Add(pizza1);
             this.DataContext = templist;
             ListView2.DataContext = CheckOutList;
         }
         // add selected pizza to checkout list
         private void BtnAddToCheckOut_Click(object sender, RoutedEventArgs e)
         {
-            var selectedunit = (Unit)listView1.SelectedItem;
+            var selectedunit = (Pizza)listView1.SelectedItem;
 
             try
             {
 
                 string pizzasize = "";
-                int pizzaprice = selectedunit.Price;
+                int price = selectedunit.Price;
                 if(DataTemplates.SizeSmall == true)
                 {
                     pizzasize = "Small";
@@ -50,16 +62,23 @@ namespace Uge_14_Pizzeria
                 } else if (DataTemplates.SizeLarge == true)
                 {
                     pizzasize = "Large";
-                    pizzaprice += 10;
                     selectedunit.SizeSmall = false;
                     selectedunit.SizeLarge = true;
+                    price += 10;
+                }
+                string allingredients = "";
+                try
+                {
+                    foreach (Ingredient I in selectedunit.Ingredients)
+                    {
+                        allingredients += I.Name + ", ";
+                    }
+                }
+                catch (Exception)
+                {
                 }
 
-
-                ListView2.Items.Add(selectedunit.PizzaName + " " + selectedunit.Ingredients + " - " + pizzasize + " - " + pizzaprice + "Kr");
-
-
-
+                ListView2.Items.Add(selectedunit.PizzaName + " "  + " - " + pizzasize + " - " + allingredients +  " - " + price);
 
 
                 CheckOutList.Add(selectedunit);
@@ -70,23 +89,35 @@ namespace Uge_14_Pizzeria
                 //throw;
             }
         }
+        public int GenerateSerial()
+        {
+            // returns 1 higher than current highest Serial Number
+            int serialcount = 0;
+            foreach (Pizza U in templist)
+            {
+                if (U.Serial >= serialcount)
+                {
+                    serialcount = U.Serial;
+                }
+            }
+            return serialcount + 1;
+        }
         // display total price of checkout List
         private void BtnCheckOut_Click(object sender, RoutedEventArgs e)
         {
-            //var selectedunit = (Unit)listView1.SelectedItem;
 
-            // this is completety fucked for some reason, number ends up bigger than it should
+            // this is completety fucked.
             try
             {
                 int totalprice = 0;
-                foreach (Unit U in CheckOutList)
+                foreach (Pizza U in CheckOutList)
                 {
                     if(U.SizeLarge == true)
                     {
-                        totalprice += U.Price + 10;
+                        //totalprice += U.Price + 10;
                     } else if (U.SizeSmall == true)
                     {
-                        totalprice += U.Price;
+                        //totalprice += U.Price;
                     }
                 }
                 MessageBox.Show("Total Price: " + totalprice.ToString() + " Kr.");
@@ -98,5 +129,6 @@ namespace Uge_14_Pizzeria
                 //throw;
             }
         }
+
     }
 }

@@ -3,7 +3,7 @@
                     xmlns:local="clr-namespace:Uge_14_Pizzeria"
                     x:Class="Uge_14_Pizzeria.DataTemplates"
                     x:ClassModifier="public">
-    <DataTemplate x:Key="UnitClass" DataType="{x:Type local:Unit}">
+    <DataTemplate x:Key="PizzaClass" DataType="{x:Type local:Pizza}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10*" />
@@ -16,7 +16,7 @@
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0" Grid.Column="0" Height="23" HorizontalAlignment="Left" Text="{Binding Path=PizzaName, StringFormat=Pizza: {0}}"   VerticalAlignment="Center" />
-            <TextBlock Grid.Row="1" Grid.Column="0" Height="23" HorizontalAlignment="Left" Text="{Binding Path=Ingredients, StringFormat=Ingredients: {0}}"    VerticalAlignment="Center" />
+            <TextBlock Grid.Row="1" Grid.Column="0" Height="23" HorizontalAlignment="Left" Text="{Binding Path=GetIngredients}" VerticalAlignment="Center" />
             <TextBlock Grid.Row="2" Grid.Column="0" Height="23" HorizontalAlignment="Left" Text="{Binding Path=Price, StringFormat=Price: {0}}"    VerticalAlignment="Center" />
             <ComboBox SelectionChanged="Size_SelectionChanged" SelectedIndex="0" Grid.Column="0" Grid.Row="3"  Margin="10" Name="SizeSelection">
                 <ComboBoxItem Selected="Small_Selected">Small</ComboBoxItem>

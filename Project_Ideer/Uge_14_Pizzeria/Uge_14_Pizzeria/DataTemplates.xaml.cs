@@ -13,6 +13,8 @@ namespace Uge_14_Pizzeria
     {
         public static bool SizeSmall;
         public static bool SizeLarge;
+
+
         public DataTemplates()
         {
             InitializeComponent();
