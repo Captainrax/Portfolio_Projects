@@ -35,6 +35,7 @@
 
         <StackPanel Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top"  MinHeight="30" Orientation="Horizontal">
             <Button Content="AddToCheckOut"  Name="BtnAddToCheckOut"    Click="BtnAddToCheckOut_Click" Height="30" />
+            <Button Content="AddCustomPizza"  Name="BtnCustomPizza"    Click="BtnCustomPizza_Click" Height="30" Margin="100,0,0,0"/>
             <Button Content="CheckOut"  Name="BtnCheckOut"    Click="BtnCheckOut_Click" Height="30" Margin="100,0,0,0" />
         </StackPanel>
 

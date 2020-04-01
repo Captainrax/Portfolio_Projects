@@ -20,9 +20,14 @@
             <ListView ItemsSource="{Binding Ingredients}" Focusable="False" Grid.Row="1" Grid.Column="0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Grid.Row="1" Grid.Column="0" Height="23" HorizontalAlignment="Left" Text="{Binding Name}" VerticalAlignment="Center" Focusable="False" />
+                        <TextBlock HorizontalAlignment="Left" Text="{Binding Name}" Focusable="False" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListViewItem}">
+                        <Setter Property="Focusable" Value="False"/>
+                    </Style>
+                </ListBox.ItemContainerStyle>
             </ListView>
             
             <TextBlock Grid.Row="2" Grid.Column="0" Height="23" HorizontalAlignment="Left" Text="{Binding Path=Price, StringFormat=Price: {0}}"    VerticalAlignment="Center" />

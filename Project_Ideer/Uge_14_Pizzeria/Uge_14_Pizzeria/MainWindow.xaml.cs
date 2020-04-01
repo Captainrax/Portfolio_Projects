@@ -30,6 +30,7 @@ namespace Uge_14_Pizzeria
             InitializeComponent();
             templist = DAL_Object.Get();
 
+            var Traditional = new Ingredient() { Name = "Traditional", Price = 5, Type = "Foundation" };
             var tomatoSauce = new Ingredient() { Name = "TomatoSauce", Price = 5, Type = "Sauce" };
             var Cheese = new Ingredient() { Name = "Cheese", Price = 5, Type = "Cheese" };
             var Ham = new Ingredient() { Name = "Ham", Price = 5, Type = "Topping" };
@@ -40,14 +41,25 @@ namespace Uge_14_Pizzeria
                 Ingredients = new ObservableCollection<Ingredient>(),
                 Serial = GenerateSerial()
             };
+            var pizza2 = new Pizza("Pizza5", true, false)
+            {
+                Price = 20,
+                Ingredients = new ObservableCollection<Ingredient>(),
+                Serial = GenerateSerial()
+            };
+            pizza1.Ingredients.Add(Traditional);
             pizza1.Ingredients.Add(tomatoSauce);
             pizza1.Ingredients.Add(Cheese);
             pizza1.Ingredients.Add(Ham);
             pizza1.Ingredients.Add(Ham);
             pizza1.Ingredients.Add(Ham);
-            pizza1.Ingredients.Add(Ham);
+            pizza2.Ingredients.Add(Traditional);
+            pizza2.Ingredients.Add(tomatoSauce);
+            pizza2.Ingredients.Add(Cheese);
+            pizza2.Ingredients.Add(Ham);
 
             templist.Add(pizza1);
+            templist.Add(pizza2);
             this.DataContext = templist;
             ListView2.DataContext = CheckOutList;
         }
@@ -136,6 +148,10 @@ namespace Uge_14_Pizzeria
                 //throw;
             }
         }
-
+        private void BtnCustomPizza_Click(object sender, RoutedEventArgs e)
+        {
+            CustomPizza newcustompizza = new CustomPizza("idk", "ToDo add text");
+            newcustompizza.ShowDialog();
+        }
     }
 }
