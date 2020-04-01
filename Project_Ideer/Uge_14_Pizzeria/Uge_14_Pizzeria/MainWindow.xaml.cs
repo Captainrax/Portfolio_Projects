@@ -23,6 +23,8 @@ namespace Uge_14_Pizzeria
     {
         public static ObservableCollection<Pizza> templist;
         public static ObservableCollection<Pizza> CheckOutList = new ObservableCollection<Pizza>();
+        public static ObservableCollection<Ingredient> IngredientsList = new ObservableCollection<Ingredient>();
+
         DAL DAL_Object = new DAL();
 
         public MainWindow()
@@ -33,7 +35,18 @@ namespace Uge_14_Pizzeria
             var Traditional = new Ingredient() { Name = "Traditional", Price = 5, Type = "Foundation" };
             var tomatoSauce = new Ingredient() { Name = "TomatoSauce", Price = 5, Type = "Sauce" };
             var Cheese = new Ingredient() { Name = "Cheese", Price = 5, Type = "Cheese" };
-            var Ham = new Ingredient() { Name = "Ham", Price = 5, Type = "Topping" };
+            var Ham = new Ingredient() { Name = "Ham", Price = 5, Type = "Protein" };
+            var Onion = new Ingredient() { Name = "Onion", Price = 5, Type = "Vegetable" };
+
+            var SmallSize = new Ingredient() { Name = "Small", Price = 10, Type = "Size" };
+            var LargeSize = new Ingredient() { Name = "Large", Price = 20, Type = "Size" };
+            IngredientsList.Add(Traditional);
+            IngredientsList.Add(tomatoSauce);
+            IngredientsList.Add(Cheese);
+            IngredientsList.Add(Ham);
+            IngredientsList.Add(Onion);
+            IngredientsList.Add(SmallSize);
+            IngredientsList.Add(LargeSize);
 
             var pizza1 = new Pizza("Pizza4",true,false)
             {
@@ -57,6 +70,7 @@ namespace Uge_14_Pizzeria
             pizza2.Ingredients.Add(tomatoSauce);
             pizza2.Ingredients.Add(Cheese);
             pizza2.Ingredients.Add(Ham);
+            pizza2.Ingredients.Add(Onion);
 
             templist.Add(pizza1);
             templist.Add(pizza2);
@@ -150,7 +164,7 @@ namespace Uge_14_Pizzeria
         }
         private void BtnCustomPizza_Click(object sender, RoutedEventArgs e)
         {
-            CustomPizza newcustompizza = new CustomPizza("idk", "ToDo add text");
+            CustomPizza newcustompizza = new CustomPizza();
             newcustompizza.ShowDialog();
         }
     }
