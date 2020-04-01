@@ -84,7 +84,7 @@ namespace Uge_14_Pizzeria
             {
 
                 string pizzasize = "";
-                int price = selectedunit.Price;
+                int price = selectedunit.GetPrice();
                 if(DataTemplates.SizeSmall == true)
                 {
                     pizzasize = "Small";
