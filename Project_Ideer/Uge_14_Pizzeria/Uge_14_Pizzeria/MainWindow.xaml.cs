@@ -31,6 +31,8 @@ namespace Uge_14_Pizzeria
             templist = DAL_Object.Get();
 
             var tomatoSauce = new Ingredient() { Name = "TomatoSauce", Price = 5, Type = "Sauce" };
+            var Cheese = new Ingredient() { Name = "Cheese", Price = 5, Type = "Cheese" };
+            var Ham = new Ingredient() { Name = "Ham", Price = 5, Type = "Topping" };
 
             var pizza1 = new Pizza("Pizza4",true,false)
             {
@@ -39,6 +41,11 @@ namespace Uge_14_Pizzeria
                 Serial = GenerateSerial()
             };
             pizza1.Ingredients.Add(tomatoSauce);
+            pizza1.Ingredients.Add(Cheese);
+            pizza1.Ingredients.Add(Ham);
+            pizza1.Ingredients.Add(Ham);
+            pizza1.Ingredients.Add(Ham);
+            pizza1.Ingredients.Add(Ham);
 
             templist.Add(pizza1);
             this.DataContext = templist;
@@ -78,7 +85,7 @@ namespace Uge_14_Pizzeria
                 {
                 }
 
-                ListView2.Items.Add(selectedunit.PizzaName + " "  + " - " + pizzasize + " - " + allingredients +  " - " + price);
+                ListView2.Items.Add(selectedunit.PizzaName + " "  + " - " + pizzasize + " - " + allingredients +  " - " + price + "Kr");
 
 
                 CheckOutList.Add(selectedunit);

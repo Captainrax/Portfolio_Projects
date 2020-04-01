@@ -14,7 +14,6 @@ namespace Uge_14_Pizzeria
         public static bool SizeSmall;
         public static bool SizeLarge;
 
-
         public DataTemplates()
         {
             InitializeComponent();
@@ -25,7 +24,6 @@ namespace Uge_14_Pizzeria
             SizeLarge = false;
             SizeSmall = true;
         }
-
         private void Large_Selected(object sender, RoutedEventArgs e)
         {
             SizeSmall = false;
@@ -41,5 +39,7 @@ namespace Uge_14_Pizzeria
             //        break;
             //}
         }
+
+
     }
 }
