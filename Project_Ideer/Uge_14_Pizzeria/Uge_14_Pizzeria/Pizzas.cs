@@ -43,6 +43,16 @@ namespace Uge_14_Pizzeria
                 return allingredients;
             }
         }
+
+        public int GetPrice()
+        {
+            int allingredients = Price;
+            foreach (Ingredient I in Ingredients)
+            {
+                allingredients += I.Price;
+            }
+            return allingredients;
+        }
     }
     public class Ingredient
     {

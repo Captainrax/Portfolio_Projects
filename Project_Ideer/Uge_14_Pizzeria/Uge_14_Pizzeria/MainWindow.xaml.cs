@@ -50,13 +50,11 @@ namespace Uge_14_Pizzeria
 
             var pizza1 = new Pizza("Pizza4",true,false)
             {
-                Price = 20,
                 Ingredients = new ObservableCollection<Ingredient>(),
                 Serial = GenerateSerial()
             };
             var pizza2 = new Pizza("Pizza5", true, false)
             {
-                Price = 20,
                 Ingredients = new ObservableCollection<Ingredient>(),
                 Serial = GenerateSerial()
             };
@@ -97,7 +95,6 @@ namespace Uge_14_Pizzeria
                     pizzasize = "Large";
                     selectedunit.SizeSmall = false;
                     selectedunit.SizeLarge = true;
-                    price += 10;
                 }
                 string allingredients = "";
                 try
@@ -138,13 +135,13 @@ namespace Uge_14_Pizzeria
         // display total price of checkout List
         private void BtnCheckOut_Click(object sender, RoutedEventArgs e)
         {
-
-            // this is completety fucked.
             try
             {
+                // gets all ingredient prices, adds it to totalprice.
                 int totalprice = 0;
                 foreach (Pizza U in CheckOutList)
                 {
+                    totalprice += U.GetPrice();
                     if(U.SizeLarge == true)
                     {
                         //totalprice += U.Price + 10;
@@ -153,6 +150,7 @@ namespace Uge_14_Pizzeria
                         //totalprice += U.Price;
                     }
                 }
+                
                 MessageBox.Show("Total Price: " + totalprice.ToString() + " Kr.");
                 totalprice = 0;
             }
