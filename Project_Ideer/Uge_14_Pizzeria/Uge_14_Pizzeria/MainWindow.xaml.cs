@@ -104,8 +104,9 @@ namespace Uge_14_Pizzeria
                         allingredients += I.Name + ", ";
                     }
                 }
-                catch (Exception)
+                catch (Exception er)
                 {
+                    MessageBox.Show(er.ToString());
                 }
 
                 ListView2.Items.Add(selectedunit.PizzaName + " "  + " - " + pizzasize + " - " + allingredients +  " - " + price + "Kr");
@@ -113,10 +114,9 @@ namespace Uge_14_Pizzeria
 
                 CheckOutList.Add(selectedunit);
             }
-            catch (Exception)
+            catch (Exception er)
             {
-
-                //throw;
+                MessageBox.Show(er.ToString());
             }
         }
         public int GenerateSerial()
@@ -154,14 +154,14 @@ namespace Uge_14_Pizzeria
                 MessageBox.Show("Total Price: " + totalprice.ToString() + " Kr.");
                 totalprice = 0;
             }
-            catch (Exception)
+            catch (Exception er)
             {
-
-                //throw;
+                MessageBox.Show(er.ToString());
             }
         }
         private void BtnCustomPizza_Click(object sender, RoutedEventArgs e)
         {
+            // ToDo add the pizza to the checkout list
             CustomPizza newcustompizza = new CustomPizza();
             newcustompizza.ShowDialog();
         }

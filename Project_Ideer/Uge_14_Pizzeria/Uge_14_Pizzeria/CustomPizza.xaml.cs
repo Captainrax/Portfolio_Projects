@@ -53,8 +53,10 @@ namespace Uge_14_Pizzeria
             {
                 //string Foundation = Foundation_Selection.SelectedItem.ToString();
             }
-            catch (Exception)
+
+            catch (Exception er)
             {
+                MessageBox.Show(er.ToString());
             }
 
         }
