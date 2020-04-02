@@ -8,7 +8,8 @@
         Title="CustomPizza" Height="450" Width="800"
         WindowStartupLocation="CenterScreen"
         ContentRendered="Window_ContentRendered"
-        SizeToContent="WidthAndHeight" MinWidth="200">
+        SizeToContent="WidthAndHeight" MinWidth="200"
+        FocusManager.FocusedElement="{Binding ElementName=Foundation_Selection}">
     <Grid Margin="8">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
@@ -25,7 +26,7 @@
 
         <StackPanel   Grid.Column="0" Grid.Row="0" MinWidth="100">
             <Label Name="LabelQuestion1" Content="Foundation: "/>
-            <ComboBox  SelectionChanged="SelectionChanged" Margin="10" Name="Foundation_Selection" ItemsSource="{Binding Foundation_List}"/>
+            <ComboBox SelectedIndex="0" SelectionChanged="SelectionChanged" Margin="10" Name="Foundation_Selection" ItemsSource="{Binding Foundation_List}"/>
         </StackPanel>
         <StackPanel  Grid.Column="0" Grid.Row="1" MinWidth="100">
             <Label Name="LabelQuestion2" Content="Sauce: "/>
@@ -45,7 +46,7 @@
         </StackPanel>
         <StackPanel  Grid.Column="0" Grid.Row="5" MinWidth="100">
             <Label Name="LabelQuestion6" Content="Size: "/>
-            <ComboBox SelectionChanged="SelectionChanged"  Margin="10" Name="Size_Selection" ItemsSource="{Binding Size_List}"/>
+            <ComboBox SelectedIndex="0" SelectionChanged="SelectionChanged" Margin="10" Name="Size_Selection" ItemsSource="{Binding Size_List}"/>
         </StackPanel>
 
         <WrapPanel Grid.Row="6" Grid.Column="0" HorizontalAlignment="Right" Margin="0,10,0,0">

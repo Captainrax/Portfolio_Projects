@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,13 +23,13 @@ namespace Uge_14_Pizzeria
     public partial class MainWindow : Window
     {
         public static ObservableCollection<Pizza> templist;
-        public static ObservableCollection<Pizza> CheckOutList = new ObservableCollection<Pizza>();
         public static ObservableCollection<Ingredient> IngredientsList = new ObservableCollection<Ingredient>();
 
         DAL DAL_Object = new DAL();
 
         public MainWindow()
         {
+            PizzaViewModel.checkOutList = new ObservableCollection<Pizza>();
             InitializeComponent();
             templist = DAL_Object.Get();
 
@@ -73,7 +74,7 @@ namespace Uge_14_Pizzeria
             templist.Add(pizza1);
             templist.Add(pizza2);
             this.DataContext = templist;
-            ListView2.DataContext = CheckOutList;
+            ListView2.DataContext = PizzaViewModel.checkOutList;
         }
         // add selected pizza to checkout list
         private void BtnAddToCheckOut_Click(object sender, RoutedEventArgs e)
@@ -112,7 +113,7 @@ namespace Uge_14_Pizzeria
                 ListView2.Items.Add(selectedunit.PizzaName + " "  + " - " + pizzasize + " - " + allingredients +  " - " + price + "Kr");
 
 
-                CheckOutList.Add(selectedunit);
+                PizzaViewModel.checkOutList.Add(selectedunit);
             }
             catch (Exception er)
             {
@@ -139,19 +140,14 @@ namespace Uge_14_Pizzeria
             {
                 // gets all ingredient prices, adds it to totalprice.
                 int totalprice = 0;
-                foreach (Pizza U in CheckOutList)
+                string pizzaList = "";
+                foreach (Pizza U in PizzaViewModel.checkOutList)
                 {
                     totalprice += U.GetPrice();
-                    if(U.SizeLarge == true)
-                    {
-                        //totalprice += U.Price + 10;
-                    } else if (U.SizeSmall == true)
-                    {
-                        //totalprice += U.Price;
-                    }
+                    pizzaList += U.PizzaName + " - " + U.GetPrice() + "\n";
                 }
                 
-                MessageBox.Show("Total Price: " + totalprice.ToString() + " Kr.");
+                MessageBox.Show(pizzaList + "Total Price: " + totalprice.ToString() + " Kr.");
                 totalprice = 0;
             }
             catch (Exception er)
@@ -164,6 +160,30 @@ namespace Uge_14_Pizzeria
             // ToDo add the pizza to the checkout list
             CustomPizza newcustompizza = new CustomPizza();
             newcustompizza.ShowDialog();
+        }
+    }
+    // tried adding the List to a viewmodel to get it to update when adding new pizza from custompizza, not working currently
+
+    //public static ObservableCollection<Pizza> CheckOutList = new ObservableCollection<Pizza>();
+    public class PizzaViewModel : INotifyPropertyChanged
+    {
+        public static ObservableCollection<Pizza> checkOutList;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public ObservableCollection<Pizza> CheckOutList
+        {
+            get { return checkOutList; }
+            set
+            {
+                checkOutList = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("CheckOutList"));
+            }
+        }
+
+        public PizzaViewModel()
+        {
+            CheckOutList = new ObservableCollection<Pizza>();
         }
     }
 }

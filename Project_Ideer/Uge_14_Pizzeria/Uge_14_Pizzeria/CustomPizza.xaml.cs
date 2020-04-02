@@ -27,51 +27,120 @@ namespace Uge_14_Pizzeria
 		}
 		private void btnDialogOk_Click(object sender, RoutedEventArgs e)
 		{
-            var pizza1 = new Pizza("Custom Pizza", true, false)
+            var pizza1 = new Pizza("Custom Pizza", false, false)
             {
                 Price = 20,
                 Ingredients = new ObservableCollection<Ingredient>(),
-                Serial = GenerateSerial()
+                Serial = 1
             };
 
-            //MessageBox.Show(pizza1.PizzaName.ToString());
-
-            DialogResult = true;
-		}
-		private void btnDialogClear_Click(object sender, RoutedEventArgs e)
-		{
-		}
-		private void Window_ContentRendered(object sender, EventArgs e)
-		{
-			//txtAnswer1.SelectAll();
-			//txtAnswer1.Focus();
-		}
-        private void SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            //MessageBox.Show(Foundation_Selection.SelectedItem.ToString());
-            try
-            {
-                //string Foundation = Foundation_Selection.SelectedItem.ToString();
+            foreach(Ingredient I in MainWindow.IngredientsList)
+            {   // this can probably be done in a... better way
+                if (Foundation_Selection.SelectedItem == null)
+                {
+                    // forced to choose in XAML
+                } 
+                else if(Foundation_Selection.SelectedItem.ToString() == I.Name.ToString())
+                {
+                    pizza1.Ingredients.Add(I);
+                }
+                if (Sauce_Selection.SelectedItem == null)
+                {
+                } 
+                else if (Sauce_Selection.SelectedItem.ToString() == I.Name.ToString())
+                {
+                    pizza1.Ingredients.Add(I);
+                }
+                if (Cheese_Selection.SelectedItem == null)
+                {
+                }
+                else if (Cheese_Selection.SelectedItem.ToString() == I.Name.ToString())
+                {
+                    pizza1.Ingredients.Add(I);
+                }
+                if (Proteins_Selection.SelectedItem == null)
+                {
+                }
+                else if (Proteins_Selection.SelectedItem.ToString() == I.Name.ToString())
+                {
+                    pizza1.Ingredients.Add(I);
+                }
+                if (Vegetables_Selection.SelectedItem == null)
+                {
+                }
+                else if (Vegetables_Selection.SelectedItem.ToString() == I.Name.ToString())
+                {
+                    pizza1.Ingredients.Add(I);
+                }
+                if (Size_Selection.SelectedItem == null)
+                {
+                    // forced to choose in XAML
+                }
+                else if (Size_Selection.SelectedItem.ToString() == I.Name.ToString())
+                {
+                    pizza1.Ingredients.Add(I);
+                }
             }
+            try // oh god please fix this at some point please.
+            {
+                string pizzasize = "";
+                int price = pizza1.GetPrice();
+                if (DataTemplates.SizeSmall == true)
+                {
+                    pizzasize = "Small";
+                    pizza1.SizeLarge = false;
+                    pizza1.SizeSmall = true;
+                }
+                else if (DataTemplates.SizeLarge == true)
+                {
+                    pizzasize = "Large";
+                    pizza1.SizeSmall = false;
+                    pizza1.SizeLarge = true;
+                }
+                string allingredients = "";
+                try
+                {
+                    foreach (Ingredient I in pizza1.Ingredients)
+                    {
+                        allingredients += I.Name + ", ";
+                    }
+                }
+                catch (Exception er)
+                {
+                    MessageBox.Show(er.ToString());
+                }
 
+                PizzaViewModel.checkOutList.Add(pizza1);
+
+                // ToDo Do this using ViewModel
+                ((MainWindow)Application.Current.MainWindow).ListView2.Items.Add(pizza1.PizzaName + " " + " - " + pizzasize + " - " + allingredients + " - " + price + "Kr");
+            }
             catch (Exception er)
             {
                 MessageBox.Show(er.ToString());
             }
 
+            // debug
+            //MessageBox.Show(pizza1.Ingredients.Count.ToString());
+
+            DialogResult = true;
+		}
+		private void btnDialogClear_Click(object sender, RoutedEventArgs e)
+		{
+            // it works.
+            Foundation_Selection.SelectedItem = null;
+            Sauce_Selection.SelectedItem = null;
+            Cheese_Selection.SelectedItem = null;
+            Proteins_Selection.SelectedItem = null;
+            Vegetables_Selection.SelectedItem = null;
         }
-        public int GenerateSerial()
+		private void Window_ContentRendered(object sender, EventArgs e)
+		{
+            // incase you wanna do some shenanigans on load i guess.
+        }
+        private void SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // returns 1 higher than current highest Serial Number
-            int serialcount = 0;
-            foreach (Pizza U in MainWindow.templist)
-            {
-                if (U.Serial >= serialcount)
-                {
-                    serialcount = U.Serial;
-                }
-            }
-            return serialcount + 1;
+            // this might not be needed, keeping it for now
         }
     }
     public class ViewModel
