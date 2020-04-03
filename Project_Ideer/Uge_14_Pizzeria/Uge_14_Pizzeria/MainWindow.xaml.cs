@@ -22,14 +22,14 @@ namespace Uge_14_Pizzeria
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static ObservableCollection<Pizza> templist;
+        public static ObservableCollection<IPizza> templist;
         public static ObservableCollection<Ingredient> IngredientsList = new ObservableCollection<Ingredient>();
 
         DAL DAL_Object = new DAL();
 
         public MainWindow()
         {
-            PizzaViewModel.checkOutList = new ObservableCollection<Pizza>();
+            PizzaViewModel.checkOutList = new ObservableCollection<IPizza>();
             InitializeComponent();
             templist = DAL_Object.Get();
 
@@ -59,6 +59,18 @@ namespace Uge_14_Pizzeria
                 Ingredients = new ObservableCollection<Ingredient>(),
                 Serial = GenerateSerial()
             };
+            var Drink1 = new Drink("Coca Cola - 0.5L")
+            {
+                Price = 15
+            };
+            var Drink2 = new Drink("Coca Cola - 1L")
+            {
+                Price = 20
+            };
+            var Drink3 = new Drink("Coca Cola - 1.5L")
+            {
+                Price = 25
+            };
             pizza1.Ingredients.Add(Traditional);
             pizza1.Ingredients.Add(tomatoSauce);
             pizza1.Ingredients.Add(Cheese);
@@ -73,17 +85,28 @@ namespace Uge_14_Pizzeria
 
             templist.Add(pizza1);
             templist.Add(pizza2);
+            templist.Add(Drink1);
+            templist.Add(Drink2);
+            templist.Add(Drink3);
             this.DataContext = templist;
             ListView2.DataContext = PizzaViewModel.checkOutList;
         }
         // add selected pizza to checkout list
         private void BtnAddToCheckOut_Click(object sender, RoutedEventArgs e)
         {
-            var selectedunit = (Pizza)listView1.SelectedItem;
 
             try
             {
+                // ToDo Fix this bwoken Shiet, if selectedItem is a pizza, do the pizza thing, if Drink, do the drink thing.
 
+                //MessageBox.Show(listView1.SelectedItem.ToString());
+                //if (listView1.SelectedItem.GetType() == Pizza)
+                //{
+
+                //}
+
+                // add selected pizza to checkOutList
+                var selectedunit = (Pizza)listView1.SelectedItem;
                 string pizzasize = "";
                 int price = selectedunit.GetPrice();
                 if(DataTemplates.SizeSmall == true)
@@ -110,9 +133,21 @@ namespace Uge_14_Pizzeria
                     MessageBox.Show(er.ToString());
                 }
 
-                ListView2.Items.Add(selectedunit.PizzaName + " "  + " - " + pizzasize + " - " + allingredients +  " - " + price + "Kr");
+                ListView2.Items.Add(selectedunit.Name + " "  + " - " + pizzasize + " - " + allingredients +  " - " + price + "Kr");
 
 
+                PizzaViewModel.checkOutList.Add(selectedunit);
+            }
+            catch (Exception er)
+            {
+                MessageBox.Show(er.ToString());
+            }
+            // temporary, drink gets added to checkOutList, but checking out breaks.
+            try
+            {
+                var selectedunit = (Drink)listView1.SelectedItem;
+
+                ListView2.Items.Add(selectedunit.Name + " - " + selectedunit.Price + "Kr");
                 PizzaViewModel.checkOutList.Add(selectedunit);
             }
             catch (Exception er)
@@ -122,6 +157,7 @@ namespace Uge_14_Pizzeria
         }
         public int GenerateSerial()
         {
+            // not currently being used for anything, but i imagine giving objects unique ID's isnt a bad thing
             // returns 1 higher than current highest Serial Number
             int serialcount = 0;
             foreach (Pizza U in templist)
@@ -144,7 +180,7 @@ namespace Uge_14_Pizzeria
                 foreach (Pizza U in PizzaViewModel.checkOutList)
                 {
                     totalprice += U.GetPrice();
-                    pizzaList += U.PizzaName + " - " + U.GetPrice() + "\n";
+                    pizzaList += U.Name + " - " + U.GetPrice() + "\n";
                 }
                 
                 MessageBox.Show(pizzaList + "Total Price: " + totalprice.ToString() + " Kr.");
@@ -167,11 +203,11 @@ namespace Uge_14_Pizzeria
     //public static ObservableCollection<Pizza> CheckOutList = new ObservableCollection<Pizza>();
     public class PizzaViewModel : INotifyPropertyChanged
     {
-        public static ObservableCollection<Pizza> checkOutList;
+        public static ObservableCollection<IPizza> checkOutList;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public ObservableCollection<Pizza> CheckOutList
+        public ObservableCollection<IPizza> CheckOutList
         {
             get { return checkOutList; }
             set
@@ -183,7 +219,7 @@ namespace Uge_14_Pizzeria
 
         public PizzaViewModel()
         {
-            CheckOutList = new ObservableCollection<Pizza>();
+            CheckOutList = new ObservableCollection<IPizza>();
         }
     }
 }

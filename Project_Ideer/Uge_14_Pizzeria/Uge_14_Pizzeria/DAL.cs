@@ -9,10 +9,10 @@ namespace Uge_14_Pizzeria
 {
     public class DAL
     {
-        private ObservableCollection<Pizza> DataBase; // Da vi ikke har adgang til en database, 
+        private ObservableCollection<IPizza> DataBase; // Da vi ikke har adgang til en database, 
                                                        // simulerer vi med denne private liste....
 
-        private ObservableCollection<Pizza> _publicList; // Dette er objektet med elementer vi 
+        private ObservableCollection<IPizza> _publicList; // Dette er objektet med elementer vi 
                                                          // "deler ud" til brugeren af vores class.
 
 
@@ -21,11 +21,11 @@ namespace Uge_14_Pizzeria
         public static string fileName = SaveFolder + "\\" + savedata;
         public DAL()
         {
-            _publicList = new ObservableCollection<Pizza>();
+            _publicList = new ObservableCollection<IPizza>();
         }
 
         // Get takes data from DataBase an puts it into _publicList
-        public ObservableCollection<Pizza> Get()
+        public ObservableCollection<IPizza> Get()
         {
 
             if (!File.Exists(fileName))
@@ -34,7 +34,7 @@ namespace Uge_14_Pizzeria
                 Commit();
             }
             string json = File.ReadAllText(fileName);
-            DataBase = JsonConvert.DeserializeObject<ObservableCollection<Pizza>>(json);
+            DataBase = JsonConvert.DeserializeObject<ObservableCollection<IPizza>>(json);
 
             App.Current.Dispatcher.Invoke((Action)delegate
             {
@@ -60,7 +60,7 @@ namespace Uge_14_Pizzeria
         {
 
 
-            DataBase = new ObservableCollection<Pizza>(_publicList);
+            DataBase = new ObservableCollection<IPizza>(_publicList);
 
             StreamWriter file = new StreamWriter(fileName);
 

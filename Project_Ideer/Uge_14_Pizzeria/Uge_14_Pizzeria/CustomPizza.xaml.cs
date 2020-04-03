@@ -113,7 +113,7 @@ namespace Uge_14_Pizzeria
                 PizzaViewModel.checkOutList.Add(pizza1);
 
                 // ToDo Do this using ViewModel
-                ((MainWindow)Application.Current.MainWindow).ListView2.Items.Add(pizza1.PizzaName + " " + " - " + pizzasize + " - " + allingredients + " - " + price + "Kr");
+                ((MainWindow)Application.Current.MainWindow).ListView2.Items.Add(pizza1.Name + " " + " - " + pizzasize + " - " + allingredients + " - " + price + "Kr");
             }
             catch (Exception er)
             {
