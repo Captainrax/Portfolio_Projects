@@ -97,58 +97,57 @@ namespace Uge_14_Pizzeria
 
             try
             {
-                // ToDo Fix this bwoken Shiet, if selectedItem is a pizza, do the pizza thing, if Drink, do the drink thing.
-
-                //MessageBox.Show(listView1.SelectedItem.ToString());
-                //if (listView1.SelectedItem.GetType() == Pizza)
-                //{
-
-                //}
-
-                // add selected pizza to checkOutList
-                var selectedunit = (Pizza)listView1.SelectedItem;
-                string pizzasize = "";
-                int price = selectedunit.GetPrice();
-                if(DataTemplates.SizeSmall == true)
+                if (listView1.SelectedItem is Pizza)
                 {
-                    pizzasize = "Small";
-                    selectedunit.SizeLarge = false;
-                    selectedunit.SizeSmall = true;
-                } else if (DataTemplates.SizeLarge == true)
-                {
-                    pizzasize = "Large";
-                    selectedunit.SizeSmall = false;
-                    selectedunit.SizeLarge = true;
-                }
-                string allingredients = "";
-                try
-                {
-                    foreach (Ingredient I in selectedunit.Ingredients)
+                    // Adds selected pizza to checkOutList
+                    var selectedunit = (Pizza)listView1.SelectedItem;
+                    string pizzasize = "";
+                    int price = selectedunit.GetPrice();
+                    if (DataTemplates.SizeSmall == true)
                     {
-                        allingredients += I.Name + ", ";
+                        pizzasize = "Small";
+                        selectedunit.SizeLarge = false;
+                        selectedunit.SizeSmall = true;
                     }
+                    else if (DataTemplates.SizeLarge == true)
+                    {
+                        pizzasize = "Large";
+                        selectedunit.SizeSmall = false;
+                        selectedunit.SizeLarge = true;
+                    }
+                    string allingredients = "";
+                    try
+                    {
+                        foreach (Ingredient I in selectedunit.Ingredients)
+                        {
+                            allingredients += I.Name + ", ";
+                        }
+                    }
+                    catch (Exception er)
+                    {
+                        MessageBox.Show(er.ToString());
+                    }
+
+                    ListView2.Items.Add(selectedunit.Name + " " + " - " + pizzasize + " - " + allingredients + " - " + price + "Kr");
+
+
+                    PizzaViewModel.checkOutList.Add(selectedunit);
                 }
-                catch (Exception er)
-                {
-                    MessageBox.Show(er.ToString());
-                }
-
-                ListView2.Items.Add(selectedunit.Name + " "  + " - " + pizzasize + " - " + allingredients +  " - " + price + "Kr");
-
-
-                PizzaViewModel.checkOutList.Add(selectedunit);
             }
             catch (Exception er)
             {
                 MessageBox.Show(er.ToString());
             }
-            // temporary, drink gets added to checkOutList, but checking out breaks.
+            // Adds Drinks to checkOutList
             try
             {
-                var selectedunit = (Drink)listView1.SelectedItem;
+                if (listView1.SelectedItem is Drink )
+                {
+                    var selectedunit = (Drink)listView1.SelectedItem;
 
-                ListView2.Items.Add(selectedunit.Name + " - " + selectedunit.Price + "Kr");
-                PizzaViewModel.checkOutList.Add(selectedunit);
+                    ListView2.Items.Add(selectedunit.Name + " - " + selectedunit.Price + "Kr");
+                    PizzaViewModel.checkOutList.Add(selectedunit);
+                }
             }
             catch (Exception er)
             {
