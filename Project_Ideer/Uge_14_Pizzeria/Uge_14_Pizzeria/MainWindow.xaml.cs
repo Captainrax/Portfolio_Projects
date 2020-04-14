@@ -171,12 +171,12 @@ namespace Uge_14_Pizzeria
         // display total price of checkout List
         private void BtnCheckOut_Click(object sender, RoutedEventArgs e)
         {
+            int totalprice = 0;
             try
             {
                 // gets all ingredient prices, adds it to totalprice.
-                int totalprice = 0;
                 string pizzaList = "";
-                foreach (Pizza U in PizzaViewModel.checkOutList)
+                foreach (IPizza U in PizzaViewModel.checkOutList)
                 {
                     totalprice += U.GetPrice();
                     pizzaList += U.Name + " - " + U.GetPrice() + "\n";
@@ -190,6 +190,7 @@ namespace Uge_14_Pizzeria
                 MessageBox.Show(er.ToString());
             }
         }
+        // custom pizza button, opens new dialog window
         private void BtnCustomPizza_Click(object sender, RoutedEventArgs e)
         {
             // ToDo add the pizza to the checkout list
@@ -197,9 +198,8 @@ namespace Uge_14_Pizzeria
             newcustompizza.ShowDialog();
         }
     }
-    // tried adding the List to a viewmodel to get it to update when adding new pizza from custompizza, not working currently
 
-    //public static ObservableCollection<Pizza> CheckOutList = new ObservableCollection<Pizza>();
+    //add the List to a viewmodel to get it to update when adding new pizza from custompizza
     public class PizzaViewModel : INotifyPropertyChanged
     {
         public static ObservableCollection<IPizza> checkOutList;

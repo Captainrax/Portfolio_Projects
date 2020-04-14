@@ -11,6 +11,8 @@ namespace Uge_14_Pizzeria
     {
         string Name { get; set; }
         int Serial { get; set; }
+
+        public int GetPrice();
     }
 
     public class Pizza : IPizza
@@ -73,6 +75,11 @@ namespace Uge_14_Pizzeria
         public Drink(String Name)
         {
             this.Name = Name;
+        }
+
+        public int GetPrice()
+        {
+            return Price;
         }
     }
 }
