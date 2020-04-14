@@ -24,8 +24,7 @@ namespace Uge_14_Pizzeria
     {
         public static ObservableCollection<IPizza> templist;
         public static ObservableCollection<Ingredient> IngredientsList = new ObservableCollection<Ingredient>();
-
-        DAL DAL_Object = new DAL();
+        readonly DAL DAL_Object = new DAL();
 
         public MainWindow()
         {
@@ -33,6 +32,7 @@ namespace Uge_14_Pizzeria
             InitializeComponent();
             templist = DAL_Object.Get();
 
+            // Manually adding fooditems
             var Traditional = new Ingredient() { Name = "Traditional", Price = 5, Type = "Foundation" };
             var tomatoSauce = new Ingredient() { Name = "TomatoSauce", Price = 5, Type = "Sauce" };
             var Cheese = new Ingredient() { Name = "Cheese", Price = 5, Type = "Cheese" };
@@ -40,6 +40,7 @@ namespace Uge_14_Pizzeria
             var Onion = new Ingredient() { Name = "Onion", Price = 5, Type = "Vegetable" };
 
             var SmallSize = new Ingredient() { Name = "Small", Price = 10, Type = "Size" };
+            var MediumSize = new Ingredient() { Name = "Medium", Price = 15, Type = "Size" };
             var LargeSize = new Ingredient() { Name = "Large", Price = 20, Type = "Size" };
             IngredientsList.Add(Traditional);
             IngredientsList.Add(tomatoSauce);
@@ -47,6 +48,7 @@ namespace Uge_14_Pizzeria
             IngredientsList.Add(Ham);
             IngredientsList.Add(Onion);
             IngredientsList.Add(SmallSize);
+            IngredientsList.Add(MediumSize);
             IngredientsList.Add(LargeSize);
 
             var pizza1 = new Pizza("Pizza4",true,false)
@@ -88,19 +90,20 @@ namespace Uge_14_Pizzeria
             templist.Add(Drink1);
             templist.Add(Drink2);
             templist.Add(Drink3);
+
+            // setting datacontexts
             this.DataContext = templist;
             ListView2.DataContext = PizzaViewModel.checkOutList;
         }
-        // add selected pizza to checkout list
+        // add selected item to checkout list
         private void BtnAddToCheckOut_Click(object sender, RoutedEventArgs e)
         {
 
             try
             {
-                if (listView1.SelectedItem is Pizza)
+                // Adds selected pizza to checkOutList
+                if (listView1.SelectedItem is Pizza selectedunit)
                 {
-                    // Adds selected pizza to checkOutList
-                    var selectedunit = (Pizza)listView1.SelectedItem;
                     string pizzasize = "";
                     int price = selectedunit.GetPrice();
                     if (DataTemplates.SizeSmall == true)
@@ -141,10 +144,8 @@ namespace Uge_14_Pizzeria
             // Adds Drinks to checkOutList
             try
             {
-                if (listView1.SelectedItem is Drink )
+                if (listView1.SelectedItem is Drink selectedunit)
                 {
-                    var selectedunit = (Drink)listView1.SelectedItem;
-
                     ListView2.Items.Add(selectedunit.Name + " - " + selectedunit.Price + "Kr");
                     PizzaViewModel.checkOutList.Add(selectedunit);
                 }
@@ -154,9 +155,9 @@ namespace Uge_14_Pizzeria
                 MessageBox.Show(er.ToString());
             }
         }
+        // not currently being used for anything, but i imagine giving objects unique ID's isnt a bad thing
         public int GenerateSerial()
         {
-            // not currently being used for anything, but i imagine giving objects unique ID's isnt a bad thing
             // returns 1 higher than current highest Serial Number
             int serialcount = 0;
             foreach (Pizza U in templist)
@@ -171,17 +172,17 @@ namespace Uge_14_Pizzeria
         // display total price of checkout List
         private void BtnCheckOut_Click(object sender, RoutedEventArgs e)
         {
-            int totalprice = 0;
             try
             {
-                // gets all ingredient prices, adds it to totalprice.
+                // gets prices, adds it to totalprice.
+                int totalprice = 0;
                 string pizzaList = "";
                 foreach (IPizza U in PizzaViewModel.checkOutList)
                 {
                     totalprice += U.GetPrice();
                     pizzaList += U.Name + " - " + U.GetPrice() + "\n";
                 }
-                
+                // Displays Final order
                 MessageBox.Show(pizzaList + "Total Price: " + totalprice.ToString() + " Kr.");
                 totalprice = 0;
             }
@@ -193,7 +194,6 @@ namespace Uge_14_Pizzeria
         // custom pizza button, opens new dialog window
         private void BtnCustomPizza_Click(object sender, RoutedEventArgs e)
         {
-            // ToDo add the pizza to the checkout list
             CustomPizza newcustompizza = new CustomPizza();
             newcustompizza.ShowDialog();
         }

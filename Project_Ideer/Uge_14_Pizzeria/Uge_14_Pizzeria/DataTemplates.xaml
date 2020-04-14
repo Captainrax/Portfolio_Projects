@@ -15,9 +15,9 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0" Grid.Column="0" Height="23" HorizontalAlignment="Left" Text="{Binding Path=PizzaName, StringFormat=Pizza: {0}}"   VerticalAlignment="Center" />
+            <TextBlock Grid.Row="0" Grid.Column="0" Height="23" HorizontalAlignment="Left" Text="{Binding Path=Name, StringFormat=Pizza: {0}}"   VerticalAlignment="Center" />
             
-            <ListView ItemsSource="{Binding Ingredients}" Focusable="False" Grid.Row="1" Grid.Column="0">
+            <ListView Name="IngredientsList" ItemsSource="{Binding Ingredients}" Focusable="False" Grid.Row="1" Grid.Column="0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextBlock HorizontalAlignment="Left" Text="{Binding Name}" Focusable="False" />
@@ -28,10 +28,27 @@
                         <Setter Property="Focusable" Value="False"/>
                     </Style>
                 </ListBox.ItemContainerStyle>
+                <ListView.Style>
+                    <Style TargetType="ListView">
+                        <Style.Triggers>
+                            <Trigger Property="HasItems"
+                                    Value="False">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ListView">
+                                            <TextBlock Text="" Height="0"/>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListView.Style>
             </ListView>
             
             <TextBlock Grid.Row="2" Grid.Column="0" Height="23" HorizontalAlignment="Left" Text="{Binding Path=Price, StringFormat=Price: {0}}"    VerticalAlignment="Center" />
-            <ComboBox SelectionChanged="Size_SelectionChanged" SelectedIndex="0" Grid.Column="0" Grid.Row="3"  Margin="10" Name="SizeSelection">
+            
+            <ComboBox SelectionChanged="Size_SelectionChanged" SelectedIndex="0" Grid.Column="0" Grid.Row="3"  Margin="4" Name="SizeSelection">
                 <ComboBoxItem Selected="Small_Selected">Small</ComboBoxItem>
                 <ComboBoxItem Selected="Large_Selected">Large</ComboBoxItem>
             </ComboBox>

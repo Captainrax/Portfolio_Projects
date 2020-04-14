@@ -83,20 +83,7 @@ namespace Uge_14_Pizzeria
             }
             try // oh god please fix this at some point please.
             {
-                string pizzasize = "";
                 int price = pizza1.GetPrice();
-                if (DataTemplates.SizeSmall == true)
-                {
-                    pizzasize = "Small";
-                    pizza1.SizeLarge = false;
-                    pizza1.SizeSmall = true;
-                }
-                else if (DataTemplates.SizeLarge == true)
-                {
-                    pizzasize = "Large";
-                    pizza1.SizeSmall = false;
-                    pizza1.SizeLarge = true;
-                }
                 string allingredients = "";
                 try
                 {
@@ -113,7 +100,7 @@ namespace Uge_14_Pizzeria
                 PizzaViewModel.checkOutList.Add(pizza1);
 
                 // ToDo Do this using ViewModel
-                ((MainWindow)Application.Current.MainWindow).ListView2.Items.Add(pizza1.Name + " " + " - " + pizzasize + " - " + allingredients + " - " + price + "Kr");
+                ((MainWindow)Application.Current.MainWindow).ListView2.Items.Add(pizza1.Name + " " + " - " + allingredients + " - " + price + "Kr");
             }
             catch (Exception er)
             {
@@ -128,11 +115,11 @@ namespace Uge_14_Pizzeria
 		private void btnDialogClear_Click(object sender, RoutedEventArgs e)
 		{
             // it works.
-            Foundation_Selection.SelectedItem = null;
             Sauce_Selection.SelectedItem = null;
             Cheese_Selection.SelectedItem = null;
             Proteins_Selection.SelectedItem = null;
             Vegetables_Selection.SelectedItem = null;
+            Size_Selection.SelectedItem = Size_Selection.SelectedIndex = 0;
         }
 		private void Window_ContentRendered(object sender, EventArgs e)
 		{

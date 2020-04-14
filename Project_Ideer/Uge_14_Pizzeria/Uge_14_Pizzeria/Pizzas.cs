@@ -67,6 +67,7 @@ namespace Uge_14_Pizzeria
     // Drinks
     public class Drink : IPizza
     {
+        // ToDo implement Ingredients list for Different Sizes
         public string Name { get; set; }
         public int Price { get; set; }
         public int Serial { get; set; }

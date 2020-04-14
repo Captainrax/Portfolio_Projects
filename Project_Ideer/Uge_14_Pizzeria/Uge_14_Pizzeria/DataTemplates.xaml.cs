@@ -11,6 +11,7 @@ namespace Uge_14_Pizzeria
 {
     partial class DataTemplates : ResourceDictionary
     {
+        // this is bwoken
         public static bool SizeSmall;
         public static bool SizeLarge;
 
