@@ -197,6 +197,15 @@ namespace Uge_14_Pizzeria
             CustomPizza newcustompizza = new CustomPizza();
             newcustompizza.ShowDialog();
         }
+        private void BtnCoupon_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void BtnClear_Click(object sender, RoutedEventArgs e)
+        {
+            ListView2.Items.Clear();
+            PizzaViewModel.checkOutList.Clear();
+        }
     }
 
     //add the List to a viewmodel to get it to update when adding new pizza from custompizza
