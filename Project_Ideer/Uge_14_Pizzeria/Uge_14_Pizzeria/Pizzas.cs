@@ -7,16 +7,19 @@ using System.Text;
 namespace Uge_14_Pizzeria
 {
     // Object used with program
-    public interface IPizza
+    public interface IFoodItem
     {
+        public string Type { get; set; }
         string Name { get; set; }
         int Serial { get; set; }
 
+        public ObservableCollection<Ingredient> Ingredients { get; set; }
         public int GetPrice();
     }
 
-    public class Pizza : IPizza
+    public class Pizza : IFoodItem
     {
+        public string Type { get; set; }
         public string Name { get; set; }
         public bool SizeSmall { get; set; }
         public bool SizeLarge { get; set; }
@@ -65,11 +68,13 @@ namespace Uge_14_Pizzeria
         public int Price { get; set; }
     }
     // Drinks
-    public class Drink : IPizza
+    public class Drink : IFoodItem
     {
         // ToDo implement Ingredients list for Different Sizes
+        public string Type { get; set; }
         public string Name { get; set; }
         public int Price { get; set; }
+        public ObservableCollection<Ingredient> Ingredients { get; set; }
         public int Serial { get; set; }
 
         // Constructor

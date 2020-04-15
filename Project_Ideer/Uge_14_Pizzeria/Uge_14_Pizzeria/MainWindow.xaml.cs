@@ -22,13 +22,13 @@ namespace Uge_14_Pizzeria
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static ObservableCollection<IPizza> templist;
+        public static ObservableCollection<IFoodItem> templist;
         public static ObservableCollection<Ingredient> IngredientsList = new ObservableCollection<Ingredient>();
         readonly DAL DAL_Object = new DAL();
 
         public MainWindow()
         {
-            PizzaViewModel.checkOutList = new ObservableCollection<IPizza>();
+            PizzaViewModel.checkOutList = new ObservableCollection<IFoodItem>();
             InitializeComponent();
             templist = DAL_Object.Get();
 
@@ -53,11 +53,13 @@ namespace Uge_14_Pizzeria
 
             var pizza1 = new Pizza("Pizza4",true,false)
             {
+                Type = "Pizza",
                 Ingredients = new ObservableCollection<Ingredient>(),
                 Serial = GenerateSerial()
             };
             var pizza2 = new Pizza("Pizza5", true, false)
             {
+                Type = "Pizza",
                 Ingredients = new ObservableCollection<Ingredient>(),
                 Serial = GenerateSerial()
             };
@@ -177,7 +179,7 @@ namespace Uge_14_Pizzeria
                 // gets prices, adds it to totalprice.
                 int totalprice = 0;
                 string pizzaList = "";
-                foreach (IPizza U in PizzaViewModel.checkOutList)
+                foreach (IFoodItem U in PizzaViewModel.checkOutList)
                 {
                     totalprice += U.GetPrice();
                     pizzaList += U.Name + " - " + U.GetPrice() + "\n";
@@ -197,10 +199,51 @@ namespace Uge_14_Pizzeria
             CustomPizza newcustompizza = new CustomPizza();
             newcustompizza.ShowDialog();
         }
+        // applies coupon deals
         private void BtnCoupon_Click(object sender, RoutedEventArgs e)
         {
-
+            if (CouponText.Text == "fuck")
+            {
+                var pizzacount = 0;
+                var drinkcount = 0;
+                Pizza ComparePizza = new Pizza("ComparePizza", false, false);
+                Drink CompareDrink = new Drink("CompareDrink");
+                foreach (IFoodItem P in PizzaViewModel.checkOutList)
+                {
+                    if(P.GetType() == ComparePizza.GetType())
+                    {
+                        pizzacount++;
+                    }
+                }
+                foreach (IFoodItem P in PizzaViewModel.checkOutList)
+                {
+                    if (P.GetType() == CompareDrink.GetType())
+                    {
+                        drinkcount++;
+                    }
+                }
+                // Discount for 2 pizzas & 2 drinks, one pizza gets free Foundation
+                if (pizzacount >= 2 && drinkcount >= 2)
+                {
+                    foreach (IFoodItem P in PizzaViewModel.checkOutList)
+                    {
+                        if (P.Type == "Pizza")
+                        {
+                            foreach (Ingredient I in P.Ingredients)
+                            {
+                                if (I.Type == "Foundation")
+                                {
+                                    I.Price = 0;
+                                }
+                                break;
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
         }
+        // Clears checkOutList of items
         private void BtnClear_Click(object sender, RoutedEventArgs e)
         {
             ListView2.Items.Clear();
@@ -208,14 +251,14 @@ namespace Uge_14_Pizzeria
         }
     }
 
-    //add the List to a viewmodel to get it to update when adding new pizza from custompizza
+    //add the List to a viewmodel to get it to update when adding new fooditems
     public class PizzaViewModel : INotifyPropertyChanged
     {
-        public static ObservableCollection<IPizza> checkOutList;
+        public static ObservableCollection<IFoodItem> checkOutList;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public ObservableCollection<IPizza> CheckOutList
+        public ObservableCollection<IFoodItem> CheckOutList
         {
             get { return checkOutList; }
             set
@@ -227,7 +270,7 @@ namespace Uge_14_Pizzeria
 
         public PizzaViewModel()
         {
-            CheckOutList = new ObservableCollection<IPizza>();
+            CheckOutList = new ObservableCollection<IFoodItem>();
         }
     }
 }
