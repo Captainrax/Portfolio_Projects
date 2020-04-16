@@ -14,28 +14,23 @@ namespace Uge_14_Pizzeria
         int Serial { get; set; }
 
         public ObservableCollection<Ingredient> Ingredients { get; set; }
-        public int GetPrice();
+        public int GetPrice { get; }
     }
 
     public class Pizza : IFoodItem
     {
         public string Type { get; set; }
         public string Name { get; set; }
-        public bool SizeSmall { get; set; }
-        public bool SizeLarge { get; set; }
         public ObservableCollection<Ingredient> Ingredients { get; set; }
-        public string GetIngredients { get; }
         public int Price { get; set; }
         public int Serial { get; set; }
 
         // Constructor
-        public Pizza(String Name, bool SizeSmall, bool SizeLarge)
+        public Pizza(String Name)
         {
             this.Name = Name;
-            this.SizeSmall = SizeSmall;
-            this.SizeLarge = SizeLarge;
         }
-        public string Getingredients
+        public string GetIngredients
         {
             get{
                 string allingredients = "";
@@ -50,15 +45,26 @@ namespace Uge_14_Pizzeria
         {
             // somehow set bool sizes when changing combobox selected when adding to checkOutList
         }
-        public int GetPrice()
+        public int GetPrice
         {
-            int allingredients = Price;
-            foreach (Ingredient I in Ingredients)
-            {
-                allingredients += I.Price;
+            get{
+                int allingredients = Price;
+                foreach (Ingredient I in Ingredients)
+                {
+                    allingredients += I.Price;
+                }
+                return allingredients;
             }
-            return allingredients;
         }
+        //public void UpdatePrice()
+        //{
+        //    int updatedprice = 0;
+        //    foreach (Ingredient I in Ingredients)
+        //    {
+        //        updatedprice += I.Price;
+        //    }
+        //    Price = updatedprice;
+        //}
     }
     // Ingredients for Pizza
     public class Ingredient
@@ -83,9 +89,12 @@ namespace Uge_14_Pizzeria
             this.Name = Name;
         }
 
-        public int GetPrice()
+        public int GetPrice
         {
-            return Price;
+            get
+            {
+                return Price;
+            }
         }
     }
 }

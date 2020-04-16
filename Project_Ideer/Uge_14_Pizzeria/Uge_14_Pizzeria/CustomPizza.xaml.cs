@@ -27,7 +27,7 @@ namespace Uge_14_Pizzeria
 		}
 		private void btnDialogOk_Click(object sender, RoutedEventArgs e)
 		{
-            var pizza1 = new Pizza("Custom Pizza", false, false)
+            var pizza1 = new Pizza("Custom Pizza")
             {
                 Price = 20,
                 Ingredients = new ObservableCollection<Ingredient>(),
@@ -83,7 +83,7 @@ namespace Uge_14_Pizzeria
             }
             try // oh god please fix this at some point please.
             {
-                int price = pizza1.GetPrice();
+                int price = pizza1.GetPrice;
                 string allingredients = "";
                 try
                 {

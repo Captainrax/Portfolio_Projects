@@ -22,7 +22,7 @@ namespace Uge_14_Pizzeria
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static ObservableCollection<IFoodItem> templist;
+        public static ObservableCollection<IFoodItem> OrderMenu;
         public static ObservableCollection<Ingredient> IngredientsList = new ObservableCollection<Ingredient>();
         readonly DAL DAL_Object = new DAL();
 
@@ -30,7 +30,7 @@ namespace Uge_14_Pizzeria
         {
             PizzaViewModel.checkOutList = new ObservableCollection<IFoodItem>();
             InitializeComponent();
-            templist = DAL_Object.Get();
+            OrderMenu = DAL_Object.Get();
 
             // Manually adding fooditems
             var Traditional = new Ingredient() { Name = "Traditional", Price = 5, Type = "Foundation" };
@@ -51,17 +51,17 @@ namespace Uge_14_Pizzeria
             IngredientsList.Add(MediumSize);
             IngredientsList.Add(LargeSize);
 
-            var pizza1 = new Pizza("Pizza4",true,false)
+            var pizza1 = new Pizza("Pizza4")
             {
                 Type = "Pizza",
                 Ingredients = new ObservableCollection<Ingredient>(),
-                Serial = GenerateSerial()
+                Serial = 4
             };
-            var pizza2 = new Pizza("Pizza5", true, false)
+            var pizza2 = new Pizza("Pizza5")
             {
                 Type = "Pizza",
                 Ingredients = new ObservableCollection<Ingredient>(),
-                Serial = GenerateSerial()
+                Serial = 5
             };
             var Drink1 = new Drink("Coca Cola - 0.5L")
             {
@@ -75,27 +75,43 @@ namespace Uge_14_Pizzeria
             {
                 Price = 25
             };
+            pizza1.Ingredients.Add(SmallSize);
             pizza1.Ingredients.Add(Traditional);
             pizza1.Ingredients.Add(tomatoSauce);
             pizza1.Ingredients.Add(Cheese);
             pizza1.Ingredients.Add(Ham);
             pizza1.Ingredients.Add(Ham);
             pizza1.Ingredients.Add(Ham);
+            pizza2.Ingredients.Add(LargeSize);
             pizza2.Ingredients.Add(Traditional);
             pizza2.Ingredients.Add(tomatoSauce);
             pizza2.Ingredients.Add(Cheese);
             pizza2.Ingredients.Add(Ham);
             pizza2.Ingredients.Add(Onion);
 
-            templist.Add(pizza1);
-            templist.Add(pizza2);
-            templist.Add(Drink1);
-            templist.Add(Drink2);
-            templist.Add(Drink3);
+            OrderMenu.Add(pizza1);
+            OrderMenu.Add(pizza2);
+            OrderMenu.Add(Drink1);
+            OrderMenu.Add(Drink2);
+            OrderMenu.Add(Drink3);
 
             // setting datacontexts
-            this.DataContext = templist;
+            this.DataContext = OrderMenu;
             ListView2.DataContext = PizzaViewModel.checkOutList;
+        }
+        // not currently being used for anything, but i imagine giving objects unique ID's isnt a bad thing
+        public int GenerateSerial()
+        {
+            // returns 1 higher than current highest Serial Number
+            int serialcount = 0;
+            foreach (IFoodItem U in OrderMenu)
+            {
+                if (U.Serial >= serialcount)
+                {
+                    serialcount = U.Serial;
+                }
+            }
+            return serialcount + 1;
         }
         // add selected item to checkout list
         private void BtnAddToCheckOut_Click(object sender, RoutedEventArgs e)
@@ -106,20 +122,22 @@ namespace Uge_14_Pizzeria
                 // Adds selected pizza to checkOutList
                 if (listView1.SelectedItem is Pizza selectedunit)
                 {
-                    string pizzasize = "";
-                    int price = selectedunit.GetPrice();
-                    if (DataTemplates.SizeSmall == true)
-                    {
-                        pizzasize = "Small";
-                        selectedunit.SizeLarge = false;
-                        selectedunit.SizeSmall = true;
-                    }
-                    else if (DataTemplates.SizeLarge == true)
-                    {
-                        pizzasize = "Large";
-                        selectedunit.SizeSmall = false;
-                        selectedunit.SizeLarge = true;
-                    }
+                    //string pizzasize = "";
+                    int price = selectedunit.GetPrice;
+                    //ToDo fix size selection on pizzas from ordermenu
+
+                    //if (DataTemplates.SizeSmall == true)
+                    //{
+                    //    pizzasize = "Small";
+                    //    selectedunit.SetSize();
+                    //    selectedunit.SetSize();
+                    //}
+                    //else if (DataTemplates.SizeLarge == true)
+                    //{
+                    //    pizzasize = "Large";
+                    //    selectedunit.SetSize();
+                    //    selectedunit.SetSize();
+                    //}
                     string allingredients = "";
                     try
                     {
@@ -133,7 +151,7 @@ namespace Uge_14_Pizzeria
                         MessageBox.Show(er.ToString());
                     }
 
-                    ListView2.Items.Add(selectedunit.Name + " " + " - " + pizzasize + " - " + allingredients + " - " + price + "Kr");
+                    ListView2.Items.Add(selectedunit.Name + " - "  + selectedunit.GetIngredients + " - " + price + "Kr");
 
 
                     PizzaViewModel.checkOutList.Add(selectedunit);
@@ -157,20 +175,7 @@ namespace Uge_14_Pizzeria
                 MessageBox.Show(er.ToString());
             }
         }
-        // not currently being used for anything, but i imagine giving objects unique ID's isnt a bad thing
-        public int GenerateSerial()
-        {
-            // returns 1 higher than current highest Serial Number
-            int serialcount = 0;
-            foreach (Pizza U in templist)
-            {
-                if (U.Serial >= serialcount)
-                {
-                    serialcount = U.Serial;
-                }
-            }
-            return serialcount + 1;
-        }
+
         // display total price of checkout List
         private void BtnCheckOut_Click(object sender, RoutedEventArgs e)
         {
@@ -181,8 +186,8 @@ namespace Uge_14_Pizzeria
                 string pizzaList = "";
                 foreach (IFoodItem U in PizzaViewModel.checkOutList)
                 {
-                    totalprice += U.GetPrice();
-                    pizzaList += U.Name + " - " + U.GetPrice() + "\n";
+                    totalprice += U.GetPrice;
+                    pizzaList += U.Name + " - " + U.GetPrice + "\n";
                 }
                 // Displays Final order
                 MessageBox.Show(pizzaList + "Total Price: " + totalprice.ToString() + " Kr.");
@@ -206,7 +211,7 @@ namespace Uge_14_Pizzeria
             {
                 var pizzacount = 0;
                 var drinkcount = 0;
-                Pizza ComparePizza = new Pizza("ComparePizza", false, false);
+                Pizza ComparePizza = new Pizza("ComparePizza");
                 Drink CompareDrink = new Drink("CompareDrink");
                 foreach (IFoodItem P in PizzaViewModel.checkOutList)
                 {
@@ -223,9 +228,10 @@ namespace Uge_14_Pizzeria
                     }
                 }
                 // Discount for 2 pizzas & 2 drinks, one pizza gets free Foundation
+                // ToDo, currently changes all foundation ingredient costs to 0 for all pizzas, even outside list. only needs to change on the specific pizza
                 if (pizzacount >= 2 && drinkcount >= 2)
                 {
-                    foreach (IFoodItem P in PizzaViewModel.checkOutList)
+                    foreach (Pizza P in PizzaViewModel.checkOutList)
                     {
                         if (P.Type == "Pizza")
                         {
@@ -235,7 +241,6 @@ namespace Uge_14_Pizzeria
                                 {
                                     I.Price = 0;
                                 }
-                                break;
                             }
                             break;
                         }

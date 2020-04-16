@@ -11,10 +11,6 @@ namespace Uge_14_Pizzeria
 {
     partial class DataTemplates : ResourceDictionary
     {
-        // this is bwoken
-        public static bool SizeSmall;
-        public static bool SizeLarge;
-
         public DataTemplates()
         {
             InitializeComponent();
@@ -22,15 +18,57 @@ namespace Uge_14_Pizzeria
 
         private void Small_Selected(object sender, RoutedEventArgs e)
         {
-            SizeLarge = false;
-            SizeSmall = true;
+            if( ((MainWindow)Application.Current.MainWindow).listView1.SelectedItem is Pizza selected)
+            {
+                foreach (Ingredient I in MainWindow.IngredientsList)
+                {
+                    if (I.Type == "Size")
+                    {
+                        selected.Ingredients.Remove(I);
+                    }
+                    if (I.Name == "Small")
+                    {
+                        selected.Ingredients.Add(I);
+                    }
+                }
+            }
+        }
+        private void Medium_Selected(object sender, RoutedEventArgs e)
+        {
+            if (((MainWindow)Application.Current.MainWindow).listView1.SelectedItem is Pizza selected)
+            {
+                foreach (Ingredient I in MainWindow.IngredientsList)
+                {
+                    if (I.Type == "Size")
+                    {
+                        selected.Ingredients.Remove(I);
+                    }
+                    if (I.Name == "Medium")
+                    {
+                        selected.Ingredients.Add(I);
+                    }
+                }
+            }
         }
         private void Large_Selected(object sender, RoutedEventArgs e)
         {
-            SizeSmall = false;
-            SizeLarge = true;
+
+            if (((MainWindow)Application.Current.MainWindow).listView1.SelectedItem is Pizza selected)
+            {
+                foreach (Ingredient I in MainWindow.IngredientsList)
+                {
+                    if (I.Type == "Size")
+                    {
+                        selected.Ingredients.Remove(I);
+                    }
+                    if (I.Name == "Large")
+                    {
+                        selected.Ingredients.Add(I);
+                    }
+                }
+            }
         }
-        // this needs fixing so when you change size for one, it dosnt change size for everyone.
+        // this is probably not needed anymore
         private void Size_SelectionChanged(object sender, RoutedEventArgs e)
         {
             //switch (SizeSelection.SelectedItem.ToString())

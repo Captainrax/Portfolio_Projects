@@ -46,7 +46,7 @@ namespace Uge_14_Pizzeria
             // copies units from database to currently used list _publicListe
             App.Current.Dispatcher.Invoke((Action)delegate
             {
-                foreach (Pizza p in DataBase)
+                foreach (IFoodItem p in DataBase)
                 {
                     _publicList.Add(p);
                 }

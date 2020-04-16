@@ -3,7 +3,8 @@
                     xmlns:local="clr-namespace:Uge_14_Pizzeria"
                     x:Class="Uge_14_Pizzeria.DataTemplates"
                     x:ClassModifier="public">
-    <DataTemplate x:Key="PizzaClass" DataType="{x:Type local:IFoodItem}">
+    <!-- Pizza datatemplate -->
+    <DataTemplate  DataType="{x:Type local:Pizza}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10*" />
@@ -20,14 +21,24 @@
             <ListView Name="IngredientsList" ItemsSource="{Binding Ingredients}" Focusable="False" Grid.Row="1" Grid.Column="0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock HorizontalAlignment="Left" Text="{Binding Name}" Focusable="False" />
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock HorizontalAlignment="Left" Text="{Binding Name}" Focusable="False" />
+                        </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
+                <!--Formats ingredients list-->
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="4" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <!--Sets ingredients list as unfocusable-->
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="{x:Type ListViewItem}">
                         <Setter Property="Focusable" Value="False"/>
                     </Style>
                 </ListBox.ItemContainerStyle>
+                <!--hides ingredients list if theres 0 ingredients-->
                 <ListView.Style>
                     <Style TargetType="ListView">
                         <Style.Triggers>
@@ -46,13 +57,31 @@
                 </ListView.Style>
             </ListView>
             
-            <TextBlock Grid.Row="2" Grid.Column="0" Height="23" HorizontalAlignment="Left" Text="{Binding Path=Price, StringFormat=Price: {0}}"    VerticalAlignment="Center" />
+            <TextBlock Grid.Row="2" Grid.Column="0" Height="23" HorizontalAlignment="Left" Text="{Binding Path=GetPrice, StringFormat=Price: {0}}"    VerticalAlignment="Center" />
             
-            <ComboBox SelectionChanged="Size_SelectionChanged" SelectedIndex="0" Grid.Column="0" Grid.Row="3"  Margin="4" Name="SizeSelection">
+            <ComboBox SelectionChanged="Size_SelectionChanged" SelectedIndex="0" Grid.Column="0" Grid.Row="3"  Margin="4" Name="SizeSelection" MaxWidth="120" HorizontalAlignment="Left">
                 <ComboBoxItem Selected="Small_Selected">Small</ComboBoxItem>
+                <ComboBoxItem Selected="Medium_Selected">Medium</ComboBoxItem>
                 <ComboBoxItem Selected="Large_Selected">Large</ComboBoxItem>
             </ComboBox>
 
+        </Grid>
+    </DataTemplate>
+    <!-- Drink datatemplate -->
+    <DataTemplate   DataType="{x:Type local:Drink}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Height="23" HorizontalAlignment="Left" Text="{Binding Path=Name, StringFormat=Drink: {0}}"   VerticalAlignment="Center" />
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Height="23" HorizontalAlignment="Left" Text="{Binding Path=Price, StringFormat=Price: {0}}"    VerticalAlignment="Center" />
+            
         </Grid>
     </DataTemplate>
 </ResourceDictionary>
