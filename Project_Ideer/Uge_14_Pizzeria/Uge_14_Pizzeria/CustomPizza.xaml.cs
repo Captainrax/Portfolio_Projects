@@ -29,9 +29,9 @@ namespace Uge_14_Pizzeria
 		{
             var pizza1 = new Pizza("Custom Pizza")
             {
-                Price = 20,
+                Type = "Pizza",
                 Ingredients = new ObservableCollection<Ingredient>(),
-                Serial = 1
+                Serial = 100
             };
 
             foreach(Ingredient I in MainWindow.IngredientsList)

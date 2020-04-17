@@ -63,6 +63,12 @@ namespace Uge_14_Pizzeria
                 Ingredients = new ObservableCollection<Ingredient>(),
                 Serial = 5
             };
+            var pizza3 = new Pizza("Pizza6")
+            {
+                Type = "Pizza",
+                Ingredients = new ObservableCollection<Ingredient>(),
+                Serial = 6
+            };
             var Drink1 = new Drink("Coca Cola - 0.5L")
             {
                 Price = 15
@@ -88,9 +94,14 @@ namespace Uge_14_Pizzeria
             pizza2.Ingredients.Add(Cheese);
             pizza2.Ingredients.Add(Ham);
             pizza2.Ingredients.Add(Onion);
+            pizza3.Ingredients.Add(MediumSize);
+            pizza3.Ingredients.Add(Traditional);
+            pizza3.Ingredients.Add(tomatoSauce);
+            pizza3.Ingredients.Add(Ham);
 
             OrderMenu.Add(pizza1);
             OrderMenu.Add(pizza2);
+            OrderMenu.Add(pizza3);
             OrderMenu.Add(Drink1);
             OrderMenu.Add(Drink2);
             OrderMenu.Add(Drink3);
@@ -229,9 +240,10 @@ namespace Uge_14_Pizzeria
                 }
                 // Discount for 2 pizzas & 2 drinks, one pizza gets free Foundation
                 // ToDo, currently changes all foundation ingredient costs to 0 for all pizzas, even outside list. only needs to change on the specific pizza
+                // dosnt work on custom pizzas??????
                 if (pizzacount >= 2 && drinkcount >= 2)
                 {
-                    foreach (Pizza P in PizzaViewModel.checkOutList)
+                    foreach (IFoodItem P in PizzaViewModel.checkOutList)
                     {
                         if (P.Type == "Pizza")
                         {

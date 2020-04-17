@@ -16,6 +16,7 @@ namespace Uge_14_Pizzeria
             InitializeComponent();
         }
 
+        // for some reason, changing the size here, also changes the size for all of the same types of pizza's in the checkOutList (pizza4, pizza5, pizza6)
         private void Small_Selected(object sender, RoutedEventArgs e)
         {
             if( ((MainWindow)Application.Current.MainWindow).listView1.SelectedItem is Pizza selected)
