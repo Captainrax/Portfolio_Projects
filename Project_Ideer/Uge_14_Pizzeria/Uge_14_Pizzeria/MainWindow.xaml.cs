@@ -32,6 +32,8 @@ namespace Uge_14_Pizzeria
             InitializeComponent();
             OrderMenu = DATA.Get();
 
+            TooltipInfo.Text = "Coupon Code: \"FF\" (2 or more Pizzas and Drinks) \n Free foundation on the first pizza in the list";
+
             // Manually adding fooditems and ingredients
             var Traditional = new Ingredient() { Name = "Traditional", Price = 5, Type = "Foundation" };
             var tomatoSauce = new Ingredient() { Name = "TomatoSauce", Price = 5, Type = "Sauce" };
@@ -210,7 +212,7 @@ namespace Uge_14_Pizzeria
         // applies coupon deals
         private void BtnCoupon_Click(object sender, RoutedEventArgs e)
         {
-            if (CouponText.Text == "fuck")
+            if (CouponText.Text == "FF")
             {
                 var pizzacount = 0;
                 var drinkcount = 0;
