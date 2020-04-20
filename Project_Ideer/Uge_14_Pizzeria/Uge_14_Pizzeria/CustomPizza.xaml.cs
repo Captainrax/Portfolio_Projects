@@ -31,7 +31,7 @@ namespace Uge_14_Pizzeria
             {
                 Type = "Pizza",
                 Ingredients = new ObservableCollection<Ingredient>(),
-                Serial = 999
+                Serial = MainWindow.GenerateSerial()
             };
 
             foreach(Ingredient I in MainWindow.IngredientsList)

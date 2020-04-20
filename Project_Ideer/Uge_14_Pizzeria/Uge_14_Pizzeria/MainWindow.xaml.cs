@@ -57,42 +57,24 @@ namespace Uge_14_Pizzeria
             var pizza1 = new Pizza("Pizza4")
             {
                 Type = "Pizza",
-                Ingredients = new ObservableCollection<Ingredient>(),
+                Ingredients = new ObservableCollection<Ingredient>() {SmallSize, Traditional, tomatoSauce, Cheese, Ham, Ham, Ham },
                 Serial = 4
+                
             };
-
-            pizza1.Ingredients.Add(SmallSize);
-            pizza1.Ingredients.Add(Traditional);
-            pizza1.Ingredients.Add(tomatoSauce);
-            pizza1.Ingredients.Add(Cheese);
-            pizza1.Ingredients.Add(Ham);
-            pizza1.Ingredients.Add(Ham);
-            pizza1.Ingredients.Add(Ham);
 
             var pizza2 = new Pizza("Pizza5")
             {
                 Type = "Pizza",
-                Ingredients = new ObservableCollection<Ingredient>(),
+                Ingredients = new ObservableCollection<Ingredient>() {LargeSize, Traditional, tomatoSauce, Cheese, Ham, Onion },
                 Serial = 5
             };
-
-            pizza2.Ingredients.Add(LargeSize);
-            pizza2.Ingredients.Add(Traditional);
-            pizza2.Ingredients.Add(tomatoSauce);
-            pizza2.Ingredients.Add(Cheese);
-            pizza2.Ingredients.Add(Ham);
-            pizza2.Ingredients.Add(Onion);
 
             var pizza3 = new Pizza("Pizza6")
             {
                 Type = "Pizza",
-                Ingredients = new ObservableCollection<Ingredient>(),
+                Ingredients = new ObservableCollection<Ingredient>() {MediumSize, Traditional, tomatoSauce, Ham },
                 Serial = 6
             };
-            pizza3.Ingredients.Add(MediumSize);
-            pizza3.Ingredients.Add(Traditional);
-            pizza3.Ingredients.Add(tomatoSauce);
-            pizza3.Ingredients.Add(Ham);
 
             var Drink1 = new Drink("Coca Cola - 0.5L")
             {
@@ -127,25 +109,30 @@ namespace Uge_14_Pizzeria
                 // Adds selected pizza to checkOutList
                 if (listView1.SelectedItem is Pizza selectedunit)
                 {
-                    int price = selectedunit.GetPrice;
                     try
                     {
-                        string allingredients = "";
-
-                        foreach (Ingredient I in selectedunit.Ingredients)
+                        var temppizza = new Pizza(selectedunit.Name)
                         {
-                            allingredients += I.Name + ", ";
+                            Type = "Pizza",
+                            Ingredients = new ObservableCollection<Ingredient>(),
+                            Serial = GenerateSerial()
+                        };
+                        foreach(Ingredient I in selectedunit.Ingredients) 
+                        {
+                            temppizza.Ingredients.Add(I);
                         }
+
+                        // added visually to the right panel(checkout)
+                        ListView2.Items.Add(temppizza.Name + " - " + temppizza.GetIngredients + " - " + temppizza.GetPrice + "Kr");
+
+                        // added to the checkOutList
+                        PizzaViewModel.checkOutList.Add(temppizza);
                     }
                     catch (Exception er)
                     {
                         MessageBox.Show(er.ToString());
                     }
-                    // added visually to the right panel(checkout)
-                    ListView2.Items.Add(selectedunit.Name + " - "  + selectedunit.GetIngredients + " - " + price + "Kr");
 
-                    // added to the checkOutList
-                    PizzaViewModel.checkOutList.Add(selectedunit);
                 }
             }
             catch (Exception er)
@@ -167,7 +154,7 @@ namespace Uge_14_Pizzeria
             }
         }
         // not currently being used for anything, but i imagine giving objects unique ID's isnt a bad thing
-        public int GenerateSerial()
+        public static int GenerateSerial()
         {
             // returns 1 higher than current highest Serial Number
             int serialcount = 0;
@@ -210,12 +197,14 @@ namespace Uge_14_Pizzeria
                 MessageBox.Show(er.ToString());
             }
         }
+
         // custom pizza button, opens new dialog window
         private void BtnCustomPizza_Click(object sender, RoutedEventArgs e)
         {
             CustomPizza newcustompizza = new CustomPizza();
             newcustompizza.ShowDialog();
         }
+
         // applies coupon deals
         private void BtnCoupon_Click(object sender, RoutedEventArgs e)
         {
@@ -225,6 +214,7 @@ namespace Uge_14_Pizzeria
                 var drinkcount = 0;
                 Pizza ComparePizza = new Pizza("ComparePizza");
                 Drink CompareDrink = new Drink("CompareDrink");
+
                 foreach (IFoodItem P in PizzaViewModel.checkOutList)
                 {
                     if(P.GetType() == ComparePizza.GetType())
@@ -240,21 +230,38 @@ namespace Uge_14_Pizzeria
                     }
                 }
                 // Discount for 2 pizzas & 2 drinks, one pizza gets free Foundation
+
                 // ToDo, currently changes all foundation ingredient costs to 0 for all pizzas, even outside list. only needs to change on the specific pizza
                 // also changes all ingredient prices on custom pizza's which make no sense
                 if (pizzacount >= 2 && drinkcount >= 2)
                 {
                     foreach (IFoodItem P in PizzaViewModel.checkOutList)
                     {
-                        if (P.Type == "Pizza")
+                        if (P is Pizza)
                         {
+                            var couponpizza = new Pizza(P.Name)
+                            {
+                                Type = "Pizza",
+                                Ingredients = new ObservableCollection<Ingredient>(),
+                                Serial = GenerateSerial()
+                            };
+
                             foreach (Ingredient I in P.Ingredients)
+                            {
+                                couponpizza.Ingredients.Add(I);
+                            }
+
+                            foreach (Ingredient I in couponpizza.Ingredients)
                             {
                                 if (I.Type == "Foundation")
                                 {
                                     I.Price = 0;
                                 }
                             }
+
+                            PizzaViewModel.checkOutList.Remove(P);
+                            PizzaViewModel.checkOutList.Add(couponpizza);
+
                             break;
                         }
                     }
