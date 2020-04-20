@@ -14,6 +14,7 @@ namespace Uge_14_Pizzeria
         public DataTemplates()
         {
             InitializeComponent();
+
         }
 
         // for some reason, changing the size here, also changes the size for all of the same types of pizza's in the checkOutList (pizza4, pizza5, pizza6)
@@ -72,14 +73,22 @@ namespace Uge_14_Pizzeria
         // this is probably not needed anymore
         private void Size_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            //switch (SizeSelection.SelectedItem.ToString())
+            // trying to make to so when you click on the combobox it sets the focus(or selected) to the parent element
+
+
+            //FrameworkElement ctrl = control; //or whatever you're passing in, since all controls are FrameworkElements.
+
+            //// Move to a parent that can take focus
+            //FrameworkElement parent = (FrameworkElement)ctrl.Parent;
+            //while (parent != null && parent is IInputElement
+            //                  && !((IInputElement)parent).Focusable)
             //{
-            //    case "Circle":
-
-            //        break;
+            //    parent = (FrameworkElement)parent.Parent;
             //}
-        }
 
+            //DependencyObject scope = FocusManager.GetFocusScope(ctrl); //can pass in ctrl here because FrameworkElement inherits from DependencyObject
+            //FocusManager.SetFocusedElement(scope, parent as IInputElement);
+        }
 
     }
 }

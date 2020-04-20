@@ -4,8 +4,8 @@
                     x:Class="Uge_14_Pizzeria.DataTemplates"
                     x:ClassModifier="public">
     <!-- Pizza datatemplate -->
-    <DataTemplate  DataType="{x:Type local:Pizza}">
-        <Grid>
+    <DataTemplate DataType="{x:Type local:Pizza}">
+        <Grid x:Name="Root">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10*" />
             </Grid.ColumnDefinitions>
@@ -15,9 +15,11 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-
+            
+            <!--Name Display-->
             <TextBlock Grid.Row="0" Grid.Column="0" Height="23" HorizontalAlignment="Left" Text="{Binding Path=Name, StringFormat=Pizza: {0}}"   VerticalAlignment="Center" />
             
+            <!--Ingredients List-->
             <ListView Name="IngredientsList" ItemsSource="{Binding Ingredients}" Focusable="False" Grid.Row="1" Grid.Column="0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -57,10 +59,12 @@
                 </ListView.Style>
             </ListView>
             
-            <TextBlock Grid.Row="2" Grid.Column="0" Height="23" HorizontalAlignment="Left" Text="{Binding Path=GetPrice, StringFormat=Price: {0}}"    VerticalAlignment="Center" />
+            <!--Price Display-->
+            <TextBlock Grid.Row="2" Grid.Column="0" Height="23" HorizontalAlignment="Left" Text="{Binding Path=GetPrice, StringFormat=Price: {0}}" VerticalAlignment="Center" />
             
-            <ComboBox SelectionChanged="Size_SelectionChanged" SelectedIndex="0" Grid.Column="0" Grid.Row="3"  Margin="4" Name="SizeSelection" MaxWidth="120" HorizontalAlignment="Left">
-                <ComboBoxItem Selected="Small_Selected">Small</ComboBoxItem>
+            <!--Size Selection-->
+            <ComboBox FocusManager.FocusedElement="{Binding ElementName=Root}" SelectionChanged="Size_SelectionChanged" SelectedIndex="0" Grid.Column="0" Grid.Row="3"  Margin="4" Name="SizeSelection" MaxWidth="120" HorizontalAlignment="Left">
+                <ComboBoxItem FocusManager.FocusedElement="{Binding ElementName=Root}"  Selected="Small_Selected">Small</ComboBoxItem>
                 <ComboBoxItem Selected="Medium_Selected">Medium</ComboBoxItem>
                 <ComboBoxItem Selected="Large_Selected">Large</ComboBoxItem>
             </ComboBox>
@@ -68,7 +72,7 @@
         </Grid>
     </DataTemplate>
     <!-- Drink datatemplate -->
-    <DataTemplate   DataType="{x:Type local:Drink}">
+    <DataTemplate DataType="{x:Type local:Drink}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10*" />

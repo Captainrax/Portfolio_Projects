@@ -22,8 +22,8 @@ namespace Uge_14_Pizzeria
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static ObservableCollection<IFoodItem> OrderMenu;
-        public static ObservableCollection<Ingredient> IngredientsList = new ObservableCollection<Ingredient>();
+        public static ObservableCollection<IFoodItem> OrderMenu; // Left Panel
+        public static ObservableCollection<Ingredient> IngredientsList = new ObservableCollection<Ingredient>(); // used by CustomPizza
         readonly HandleData DATA = new HandleData();
 
         public MainWindow()
@@ -118,20 +118,6 @@ namespace Uge_14_Pizzeria
             this.DataContext = OrderMenu;
             ListView2.DataContext = PizzaViewModel.checkOutList;
         }
-        // not currently being used for anything, but i imagine giving objects unique ID's isnt a bad thing
-        public int GenerateSerial()
-        {
-            // returns 1 higher than current highest Serial Number
-            int serialcount = 0;
-            foreach (IFoodItem U in OrderMenu)
-            {
-                if (U.Serial >= serialcount)
-                {
-                    serialcount = U.Serial;
-                }
-            }
-            return serialcount + 1;
-        }
         // add selected item to checkout list
         private void BtnAddToCheckOut_Click(object sender, RoutedEventArgs e)
         {
@@ -142,10 +128,10 @@ namespace Uge_14_Pizzeria
                 if (listView1.SelectedItem is Pizza selectedunit)
                 {
                     int price = selectedunit.GetPrice;
-
-                    string allingredients = "";
                     try
                     {
+                        string allingredients = "";
+
                         foreach (Ingredient I in selectedunit.Ingredients)
                         {
                             allingredients += I.Name + ", ";
@@ -179,6 +165,27 @@ namespace Uge_14_Pizzeria
             {
                 MessageBox.Show(er.ToString());
             }
+        }
+        // not currently being used for anything, but i imagine giving objects unique ID's isnt a bad thing
+        public int GenerateSerial()
+        {
+            // returns 1 higher than current highest Serial Number
+            int serialcount = 0;
+            foreach (IFoodItem U in OrderMenu)
+            {
+                if (U.Serial >= serialcount)
+                {
+                    serialcount = U.Serial;
+                }
+            }
+            foreach (IFoodItem U in PizzaViewModel.checkOutList)
+            {
+                if (U.Serial >= serialcount)
+                {
+                    serialcount = U.Serial;
+                }
+            }
+            return serialcount + 1;
         }
 
         // display total price of checkout List
