@@ -41,10 +41,6 @@ namespace Uge_14_Pizzeria
                 return allingredients;
             }
         }
-        public void SetSize()
-        {
-            // somehow set bool sizes when changing combobox selected when adding to checkOutList
-        }
         public int GetPrice
         {
             get{
@@ -56,15 +52,15 @@ namespace Uge_14_Pizzeria
                 return allingredients;
             }
         }
-        //public void UpdatePrice()
-        //{
-        //    int updatedprice = 0;
-        //    foreach (Ingredient I in Ingredients)
-        //    {
-        //        updatedprice += I.Price;
-        //    }
-        //    Price = updatedprice;
-        //}
+        public void UpdatePrice()
+        {
+            int updatedprice = 0;
+            foreach (Ingredient I in Ingredients)
+            {
+                updatedprice += I.Price;
+            }
+            Price = updatedprice;
+        }
     }
     // Ingredients for Pizza
     public class Ingredient

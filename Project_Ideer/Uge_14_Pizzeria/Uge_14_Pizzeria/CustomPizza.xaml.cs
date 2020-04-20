@@ -27,11 +27,11 @@ namespace Uge_14_Pizzeria
 		}
 		private void btnDialogOk_Click(object sender, RoutedEventArgs e)
 		{
-            var pizza1 = new Pizza("Custom Pizza")
+            var pizza999 = new Pizza("Custom Pizza")
             {
                 Type = "Pizza",
                 Ingredients = new ObservableCollection<Ingredient>(),
-                Serial = 100
+                Serial = 999
             };
 
             foreach(Ingredient I in MainWindow.IngredientsList)
@@ -42,52 +42,58 @@ namespace Uge_14_Pizzeria
                 } 
                 else if(Foundation_Selection.SelectedItem.ToString() == I.Name.ToString())
                 {
-                    pizza1.Ingredients.Add(I);
+                    pizza999.Ingredients.Add(I);
                 }
+
                 if (Sauce_Selection.SelectedItem == null)
                 {
                 } 
                 else if (Sauce_Selection.SelectedItem.ToString() == I.Name.ToString())
                 {
-                    pizza1.Ingredients.Add(I);
+                    pizza999.Ingredients.Add(I);
                 }
+
                 if (Cheese_Selection.SelectedItem == null)
                 {
                 }
                 else if (Cheese_Selection.SelectedItem.ToString() == I.Name.ToString())
                 {
-                    pizza1.Ingredients.Add(I);
+                    pizza999.Ingredients.Add(I);
                 }
+
                 if (Proteins_Selection.SelectedItem == null)
                 {
                 }
                 else if (Proteins_Selection.SelectedItem.ToString() == I.Name.ToString())
                 {
-                    pizza1.Ingredients.Add(I);
+                    pizza999.Ingredients.Add(I);
                 }
+
                 if (Vegetables_Selection.SelectedItem == null)
                 {
                 }
                 else if (Vegetables_Selection.SelectedItem.ToString() == I.Name.ToString())
                 {
-                    pizza1.Ingredients.Add(I);
+                    pizza999.Ingredients.Add(I);
                 }
+
                 if (Size_Selection.SelectedItem == null)
                 {
                     // forced to choose in XAML
                 }
                 else if (Size_Selection.SelectedItem.ToString() == I.Name.ToString())
                 {
-                    pizza1.Ingredients.Add(I);
+                    pizza999.Ingredients.Add(I);
                 }
             }
-            try // oh god please fix this at some point please.
+            // adds the custom pizza to the checkout list an right panel
+            try 
             {
-                int price = pizza1.GetPrice;
+                int price = pizza999.GetPrice;
                 string allingredients = "";
                 try
                 {
-                    foreach (Ingredient I in pizza1.Ingredients)
+                    foreach (Ingredient I in pizza999.Ingredients)
                     {
                         allingredients += I.Name + ", ";
                     }
@@ -97,10 +103,10 @@ namespace Uge_14_Pizzeria
                     MessageBox.Show(er.ToString());
                 }
 
-                PizzaViewModel.checkOutList.Add(pizza1);
+                PizzaViewModel.checkOutList.Add(pizza999);
 
                 // ToDo Do this using ViewModel
-                ((MainWindow)Application.Current.MainWindow).ListView2.Items.Add(pizza1.Name + " " + " - " + allingredients + " - " + price + "Kr");
+                ((MainWindow)Application.Current.MainWindow).ListView2.Items.Add(pizza999.Name + " " + " - " + allingredients + " - " + price + "Kr");
             }
             catch (Exception er)
             {
@@ -130,6 +136,7 @@ namespace Uge_14_Pizzeria
             // this might not be needed, keeping it for now
         }
     }
+    // ViewModel for all avaliable ingredients
     public class ViewModel
     {
         public ObservableCollection<string> Foundation_List { get; set; }

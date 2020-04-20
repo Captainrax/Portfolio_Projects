@@ -7,19 +7,17 @@ using System.Text;
 
 namespace Uge_14_Pizzeria
 {
-    public class DAL
+    public class HandleData
     {
-        private ObservableCollection<IFoodItem> DataBase; // Da vi ikke har adgang til en database, 
-                                                       // simulerer vi med denne private liste....
+        private ObservableCollection<IFoodItem> DataBase; // simulated database (handles saving an loading initially)
 
-        private ObservableCollection<IFoodItem> _publicList; // Dette er objektet med elementer vi 
-                                                         // "deler ud" til brugeren af vores class.
+        private ObservableCollection<IFoodItem> _publicList; // "Public" list that gets used (data being used in current session)
 
 
         public static string SaveFolder = Path.Combine(Environment.CurrentDirectory, "PizzaData");
         public static string savedata = "PizzaData.JSON";
         public static string fileName = SaveFolder + "\\" + savedata;
-        public DAL()
+        public HandleData()
         {
             _publicList = new ObservableCollection<IFoodItem>();
         }
@@ -71,6 +69,7 @@ namespace Uge_14_Pizzeria
         }
 
         // Remove method
+
         //public int Delete(Unit Unit_Object)
         //{
         //    int returnvalue = 0;

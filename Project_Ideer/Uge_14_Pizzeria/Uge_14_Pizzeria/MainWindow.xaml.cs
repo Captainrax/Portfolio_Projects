@@ -24,15 +24,15 @@ namespace Uge_14_Pizzeria
     {
         public static ObservableCollection<IFoodItem> OrderMenu;
         public static ObservableCollection<Ingredient> IngredientsList = new ObservableCollection<Ingredient>();
-        readonly DAL DAL_Object = new DAL();
+        readonly HandleData DATA = new HandleData();
 
         public MainWindow()
         {
             PizzaViewModel.checkOutList = new ObservableCollection<IFoodItem>();
             InitializeComponent();
-            OrderMenu = DAL_Object.Get();
+            OrderMenu = DATA.Get();
 
-            // Manually adding fooditems
+            // Manually adding fooditems and ingredients
             var Traditional = new Ingredient() { Name = "Traditional", Price = 5, Type = "Foundation" };
             var tomatoSauce = new Ingredient() { Name = "TomatoSauce", Price = 5, Type = "Sauce" };
             var Cheese = new Ingredient() { Name = "Cheese", Price = 5, Type = "Cheese" };
@@ -42,6 +42,7 @@ namespace Uge_14_Pizzeria
             var SmallSize = new Ingredient() { Name = "Small", Price = 10, Type = "Size" };
             var MediumSize = new Ingredient() { Name = "Medium", Price = 15, Type = "Size" };
             var LargeSize = new Ingredient() { Name = "Large", Price = 20, Type = "Size" };
+            //added to a list for use in the custompizza dialog window (and also for the future when its not being created in code)
             IngredientsList.Add(Traditional);
             IngredientsList.Add(tomatoSauce);
             IngredientsList.Add(Cheese);
@@ -57,18 +58,40 @@ namespace Uge_14_Pizzeria
                 Ingredients = new ObservableCollection<Ingredient>(),
                 Serial = 4
             };
+
+            pizza1.Ingredients.Add(SmallSize);
+            pizza1.Ingredients.Add(Traditional);
+            pizza1.Ingredients.Add(tomatoSauce);
+            pizza1.Ingredients.Add(Cheese);
+            pizza1.Ingredients.Add(Ham);
+            pizza1.Ingredients.Add(Ham);
+            pizza1.Ingredients.Add(Ham);
+
             var pizza2 = new Pizza("Pizza5")
             {
                 Type = "Pizza",
                 Ingredients = new ObservableCollection<Ingredient>(),
                 Serial = 5
             };
+
+            pizza2.Ingredients.Add(LargeSize);
+            pizza2.Ingredients.Add(Traditional);
+            pizza2.Ingredients.Add(tomatoSauce);
+            pizza2.Ingredients.Add(Cheese);
+            pizza2.Ingredients.Add(Ham);
+            pizza2.Ingredients.Add(Onion);
+
             var pizza3 = new Pizza("Pizza6")
             {
                 Type = "Pizza",
                 Ingredients = new ObservableCollection<Ingredient>(),
                 Serial = 6
             };
+            pizza3.Ingredients.Add(MediumSize);
+            pizza3.Ingredients.Add(Traditional);
+            pizza3.Ingredients.Add(tomatoSauce);
+            pizza3.Ingredients.Add(Ham);
+
             var Drink1 = new Drink("Coca Cola - 0.5L")
             {
                 Price = 15
@@ -81,23 +104,6 @@ namespace Uge_14_Pizzeria
             {
                 Price = 25
             };
-            pizza1.Ingredients.Add(SmallSize);
-            pizza1.Ingredients.Add(Traditional);
-            pizza1.Ingredients.Add(tomatoSauce);
-            pizza1.Ingredients.Add(Cheese);
-            pizza1.Ingredients.Add(Ham);
-            pizza1.Ingredients.Add(Ham);
-            pizza1.Ingredients.Add(Ham);
-            pizza2.Ingredients.Add(LargeSize);
-            pizza2.Ingredients.Add(Traditional);
-            pizza2.Ingredients.Add(tomatoSauce);
-            pizza2.Ingredients.Add(Cheese);
-            pizza2.Ingredients.Add(Ham);
-            pizza2.Ingredients.Add(Onion);
-            pizza3.Ingredients.Add(MediumSize);
-            pizza3.Ingredients.Add(Traditional);
-            pizza3.Ingredients.Add(tomatoSauce);
-            pizza3.Ingredients.Add(Ham);
 
             OrderMenu.Add(pizza1);
             OrderMenu.Add(pizza2);
@@ -133,22 +139,8 @@ namespace Uge_14_Pizzeria
                 // Adds selected pizza to checkOutList
                 if (listView1.SelectedItem is Pizza selectedunit)
                 {
-                    //string pizzasize = "";
                     int price = selectedunit.GetPrice;
-                    //ToDo fix size selection on pizzas from ordermenu
 
-                    //if (DataTemplates.SizeSmall == true)
-                    //{
-                    //    pizzasize = "Small";
-                    //    selectedunit.SetSize();
-                    //    selectedunit.SetSize();
-                    //}
-                    //else if (DataTemplates.SizeLarge == true)
-                    //{
-                    //    pizzasize = "Large";
-                    //    selectedunit.SetSize();
-                    //    selectedunit.SetSize();
-                    //}
                     string allingredients = "";
                     try
                     {
@@ -161,10 +153,10 @@ namespace Uge_14_Pizzeria
                     {
                         MessageBox.Show(er.ToString());
                     }
-
+                    // added visually to the right panel(checkout)
                     ListView2.Items.Add(selectedunit.Name + " - "  + selectedunit.GetIngredients + " - " + price + "Kr");
 
-
+                    // added to the checkOutList
                     PizzaViewModel.checkOutList.Add(selectedunit);
                 }
             }
@@ -240,7 +232,7 @@ namespace Uge_14_Pizzeria
                 }
                 // Discount for 2 pizzas & 2 drinks, one pizza gets free Foundation
                 // ToDo, currently changes all foundation ingredient costs to 0 for all pizzas, even outside list. only needs to change on the specific pizza
-                // dosnt work on custom pizzas??????
+                // also changes all ingredient prices on custom pizza's which make no sense
                 if (pizzacount >= 2 && drinkcount >= 2)
                 {
                     foreach (IFoodItem P in PizzaViewModel.checkOutList)
