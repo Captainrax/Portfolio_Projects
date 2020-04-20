@@ -32,6 +32,7 @@ namespace Uge_14_Pizzeria
             InitializeComponent();
             OrderMenu = DATA.Get();
 
+            // coupon tooltip
             TooltipInfo.Text = "Coupon Code: \"FF\" (2 or more Pizzas and Drinks) \n Free foundation on the first pizza in the list";
 
             // Manually adding fooditems and ingredients
@@ -57,23 +58,22 @@ namespace Uge_14_Pizzeria
             var pizza1 = new Pizza("Pizza4")
             {
                 Type = "Pizza",
-                Ingredients = new ObservableCollection<Ingredient>() {SmallSize, Traditional, tomatoSauce, Cheese, Ham, Ham, Ham },
-                Serial = 4
-                
+                Ingredients = new ObservableCollection<Ingredient>() { SmallSize, Traditional, tomatoSauce, Cheese, Ham, Ham, Ham },
+                Serial = GenerateSerial()
             };
 
             var pizza2 = new Pizza("Pizza5")
             {
                 Type = "Pizza",
                 Ingredients = new ObservableCollection<Ingredient>() {LargeSize, Traditional, tomatoSauce, Cheese, Ham, Onion },
-                Serial = 5
+                Serial = GenerateSerial()
             };
 
             var pizza3 = new Pizza("Pizza6")
             {
                 Type = "Pizza",
                 Ingredients = new ObservableCollection<Ingredient>() {MediumSize, Traditional, tomatoSauce, Ham },
-                Serial = 6
+                Serial = GenerateSerial()
             };
 
             var Drink1 = new Drink("Coca Cola - 0.5L")
@@ -103,10 +103,9 @@ namespace Uge_14_Pizzeria
         // add selected item to checkout list
         private void BtnAddToCheckOut_Click(object sender, RoutedEventArgs e)
         {
-
+            // Adds selected pizza to checkOutList
             try
             {
-                // Adds selected pizza to checkOutList
                 if (listView1.SelectedItem is Pizza selectedunit)
                 {
                     try
@@ -139,6 +138,7 @@ namespace Uge_14_Pizzeria
             {
                 MessageBox.Show(er.ToString());
             }
+
             // Adds Drinks to checkOutList
             try
             {
@@ -182,14 +182,14 @@ namespace Uge_14_Pizzeria
             {
                 // gets prices, adds it to totalprice.
                 int totalprice = 0;
-                string pizzaList = "";
+                string OrderList = "";
                 foreach (IFoodItem U in PizzaViewModel.checkOutList)
                 {
                     totalprice += U.GetPrice;
-                    pizzaList += U.Name + " - " + U.GetPrice + "\n";
+                    OrderList += U.Name + " - " + U.GetPrice + "\n";
                 }
                 // Displays Final order
-                MessageBox.Show(pizzaList + "Total Price: " + totalprice.ToString() + " Kr.");
+                MessageBox.Show(OrderList + "Total Price: " + totalprice.ToString() + " Kr.");
                 totalprice = 0;
             }
             catch (Exception er)
