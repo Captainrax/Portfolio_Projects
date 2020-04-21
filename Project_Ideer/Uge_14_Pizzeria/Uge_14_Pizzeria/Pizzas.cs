@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
+using System.Threading;
 
 namespace Uge_14_Pizzeria
 {
@@ -68,6 +69,16 @@ namespace Uge_14_Pizzeria
         public string Type { get; set; }
         public string Name { get; set; }
         public int Price { get; set; }
+
+        static int NextId;
+        public int IngredientID { get; private set; }
+        // Constructor
+        public Ingredient()
+        {
+            // new ID everytime the constructor is called
+            IngredientID = Interlocked.Increment(ref NextId);
+        }
+
     }
     // Drinks
     public class Drink : IFoodItem

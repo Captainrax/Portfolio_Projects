@@ -17,39 +17,38 @@ namespace Uge_14_Pizzeria
 
         }
 
-        // for some reason, changing the size here, also changes the size for all of the same types of pizza's in the checkOutList (pizza4, pizza5, pizza6)
         private void Small_Selected(object sender, RoutedEventArgs e)
         {
             if( ((MainWindow)Application.Current.MainWindow).listView1.SelectedItem is Pizza selected)
             {
-                foreach (Ingredient I in MainWindow.IngredientsList)
+                foreach (Ingredient I in selected.Ingredients)
                 {
                     if (I.Type == "Size")
                     {
                         selected.Ingredients.Remove(I);
-                    }
-                    if (I.Name == "Small")
-                    {
-                        selected.Ingredients.Add(I);
+                        break;
                     }
                 }
+
+                var TempSmallSize = new Ingredient() { Name = "Small", Price = 10, Type = "Size" };
+                selected.Ingredients.Add(TempSmallSize);
             }
         }
         private void Medium_Selected(object sender, RoutedEventArgs e)
         {
             if (((MainWindow)Application.Current.MainWindow).listView1.SelectedItem is Pizza selected)
             {
-                foreach (Ingredient I in MainWindow.IngredientsList)
+                foreach (Ingredient I in selected.Ingredients)
                 {
                     if (I.Type == "Size")
                     {
                         selected.Ingredients.Remove(I);
-                    }
-                    if (I.Name == "Medium")
-                    {
-                        selected.Ingredients.Add(I);
+                        break;
+
                     }
                 }
+                var TempMediumSize = new Ingredient() { Name = "Medium", Price = 15, Type = "Size" };
+                selected.Ingredients.Add(TempMediumSize);
             }
         }
         private void Large_Selected(object sender, RoutedEventArgs e)
@@ -57,17 +56,16 @@ namespace Uge_14_Pizzeria
 
             if (((MainWindow)Application.Current.MainWindow).listView1.SelectedItem is Pizza selected)
             {
-                foreach (Ingredient I in MainWindow.IngredientsList)
+                foreach (Ingredient I in selected.Ingredients)
                 {
                     if (I.Type == "Size")
                     {
                         selected.Ingredients.Remove(I);
-                    }
-                    if (I.Name == "Large")
-                    {
-                        selected.Ingredients.Add(I);
+                        break;
                     }
                 }
+                var TempLargeSize = new Ingredient() { Name = "Large", Price = 20, Type = "Size" };
+                selected.Ingredients.Add(TempLargeSize);
             }
         }
         // this is probably not needed anymore

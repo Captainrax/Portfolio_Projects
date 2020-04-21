@@ -23,7 +23,6 @@ namespace Uge_14_Pizzeria
     public partial class MainWindow : Window
     {
         public static ObservableCollection<IFoodItem> OrderMenu; // Left Panel
-        public static ObservableCollection<Ingredient> IngredientsList = new ObservableCollection<Ingredient>(); // used by CustomPizza
         readonly HandleData DATA = new HandleData();
 
         public MainWindow()
@@ -35,44 +34,45 @@ namespace Uge_14_Pizzeria
             // coupon tooltip
             TooltipInfo.Text = "Coupon Code: \"FF\" (2 or more Pizzas and Drinks) \n Free foundation on the first pizza in the list";
 
-            // Manually adding fooditems and ingredients
-            var Traditional = new Ingredient() { Name = "Traditional", Price = 5, Type = "Foundation" };
-            var tomatoSauce = new Ingredient() { Name = "TomatoSauce", Price = 5, Type = "Sauce" };
-            var Cheese = new Ingredient() { Name = "Cheese", Price = 5, Type = "Cheese" };
-            var Ham = new Ingredient() { Name = "Ham", Price = 5, Type = "Protein" };
-            var Onion = new Ingredient() { Name = "Onion", Price = 5, Type = "Vegetable" };
-
-            var SmallSize = new Ingredient() { Name = "Small", Price = 10, Type = "Size" };
-            var MediumSize = new Ingredient() { Name = "Medium", Price = 15, Type = "Size" };
-            var LargeSize = new Ingredient() { Name = "Large", Price = 20, Type = "Size" };
-            //added to a list for use in the custompizza dialog window (and also for the future when its not being created in code)
-            IngredientsList.Add(Traditional);
-            IngredientsList.Add(tomatoSauce);
-            IngredientsList.Add(Cheese);
-            IngredientsList.Add(Ham);
-            IngredientsList.Add(Onion);
-            IngredientsList.Add(SmallSize);
-            IngredientsList.Add(MediumSize);
-            IngredientsList.Add(LargeSize);
-
             var pizza1 = new Pizza("Pizza4")
             {
                 Type = "Pizza",
-                Ingredients = new ObservableCollection<Ingredient>() { SmallSize, Traditional, tomatoSauce, Cheese, Ham, Ham, Ham },
+                Ingredients = new ObservableCollection<Ingredient>() 
+                {
+                    new Ingredient() { Name = "Small", Price = 10, Type = "Size" },
+                    new Ingredient() { Name = "Traditional", Price = 5, Type = "Foundation" },
+                    new Ingredient() { Name = "TomatoSauce", Price = 5, Type = "Sauce" },
+                    new Ingredient() { Name = "Cheese", Price = 5, Type = "Cheese" },
+                    new Ingredient() { Name = "Ham", Price = 5, Type = "Protein" }, 
+                },
                 Serial = GenerateSerial()
             };
 
             var pizza2 = new Pizza("Pizza5")
             {
                 Type = "Pizza",
-                Ingredients = new ObservableCollection<Ingredient>() {LargeSize, Traditional, tomatoSauce, Cheese, Ham, Onion },
+                Ingredients = new ObservableCollection<Ingredient>()
+                {
+                    new Ingredient() { Name = "Medium", Price = 10, Type = "Size" },
+                    new Ingredient() { Name = "Traditional", Price = 5, Type = "Foundation" },
+                    new Ingredient() { Name = "TomatoSauce", Price = 5, Type = "Sauce" },
+                    new Ingredient() { Name = "Cheese", Price = 5, Type = "Cheese" },
+                    new Ingredient() { Name = "Onion", Price = 5, Type = "Vegetable" },
+                    new Ingredient() { Name = "Ham", Price = 5, Type = "Protein" },
+                },
                 Serial = GenerateSerial()
             };
 
             var pizza3 = new Pizza("Pizza6")
             {
                 Type = "Pizza",
-                Ingredients = new ObservableCollection<Ingredient>() {MediumSize, Traditional, tomatoSauce, Ham },
+                Ingredients = new ObservableCollection<Ingredient>()
+                {
+                    new Ingredient() { Name = "Large", Price = 10, Type = "Size" },
+                    new Ingredient() { Name = "Traditional", Price = 5, Type = "Foundation" },
+                    new Ingredient() { Name = "TomatoSauce", Price = 5, Type = "Sauce" },
+                    new Ingredient() { Name = "Ham", Price = 5, Type = "Protein" },
+                },
                 Serial = GenerateSerial()
             };
 
@@ -153,10 +153,9 @@ namespace Uge_14_Pizzeria
                 MessageBox.Show(er.ToString());
             }
         }
-        // not currently being used for anything, but i imagine giving objects unique ID's isnt a bad thing
         public static int GenerateSerial()
         {
-            // returns 1 higher than current highest Serial Number
+            // returns 1 higher than current highest Serial Number(checks left panel and right panel)
             int serialcount = 0;
             foreach (IFoodItem U in OrderMenu)
             {
@@ -191,6 +190,9 @@ namespace Uge_14_Pizzeria
                 // Displays Final order
                 MessageBox.Show(OrderList + "Total Price: " + totalprice.ToString() + " Kr.");
                 totalprice = 0;
+                // Clears order
+                ListView2.Items.Clear();
+                PizzaViewModel.checkOutList.Clear();
             }
             catch (Exception er)
             {
@@ -231,8 +233,6 @@ namespace Uge_14_Pizzeria
                 }
                 // Discount for 2 pizzas & 2 drinks, one pizza gets free Foundation
 
-                // ToDo, currently changes all foundation ingredient costs to 0 for all pizzas, even outside list. only needs to change on the specific pizza
-                // also changes all ingredient prices on custom pizza's which make no sense
                 if (pizzacount >= 2 && drinkcount >= 2)
                 {
                     foreach (IFoodItem P in PizzaViewModel.checkOutList)
@@ -246,20 +246,26 @@ namespace Uge_14_Pizzeria
                                 Serial = GenerateSerial()
                             };
 
-                            foreach (Ingredient I in P.Ingredients)
+                            foreach (Ingredient I in P.Ingredients.ToList())
                             {
+                                // this wont continue to work if different ingredients also gets changed from other discounts, probably.
                                 couponpizza.Ingredients.Add(I);
                             }
+                            PizzaViewModel.checkOutList.Remove(P);
 
                             foreach (Ingredient I in couponpizza.Ingredients)
                             {
                                 if (I.Type == "Foundation")
                                 {
-                                    I.Price = 0;
+                                    couponpizza.Ingredients.Remove(I);
+
+                                    var TempTraditional = new Ingredient() { Name = "Traditional", Price = 0, Type = "Foundation" };
+
+                                    couponpizza.Ingredients.Add(TempTraditional);
+                                    break;
                                 }
                             }
 
-                            PizzaViewModel.checkOutList.Remove(P);
                             PizzaViewModel.checkOutList.Add(couponpizza);
 
                             break;

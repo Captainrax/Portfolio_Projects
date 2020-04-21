@@ -30,19 +30,19 @@
         </StackPanel>
         <StackPanel  Grid.Column="0" Grid.Row="1" MinWidth="100">
             <Label Name="LabelQuestion2" Content="Sauce: "/>
-            <ComboBox SelectionChanged="SelectionChanged"  Margin="10" Name="Sauce_Selection" ItemsSource="{Binding Sauce_List}"/>
+            <ComboBox SelectedIndex="1" SelectionChanged="SelectionChanged"  Margin="10" Name="Sauce_Selection" ItemsSource="{Binding Sauce_List}"/>
         </StackPanel>
         <StackPanel  Grid.Column="0" Grid.Row="2" MinWidth="100">
             <Label Name="LabelQuestion3" Content="Cheese: "/>
-            <ComboBox SelectionChanged="SelectionChanged"  Margin="10" Name="Cheese_Selection" ItemsSource="{Binding Cheese_List}"/>
+            <ComboBox SelectedIndex="1" SelectionChanged="SelectionChanged"  Margin="10" Name="Cheese_Selection" ItemsSource="{Binding Cheese_List}"/>
         </StackPanel>
         <StackPanel  Grid.Column="0" Grid.Row="3" MinWidth="100">
             <Label Name="LabelQuestion4" Content="Proteins: "/>
-            <ComboBox SelectionChanged="SelectionChanged" Margin="10" Name="Proteins_Selection" ItemsSource="{Binding Proteins_List}"/>
+            <ComboBox SelectedIndex="1" SelectionChanged="SelectionChanged" Margin="10" Name="Proteins_Selection" ItemsSource="{Binding Proteins_List}"/>
         </StackPanel>
         <StackPanel  Grid.Column="0" Grid.Row="4" MinWidth="100">
             <Label Name="LabelQuestion5" Content="Vegetables: "/>
-            <ComboBox SelectionChanged="SelectionChanged"  Margin="10" Name="Vegetables_Selection" ItemsSource="{Binding Vegetables_List}"/>
+            <ComboBox SelectedIndex="1" SelectionChanged="SelectionChanged"  Margin="10" Name="Vegetables_Selection" ItemsSource="{Binding Vegetables_List}"/>
         </StackPanel>
         <StackPanel  Grid.Column="0" Grid.Row="5" MinWidth="100">
             <Label Name="LabelQuestion6" Content="Size: "/>
