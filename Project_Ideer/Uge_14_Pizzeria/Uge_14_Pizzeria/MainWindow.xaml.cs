@@ -26,16 +26,21 @@ namespace Uge_14_Pizzeria
         readonly HandleData DATA = new HandleData();
         public bool CouponApplied = false;
         public string CouponEffect = "";
-        public int TotalOrderAmount {get; set;}
+
+
         public MainWindow()
         {
             PizzaViewModel.checkOutList = new ObservableCollection<IFoodItem>();
             InitializeComponent();
             OrderMenu = DATA.Get();
 
+            // setting datacontexts
             this.DataContext = OrderMenu;
-            this.TotalOrderAmount = TotalOrderAmount;
-            //this.Resources.Add("TotalOrderAmount", TotalOrderAmount);
+
+            // fix it
+            TotalOrderPrice.DataContext = TextInfo.totalOrderAmount;
+
+            ListView2.DataContext = PizzaViewModel.checkOutList;
             // coupon tooltip
             TooltipInfo.Text = "Coupon Code: \"FF\" (2 or more Pizzas and Drinks) \n Free foundation on the first pizza in the list";
 
@@ -101,8 +106,6 @@ namespace Uge_14_Pizzeria
             OrderMenu.Add(Drink2);
             OrderMenu.Add(Drink3);
 
-            // setting datacontexts
-            ListView2.DataContext = PizzaViewModel.checkOutList;
         }
         // add selected item to checkout list
         private void BtnAddToCheckOut_Click(object sender, RoutedEventArgs e)
@@ -157,6 +160,7 @@ namespace Uge_14_Pizzeria
                 MessageBox.Show(er.ToString());
             }
         }
+
         public static int GenerateSerial()
         {
             // returns 1 higher than current highest Serial Number(checks left panel and right panel)
@@ -253,11 +257,10 @@ namespace Uge_14_Pizzeria
 
                             foreach (Ingredient I in P.Ingredients.ToList())
                             {
-                                // this wont continue to work if different ingredients also gets changed from other discounts, probably.
                                 couponpizza.Ingredients.Add(I);
                             }
                             PizzaViewModel.checkOutList.Remove(P);
-
+                            // replace old ingredient with a new instance of the same with new price
                             foreach (Ingredient I in couponpizza.Ingredients)
                             {
                                 if (I.Type == "Foundation")
@@ -311,4 +314,38 @@ namespace Uge_14_Pizzeria
             CheckOutList = new ObservableCollection<IFoodItem>();
         }
     }
+    // updates totalorderamount
+    public class TextInfo : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public static int totalOrderAmount;
+        public int TotalOrderAmount
+        {
+            get { return totalOrderAmount; }
+
+            set
+            {
+                int totalprice = 0;
+                foreach (IFoodItem U in PizzaViewModel.checkOutList)
+                {
+                    totalprice += U.GetPrice;
+                }
+                totalOrderAmount = totalprice;
+
+                OnPropertyChanged(totalOrderAmount.ToString());
+            }
+        }
+        // this is probably not right, should check checkOutList for changes instead
+        private void OnPropertyChanged(string PropertyName)
+        {
+            // Raise the PropertyChanged event
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
+        }
+        public TextInfo()
+        {
+            TotalOrderAmount = totalOrderAmount;
+        }
+    }
+
 }

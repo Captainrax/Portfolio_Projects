@@ -6,8 +6,13 @@
         xmlns:local="clr-namespace:Uge_14_Pizzeria"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000">
+    <!--trying to get totalorderprice to work-->
+    <Window.DataContext>
+        <local:TextInfo/>
+    </Window.DataContext>
+    
     <Window.Resources>
-        <ResourceDictionary>
+        <ResourceDictionary >
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="DataTemplates.xaml"/>
             </ResourceDictionary.MergedDictionaries>
@@ -46,7 +51,7 @@
                  </ToolTipService.ToolTip>
             </TextBlock>
 
-            <TextBlock Text="{Binding ElementName=Mainwindow, Path=TotalOrderAmount, StringFormat=wad{0}}" Margin="100,0,0,0" VerticalAlignment="Center" Width="50"/>
+            <Label Name="TotalOrderPrice" Content="{Binding}" Margin="100,0,0,0" VerticalAlignment="Center" Width="50"/>
             <Button Content="CheckOut"  Name="BtnCheckOut"    Click="BtnCheckOut_Click" Height="30" Margin="10,0,0,0" Background="ForestGreen"/>
         </StackPanel>
 
