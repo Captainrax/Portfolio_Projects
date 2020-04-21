@@ -24,13 +24,18 @@ namespace Uge_14_Pizzeria
     {
         public static ObservableCollection<IFoodItem> OrderMenu; // Left Panel
         readonly HandleData DATA = new HandleData();
-
+        public bool CouponApplied = false;
+        public string CouponEffect = "";
+        public int TotalOrderAmount {get; set;}
         public MainWindow()
         {
             PizzaViewModel.checkOutList = new ObservableCollection<IFoodItem>();
             InitializeComponent();
             OrderMenu = DATA.Get();
 
+            this.DataContext = OrderMenu;
+            this.TotalOrderAmount = TotalOrderAmount;
+            //this.Resources.Add("TotalOrderAmount", TotalOrderAmount);
             // coupon tooltip
             TooltipInfo.Text = "Coupon Code: \"FF\" (2 or more Pizzas and Drinks) \n Free foundation on the first pizza in the list";
 
@@ -97,7 +102,6 @@ namespace Uge_14_Pizzeria
             OrderMenu.Add(Drink3);
 
             // setting datacontexts
-            this.DataContext = OrderMenu;
             ListView2.DataContext = PizzaViewModel.checkOutList;
         }
         // add selected item to checkout list
@@ -188,9 +192,10 @@ namespace Uge_14_Pizzeria
                     OrderList += U.Name + " - " + U.GetPrice + "\n";
                 }
                 // Displays Final order
-                MessageBox.Show(OrderList + "Total Price: " + totalprice.ToString() + " Kr.");
+                MessageBox.Show(OrderList + CouponEffect + "\n"+ "Total Price: " + totalprice.ToString() + " Kr.");
                 totalprice = 0;
                 // Clears order
+                CouponApplied = false;
                 ListView2.Items.Clear();
                 PizzaViewModel.checkOutList.Clear();
             }
@@ -233,7 +238,7 @@ namespace Uge_14_Pizzeria
                 }
                 // Discount for 2 pizzas & 2 drinks, one pizza gets free Foundation
 
-                if (pizzacount >= 2 && drinkcount >= 2)
+                if (pizzacount >= 2 && drinkcount >= 2 && CouponApplied == false)
                 {
                     foreach (IFoodItem P in PizzaViewModel.checkOutList)
                     {
@@ -267,7 +272,9 @@ namespace Uge_14_Pizzeria
                             }
 
                             PizzaViewModel.checkOutList.Add(couponpizza);
-
+                            CouponApplied = true;
+                            CouponEffect += "1 Free Foundation -5 kr.";
+                            ListView2.Items.Add(CouponEffect);
                             break;
                         }
                     }

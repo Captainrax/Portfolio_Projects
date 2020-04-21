@@ -45,8 +45,9 @@
                     <TextBlock Name="TooltipInfo" FontSize="14" FontWeight="Medium" Text="Error"/>
                  </ToolTipService.ToolTip>
             </TextBlock>
-            
-            <Button Content="CheckOut"  Name="BtnCheckOut"    Click="BtnCheckOut_Click" Height="30" Margin="100,0,0,0" Background="ForestGreen"/>
+
+            <TextBlock Text="{Binding ElementName=Mainwindow, Path=TotalOrderAmount, StringFormat=wad{0}}" Margin="100,0,0,0" VerticalAlignment="Center" Width="50"/>
+            <Button Content="CheckOut"  Name="BtnCheckOut"    Click="BtnCheckOut_Click" Height="30" Margin="10,0,0,0" Background="ForestGreen"/>
         </StackPanel>
 
     </Grid>
