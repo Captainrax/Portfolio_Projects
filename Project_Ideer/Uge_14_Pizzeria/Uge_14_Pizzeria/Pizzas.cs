@@ -87,6 +87,7 @@ namespace Uge_14_Pizzeria
         public string Type { get; set; }
         public string Name { get; set; }
         public int Price { get; set; }
+        // probably dosnt need an ingredient list
         public ObservableCollection<Ingredient> Ingredients { get; set; }
         public int Serial { get; set; }
 

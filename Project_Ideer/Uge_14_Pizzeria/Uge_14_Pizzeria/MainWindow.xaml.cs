@@ -24,21 +24,22 @@ namespace Uge_14_Pizzeria
     {
         public static ObservableCollection<IFoodItem> OrderMenu; // Left Panel
         readonly HandleData DATA = new HandleData();
+        // only 1 coupon can be applied at once
         public bool CouponApplied = false;
         public string CouponEffect = "";
-
 
         public MainWindow()
         {
             PizzaViewModel.checkOutList = new ObservableCollection<IFoodItem>();
+            PizzaViewModel.totalOrderAmount = new int();
             InitializeComponent();
             OrderMenu = DATA.Get();
 
             // setting datacontexts
             this.DataContext = OrderMenu;
 
-            // fix it
-            TotalOrderPrice.DataContext = TextInfo.totalOrderAmount;
+            // fix it (might work, if not set databinding in xaml to textinfo with the window resource datacontext thing an then bind that )
+            TotalOrderPrice.DataContext = PizzaViewModel.totalOrderAmount;
 
             ListView2.DataContext = PizzaViewModel.checkOutList;
             // coupon tooltip
@@ -159,6 +160,8 @@ namespace Uge_14_Pizzeria
             {
                 MessageBox.Show(er.ToString());
             }
+            // updates totalorderamount
+            PizzaViewModel.Update();
         }
 
         public static int GenerateSerial()
@@ -200,8 +203,11 @@ namespace Uge_14_Pizzeria
                 totalprice = 0;
                 // Clears order
                 CouponApplied = false;
+                CouponEffect = "";
                 ListView2.Items.Clear();
                 PizzaViewModel.checkOutList.Clear();
+
+                PizzaViewModel.Update();
             }
             catch (Exception er)
             {
@@ -214,6 +220,8 @@ namespace Uge_14_Pizzeria
         {
             CustomPizza newcustompizza = new CustomPizza();
             newcustompizza.ShowDialog();
+
+            PizzaViewModel.Update();
         }
 
         // applies coupon deals
@@ -275,9 +283,11 @@ namespace Uge_14_Pizzeria
                             }
 
                             PizzaViewModel.checkOutList.Add(couponpizza);
+                            PizzaViewModel.Update();
                             CouponApplied = true;
                             CouponEffect += "1 Free Foundation -5 kr.";
                             ListView2.Items.Add(CouponEffect);
+
                             break;
                         }
                     }
@@ -289,6 +299,7 @@ namespace Uge_14_Pizzeria
         {
             ListView2.Items.Clear();
             PizzaViewModel.checkOutList.Clear();
+            PizzaViewModel.Update();
         }
     }
 
@@ -308,43 +319,24 @@ namespace Uge_14_Pizzeria
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("CheckOutList"));
             }
         }
-
+        // constructor
         public PizzaViewModel()
         {
             CheckOutList = new ObservableCollection<IFoodItem>();
         }
-    }
-    // updates totalorderamount
-    public class TextInfo : INotifyPropertyChanged
-    {
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public static int totalOrderAmount;
-        public int TotalOrderAmount
+        // runs when BtnAddToCheckOut_Click is pressed
+        public static void Update()
         {
-            get { return totalOrderAmount; }
-
-            set
+            int totalprice = 0;
+            foreach (IFoodItem U in PizzaViewModel.checkOutList)
             {
-                int totalprice = 0;
-                foreach (IFoodItem U in PizzaViewModel.checkOutList)
-                {
-                    totalprice += U.GetPrice;
-                }
-                totalOrderAmount = totalprice;
-
-                OnPropertyChanged(totalOrderAmount.ToString());
+                totalprice += U.GetPrice;
             }
-        }
-        // this is probably not right, should check checkOutList for changes instead
-        private void OnPropertyChanged(string PropertyName)
-        {
-            // Raise the PropertyChanged event
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
-        }
-        public TextInfo()
-        {
-            TotalOrderAmount = totalOrderAmount;
+            totalOrderAmount = totalprice;
+
+            ((MainWindow)Application.Current.MainWindow).TotalOrderPrice.Content = totalOrderAmount;
         }
     }
 

@@ -8,7 +8,7 @@
         Title="MainWindow" Height="600" Width="1000">
     <!--trying to get totalorderprice to work-->
     <Window.DataContext>
-        <local:TextInfo/>
+        <local:PizzaViewModel/>
     </Window.DataContext>
     
     <Window.Resources>
@@ -29,14 +29,12 @@
             <RowDefinition Height="20*" />
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
-
-        <ListView  ItemsSource="{Binding}" HorizontalAlignment="Stretch" Margin="2" Name="listView1" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="0">
-         
-        </ListView>
         
-        <ListView Grid.Row="0" Grid.Column="1" Margin="2" Name="ListView2">
-            
-        </ListView>
+        <!--left list-->
+        <ListView  ItemsSource="{Binding}" HorizontalAlignment="Stretch" Margin="2" Name="listView1" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="0"></ListView>
+
+        <!--right list-->
+        <ListView Grid.Row="0" Grid.Column="1" Margin="2" Name="ListView2"></ListView>
 
         <StackPanel Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top"  MinHeight="30" Orientation="Horizontal">
             <Button Content="AddToCheckOut"  Name="BtnAddToCheckOut"    Click="BtnAddToCheckOut_Click" Height="30"/>
@@ -51,7 +49,7 @@
                  </ToolTipService.ToolTip>
             </TextBlock>
 
-            <Label Name="TotalOrderPrice" Content="{Binding}" Margin="100,0,0,0" VerticalAlignment="Center" Width="50"/>
+            <Label Name="TotalOrderPrice" Content="{Binding}" DataContext="{Binding Path=TotalOrderAmount}" Margin="100,0,0,0" VerticalAlignment="Center" Width="50"/>
             <Button Content="CheckOut"  Name="BtnCheckOut"    Click="BtnCheckOut_Click" Height="30" Margin="10,0,0,0" Background="ForestGreen"/>
         </StackPanel>
 
