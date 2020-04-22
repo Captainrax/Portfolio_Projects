@@ -18,13 +18,14 @@ namespace Uge_14_Pizzeria
     /// </summary>
     public partial class CustomPizza : Window
     {
-        public static ObservableCollection<Ingredient> IngredientsList = new ObservableCollection<Ingredient>(); // used by CustomPizza
+        public static ObservableCollection<Ingredient> IngredientsList; // used by CustomPizza
         public CustomPizza()
         {
             InitializeComponent();
 			// tooltip text
 			TooltipInfo.Text = "ToDo add tooltip info";
 
+            IngredientsList = new ObservableCollection<Ingredient>();
             // Manually adding fooditems and ingredients
             var Traditional = new Ingredient() { Name = "Traditional", Price = 5, Type = "Foundation" };
             var TomatoSauce = new Ingredient() { Name = "TomatoSauce", Price = 5, Type = "Sauce" };
@@ -127,10 +128,10 @@ namespace Uge_14_Pizzeria
                     MessageBox.Show(er.ToString());
                 }
 
-                PizzaViewModel.checkOutList.Add(pizza999);
-
                 // ToDo Do this using ViewModel
+                PizzaViewModel.checkOutList.Add(pizza999);
                 ((MainWindow)Application.Current.MainWindow).ListView2.Items.Add(pizza999.Name + " " + " - " + allingredients + " - " + price + "Kr");
+
             }
             catch (Exception er)
             {
@@ -164,7 +165,7 @@ namespace Uge_14_Pizzeria
     // ViewModel for all avaliable ingredients
     public class ViewModel
     {
-        public ObservableCollection<string> Foundation_List { get; set; }
+        public static ObservableCollection<string> Foundation_List { get; set; }
         public ObservableCollection<string> Sauce_List { get; set; }
         public ObservableCollection<string> Cheese_List { get; set; }
         public ObservableCollection<string> Proteins_List { get; set; }
