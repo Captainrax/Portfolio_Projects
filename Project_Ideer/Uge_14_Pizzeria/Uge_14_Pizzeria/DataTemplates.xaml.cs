@@ -66,8 +66,12 @@ namespace Uge_14_Pizzeria
                 }
                 var TempLargeSize = new Ingredient() { Name = "Large", Price = 20, Type = "Size" };
                 selected.Ingredients.Add(TempLargeSize);
+
+                // update PizzaPrice element somehow
+
             }
         }
+
         // this is probably not needed anymore
         private void Size_SelectionChanged(object sender, RoutedEventArgs e)
         {
@@ -88,5 +92,27 @@ namespace Uge_14_Pizzeria
             //FocusManager.SetFocusedElement(scope, parent as IInputElement);
         }
 
+        private void SizeSelection_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+
+            var cb = sender as ComboBox;
+
+            // todo this
+
+            if (e.ClickCount == 1)
+            {
+                // somehow select parent element from listview1
+
+                //MessageBox.Show(cb.Parent.ToString());
+
+               //((MainWindow)Application.Current.MainWindow).listView1.SelectedIndex ;
+              
+
+                    //((MainWindow)Application.Current.MainWindow).listView1.SelectedItem = cb.Parent;
+
+                }
+
+        }
     }
 }

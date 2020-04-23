@@ -50,6 +50,7 @@ namespace Uge_14_Pizzeria
                 {
                     allingredients += I.Price;
                 }
+
                 return allingredients;
             }
         }

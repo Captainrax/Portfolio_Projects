@@ -56,8 +56,6 @@ namespace Uge_14_Pizzeria
         // Copies current list to database an saves to file.
         public void Commit()
         {
-
-
             DataBase = new ObservableCollection<IFoodItem>(_publicList);
 
             StreamWriter file = new StreamWriter(fileName);
