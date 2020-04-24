@@ -32,6 +32,7 @@ namespace Uge_14_Pizzeria
 
                 var TempSmallSize = new Ingredient() { Name = "Small", Price = 10, Type = "Size" };
                 selected.Ingredients.Add(TempSmallSize);
+                // update PizzaPrice element somehow
             }
         }
         private void Medium_Selected(object sender, RoutedEventArgs e)
@@ -49,6 +50,7 @@ namespace Uge_14_Pizzeria
                 }
                 var TempMediumSize = new Ingredient() { Name = "Medium", Price = 15, Type = "Size" };
                 selected.Ingredients.Add(TempMediumSize);
+                // update PizzaPrice element somehow
             }
         }
         private void Large_Selected(object sender, RoutedEventArgs e)
