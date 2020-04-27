@@ -15,6 +15,7 @@ namespace Uge_14_Pizzeria
         {
             InitializeComponent();
 
+
         }
 
         private void Small_Selected(object sender, RoutedEventArgs e)
@@ -33,6 +34,7 @@ namespace Uge_14_Pizzeria
                 var TempSmallSize = new Ingredient() { Name = "Small", Price = 10, Type = "Size" };
                 selected.Ingredients.Add(TempSmallSize);
                 // update PizzaPrice element somehow
+                selected.Price = selected.UpdatePrice; // this works, now get it to display the new price somehow
             }
         }
         private void Medium_Selected(object sender, RoutedEventArgs e)
@@ -51,6 +53,7 @@ namespace Uge_14_Pizzeria
                 var TempMediumSize = new Ingredient() { Name = "Medium", Price = 15, Type = "Size" };
                 selected.Ingredients.Add(TempMediumSize);
                 // update PizzaPrice element somehow
+                selected.Price = selected.UpdatePrice; // this works, now get it to display the new price somehow
             }
         }
         private void Large_Selected(object sender, RoutedEventArgs e)
@@ -70,7 +73,14 @@ namespace Uge_14_Pizzeria
                 selected.Ingredients.Add(TempLargeSize);
 
                 // update PizzaPrice element somehow
+                selected.Price = selected.UpdatePrice; // this works, now get it to display the new price somehow
+                
+                TextBlock tb = sender as TextBlock;
 
+                // look into UserControl maybe?
+
+                //MessageBox.Show(tb.Text);
+                
             }
         }
 
@@ -104,16 +114,23 @@ namespace Uge_14_Pizzeria
 
             if (e.ClickCount == 1)
             {
+
+                //MessageBox.Show(cb.FindName("PizzaPrice").ToString());
+
+                if (cb.FindName("PizzaPrice").ToString() == "PizzaPrice")
+                {
+
+                }
                 // somehow select parent element from listview1
 
                 //MessageBox.Show(cb.Parent.ToString());
 
-               //((MainWindow)Application.Current.MainWindow).listView1.SelectedIndex ;
-              
+                //((MainWindow)Application.Current.MainWindow).listView1.SelectedIndex ;
 
-                    //((MainWindow)Application.Current.MainWindow).listView1.SelectedItem = cb.Parent;
 
-                }
+                //((MainWindow)Application.Current.MainWindow).listView1.SelectedItem = cb.Parent;
+
+            }
 
         }
     }

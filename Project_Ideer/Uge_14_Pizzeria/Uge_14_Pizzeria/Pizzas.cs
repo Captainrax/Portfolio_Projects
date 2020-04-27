@@ -54,14 +54,16 @@ namespace Uge_14_Pizzeria
                 return allingredients;
             }
         }
-        public void UpdatePrice()
+        public int UpdatePrice
         {
-            int updatedprice = 0;
-            foreach (Ingredient I in Ingredients)
-            {
-                updatedprice += I.Price;
+            get{
+                int updatedprice = 0;
+                foreach (Ingredient I in Ingredients)
+                {
+                    updatedprice += I.Price;
+                }
+                return updatedprice;
             }
-            Price = updatedprice;
         }
     }
     // Ingredients for Pizza

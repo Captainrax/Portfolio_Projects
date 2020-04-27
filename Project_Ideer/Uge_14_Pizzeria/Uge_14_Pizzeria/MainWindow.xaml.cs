@@ -40,7 +40,7 @@ namespace Uge_14_Pizzeria
 
             // fix it (might work, if not set databinding in xaml to textinfo with the window resource datacontext thing an then bind that )
             TotalOrderPrice.DataContext = PizzaViewModel.totalOrderAmount;
-
+            
             ListView2.DataContext = PizzaViewModel.checkOutList;
             // coupon tooltip
             TooltipInfo.Text = "Coupon Code: \"FF\" (2 or more Pizzas and Drinks) \n Free foundation on the first pizza in the list";
@@ -106,7 +106,9 @@ namespace Uge_14_Pizzeria
             OrderMenu.Add(Drink1);
             OrderMenu.Add(Drink2);
             OrderMenu.Add(Drink3);
-
+            pizza1.Price = pizza1.GetPrice;
+            pizza2.Price = pizza2.GetPrice;
+            pizza3.Price = pizza3.GetPrice;
         }
         // add selected item to checkout list
         private void BtnAddToCheckOut_Click(object sender, RoutedEventArgs e)
