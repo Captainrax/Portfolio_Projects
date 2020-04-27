@@ -199,7 +199,13 @@ namespace Uge_14_Pizzeria
                     OrderList += U.Name + " - " + U.GetPrice + "\n";
                 }
                 // Displays Final order
-                MessageBox.Show(OrderList + CouponEffect + "\n"+ "Total Price: " + totalprice.ToString() + " Kr.");
+                if (CouponEffect != "")
+                {
+                    MessageBox.Show(OrderList + CouponEffect + "\n" + "Total Price: " + totalprice.ToString() + " Kr.");
+                } else
+                {
+                    MessageBox.Show(OrderList + "Total Price: " + totalprice.ToString() + " Kr.");
+                }
                 totalprice = 0;
                 // Clears order
                 CouponApplied = false;
