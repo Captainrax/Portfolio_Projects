@@ -18,12 +18,12 @@ namespace Uge_14_Pizzeria
     /// </summary>
     public partial class CustomPizza : Window
     {
-        public static ObservableCollection<Ingredient> IngredientsList; // used by CustomPizza
+        public static ObservableCollection<Ingredient> IngredientsList; // used by CustomPizza viewmodel
         public CustomPizza()
         {
             InitializeComponent();
 			// tooltip text
-			TooltipInfo.Text = "ToDo add tooltip info";
+			TooltipInfo.Text = "Each Ingredient Type is 5kr. \n Sizes: \n Small: 10kr. \n Medium: 15kr. \n Large: 20kr.";
 
             IngredientsList = new ObservableCollection<Ingredient>();
             // Manually adding fooditems and ingredients
@@ -128,7 +128,7 @@ namespace Uge_14_Pizzeria
                     MessageBox.Show(er.ToString());
                 }
 
-                // ToDo Do this using ViewModel
+                // adds custompizza to checkOutList
                 PizzaViewModel.checkOutList.Add(pizza999);
                 ((MainWindow)Application.Current.MainWindow).ListView2.Items.Add(pizza999.Name + " " + " - " + allingredients + " - " + price + "Kr");
 
@@ -207,6 +207,7 @@ namespace Uge_14_Pizzeria
                     Size_List.Add(I.Name);
                 }
             }
+            // adds "nothing" option so it dosnt get a null exeception
             string NothingOption = "Nothing";
             Sauce_List.Add(NothingOption);
             Cheese_List.Add(NothingOption);

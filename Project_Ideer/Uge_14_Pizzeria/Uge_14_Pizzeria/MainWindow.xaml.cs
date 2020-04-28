@@ -35,12 +35,9 @@ namespace Uge_14_Pizzeria
             InitializeComponent();
             OrderMenu = DATA.Get();
 
-            // setting datacontexts
+            // setting datacontexts (should move everything into 1 viewmodel an set bindings from that, would simplify things)
             this.DataContext = OrderMenu;
-
-            // fix it (might work, if not set databinding in xaml to textinfo with the window resource datacontext thing an then bind that )
             TotalOrderPrice.DataContext = PizzaViewModel.totalOrderAmount;
-            
             ListView2.DataContext = PizzaViewModel.checkOutList;
             // coupon tooltip
             TooltipInfo.Text = "Coupon Code: \"FF\" (2 or more Pizzas and Drinks) \n Free foundation on the first pizza in the list";
@@ -264,6 +261,7 @@ namespace Uge_14_Pizzeria
                     {
                         if (P is Pizza)
                         {
+                            // generate new instance of a pizza, add selected pizza's ingredients to newly created pizza
                             var couponpizza = new Pizza(P.Name)
                             {
                                 Type = "Pizza",
@@ -275,6 +273,7 @@ namespace Uge_14_Pizzeria
                             {
                                 couponpizza.Ingredients.Add(I);
                             }
+                            // remove "old" pizza
                             PizzaViewModel.checkOutList.Remove(P);
                             // replace old ingredient with a new instance of the same with new price
                             foreach (Ingredient I in couponpizza.Ingredients)
@@ -289,7 +288,7 @@ namespace Uge_14_Pizzeria
                                     break;
                                 }
                             }
-
+                            // add new pizza
                             PizzaViewModel.checkOutList.Add(couponpizza);
                             PizzaViewModel.Update();
                             CouponApplied = true;
@@ -311,7 +310,7 @@ namespace Uge_14_Pizzeria
         }
     }
 
-    //add the List to a viewmodel to get it to update when adding new fooditems
+    //added the List to a viewmodel to get it to update when adding new fooditems
     public class PizzaViewModel : INotifyPropertyChanged
     {
         public static ObservableCollection<IFoodItem> checkOutList;
@@ -334,7 +333,7 @@ namespace Uge_14_Pizzeria
         }
 
         public static int totalOrderAmount;
-        // runs when BtnAddToCheckOut_Click is pressed
+        // runs when whenever any change is made
         public static void Update()
         {
             int totalprice = 0;
