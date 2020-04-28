@@ -26,17 +26,20 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
             <RowDefinition Height="20*" />
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
         
         <!--left list-->
-        <ListView  ItemsSource="{Binding}" HorizontalAlignment="Stretch" Margin="2" Name="listView1" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="0"></ListView>
+        <Label Content="Order Menu" Grid.Column="0" HorizontalAlignment="Center"/>
+        <ListView  ItemsSource="{Binding}" HorizontalAlignment="Stretch" Margin="2" Name="listView1" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="0"></ListView>
 
         <!--right list-->
-        <ListView Grid.Row="0" Grid.Column="1" Margin="2" Name="ListView2"></ListView>
+        <Label Content="Check Out" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"/>
+        <ListView Grid.Row="1" Grid.Column="1" Margin="2" Name="ListView2"></ListView>
 
-        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top"  MinHeight="30" Orientation="Horizontal">
+        <StackPanel Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Top"  MinHeight="30" Orientation="Horizontal">
             <Button Content="AddToCheckOut"  Name="BtnAddToCheckOut"    Click="BtnAddToCheckOut_Click" Height="30"/>
             <Button Content="AddCustomPizza"  Name="BtnCustomPizza"    Click="BtnCustomPizza_Click" Height="30" Margin="100,0,0,0" />
             <Button Content="Clear"  Name="BtnClear"    Click="BtnClear_Click" Height="30" Margin="100,0,0,0"/>

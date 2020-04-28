@@ -189,6 +189,7 @@ namespace Uge_14_Pizzeria
         {
             try
             {
+                string OrderInfo = "CheckOut";
                 // gets prices, adds it to totalprice.
                 int totalprice = 0;
                 string OrderList = "";
@@ -200,7 +201,7 @@ namespace Uge_14_Pizzeria
                 // Displays Final order
                 if (CouponEffect != "")
                 {
-                    MessageBox.Show(OrderList + CouponEffect + "\n" + "Total Price: " + totalprice.ToString() + " Kr.");
+                    MessageBox.Show(OrderInfo +"\n"+ OrderList + CouponEffect + "\n" + "Total Price: " + totalprice.ToString() + " Kr.");
                 } else
                 {
                     MessageBox.Show(OrderList + "Total Price: " + totalprice.ToString() + " Kr.");
