@@ -129,7 +129,7 @@ namespace Uge_14_Pizzeria
                         }
 
                         // added visually to the right panel(checkout)
-                        ListView2.Items.Add(temppizza.Name + " - " + temppizza.GetIngredients + " - " + temppizza.GetPrice + "Kr");
+                        //ListView2.Items.Add(temppizza.Name + " - " + temppizza.GetIngredients + " - " + temppizza.GetPrice + "Kr");
 
                         // added to the checkOutList
                         PizzaViewModel.checkOutList.Add(temppizza);
@@ -151,7 +151,7 @@ namespace Uge_14_Pizzeria
             {
                 if (listView1.SelectedItem is Drink selectedunit)
                 {
-                    ListView2.Items.Add(selectedunit.Name + " - " + selectedunit.Price + "Kr");
+                    //ListView2.Items.Add(selectedunit.Name + " - " + selectedunit.Price + "Kr");
                     PizzaViewModel.checkOutList.Add(selectedunit);
                 }
             }
@@ -294,7 +294,8 @@ namespace Uge_14_Pizzeria
                             PizzaViewModel.Update();
                             CouponApplied = true;
                             CouponEffect += "1 Free Foundation -5 kr.";
-                            ListView2.Items.Add(CouponEffect);
+                            //ToDo add couponeffect to list
+                            //PizzaViewModel.checkOutList.Add(CouponEffect);
 
                             break;
                         }
@@ -305,7 +306,7 @@ namespace Uge_14_Pizzeria
         // Clears checkOutList of items
         private void BtnClear_Click(object sender, RoutedEventArgs e)
         {
-            ListView2.Items.Clear();
+            //ListView2.Items.Clear();
             PizzaViewModel.checkOutList.Clear();
             PizzaViewModel.Update();
         }

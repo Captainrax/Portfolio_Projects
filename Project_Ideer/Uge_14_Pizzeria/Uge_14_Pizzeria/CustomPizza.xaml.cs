@@ -25,26 +25,32 @@ namespace Uge_14_Pizzeria
 			// tooltip text
 			TooltipInfo.Text = "Each Ingredient Type is 5kr. \n Sizes: \n Small: 10kr. \n Medium: 15kr. \n Large: 20kr.";
 
-            IngredientsList = new ObservableCollection<Ingredient>();
             // Manually adding fooditems and ingredients
-            var Traditional = new Ingredient() { Name = "Traditional", Price = 5, Type = "Foundation" };
-            var TomatoSauce = new Ingredient() { Name = "TomatoSauce", Price = 5, Type = "Sauce" };
-            var Cheese = new Ingredient() { Name = "Cheese", Price = 5, Type = "Cheese" };
-            var Ham = new Ingredient() { Name = "Ham", Price = 5, Type = "Protein" };
-            var Onion = new Ingredient() { Name = "Onion", Price = 5, Type = "Vegetable" };
+            Ingredient Thin_Crust = new Ingredient() { Name = "Thin Crust", Price = 5, Type = "Foundation" };
+            Ingredient Thick_Crust = new Ingredient() { Name = "Thick Crust", Price = 5, Type = "Foundation" };
+            Ingredient Stuffed_Crust = new Ingredient() { Name = "Stuffed Crust", Price = 5, Type = "Foundation" };
+            Ingredient TomatoSauce = new Ingredient() { Name = "TomatoSauce", Price = 5, Type = "Sauce" };
+            Ingredient BBQDressing = new Ingredient() { Name = "BBQDressing", Price = 5, Type = "Sauce" };
+            Ingredient Mozzarella = new Ingredient() { Name = "Mozzarella", Price = 5, Type = "Cheese" };
+            Ingredient Emmentaler = new Ingredient() { Name = "Emmentaler", Price = 5, Type = "Cheese" };
+            Ingredient Ham = new Ingredient() { Name = "Ham", Price = 5, Type = "Protein" };
+            Ingredient Pepperoni = new Ingredient() { Name = "Pepperoni", Price = 5, Type = "Protein" };
+            Ingredient Onion = new Ingredient() { Name = "Onion", Price = 5, Type = "Vegetable" };
+            Ingredient Salad = new Ingredient() { Name = "Salad", Price = 5, Type = "Vegetable" };
 
-            var SmallSize = new Ingredient() { Name = "Small", Price = 10, Type = "Size" };
-            var MediumSize = new Ingredient() { Name = "Medium", Price = 15, Type = "Size" };
-            var LargeSize = new Ingredient() { Name = "Large", Price = 20, Type = "Size" };
+            Ingredient SmallSize = new Ingredient() { Name = "Small", Price = 10, Type = "Size" };
+            Ingredient MediumSize = new Ingredient() { Name = "Medium", Price = 15, Type = "Size" };
+            Ingredient LargeSize = new Ingredient() { Name = "Large", Price = 20, Type = "Size" };
 
-            IngredientsList.Add(Traditional);
-            IngredientsList.Add(TomatoSauce);
-            IngredientsList.Add(Cheese);
-            IngredientsList.Add(Ham);
-            IngredientsList.Add(Onion);
-            IngredientsList.Add(SmallSize);
-            IngredientsList.Add(MediumSize);
-            IngredientsList.Add(LargeSize);
+            IngredientsList = new ObservableCollection<Ingredient>()
+            {
+                Thin_Crust, Thick_Crust,
+                TomatoSauce, BBQDressing,
+                Mozzarella, Emmentaler,
+                Ham, Pepperoni,
+                Onion, Salad,
+                SmallSize, MediumSize, LargeSize
+            };
 
             // DataContext
             DataContext = new ViewModel();
@@ -52,7 +58,7 @@ namespace Uge_14_Pizzeria
 		private void btnDialogOk_Click(object sender, RoutedEventArgs e)
 		{
             // new instance of a pizza so it dosnt get affected by other things
-            var pizza999 = new Pizza("Custom Pizza")
+            Pizza pizza999 = new Pizza("Custom Pizza")
             {
                 Type = "Pizza",
                 Ingredients = new ObservableCollection<Ingredient>(),
@@ -62,51 +68,75 @@ namespace Uge_14_Pizzeria
             // this feels like a future proof ish way of doing it
             switch (Foundation_Selection.SelectedItem.ToString())
             {
-                case "Traditional":
-                    var Traditional = new Ingredient() { Name = "Traditional", Price = 5, Type = "Foundation" };
-                    pizza999.Ingredients.Add(Traditional);
+                case "Thin Crust":
+                    Ingredient Thin_Crust = new Ingredient() { Name = "Thin Crust", Price = 5, Type = "Foundation" };
+                    pizza999.Ingredients.Add(Thin_Crust);
+                    break;
+                case "Thick Crust":
+                    Ingredient Thick_Crust = new Ingredient() { Name = "Thick Crust", Price = 5, Type = "Foundation" };
+                    pizza999.Ingredients.Add(Thick_Crust);
+                    break;
+                case "Stuffed Crust":
+                    Ingredient Stuffed_Crust = new Ingredient() { Name = "Stuffed Crust", Price = 5, Type = "Foundation" };
+                    pizza999.Ingredients.Add(Stuffed_Crust);
                     break;
             }
             switch (Sauce_Selection.SelectedItem.ToString())
             {
                 case "TomatoSauce":
-                    var TomatoSauce = new Ingredient() { Name = "TomatoSauce", Price = 5, Type = "Sauce" };
+                    Ingredient TomatoSauce = new Ingredient() { Name = "TomatoSauce", Price = 5, Type = "Sauce" };
                     pizza999.Ingredients.Add(TomatoSauce);
+                    break;
+                case "BBQDressing":
+                    Ingredient BBQDressing = new Ingredient() { Name = "BBQDressing", Price = 5, Type = "Sauce" };
+                    pizza999.Ingredients.Add(BBQDressing);
                     break;
             }
             switch (Cheese_Selection.SelectedItem.ToString())
             {
-                case "Cheese":
-                    var Cheese = new Ingredient() { Name = "Cheese", Price = 5, Type = "Cheese" };
-                    pizza999.Ingredients.Add(Cheese);
+                case "Mozzarella":
+                    Ingredient Mozzarella = new Ingredient() { Name = "Mozzarella", Price = 5, Type = "Cheese" };
+                    pizza999.Ingredients.Add(Mozzarella);
+                    break;
+                case "Emmentaler":
+                    Ingredient Emmentaler = new Ingredient() { Name = "Emmentaler", Price = 5, Type = "Cheese" };
+                    pizza999.Ingredients.Add(Emmentaler);
                     break;
             }
             switch (Proteins_Selection.SelectedItem.ToString())
             {
                 case "Ham":
-                    var Ham = new Ingredient() { Name = "Ham", Price = 5, Type = "Protein" };
+                    Ingredient Ham = new Ingredient() { Name = "Ham", Price = 5, Type = "Protein" };
                     pizza999.Ingredients.Add(Ham);
+                    break;
+                case "Pepperoni":
+                    Ingredient Pepperoni = new Ingredient() { Name = "Pepperoni", Price = 5, Type = "Protein" };
+                    pizza999.Ingredients.Add(Pepperoni);
                     break;
             }
             switch (Vegetables_Selection.SelectedItem.ToString())
             {
                 case "Onion":
-                    var Onion = new Ingredient() { Name = "Onion", Price = 5, Type = "Vegetable" };
+                    Ingredient Onion = new Ingredient() { Name = "Onion", Price = 5, Type = "Vegetable" };
                     pizza999.Ingredients.Add(Onion);
+                    break;
+                case "Salad":
+                    Ingredient Salad = new Ingredient() { Name = "Salad", Price = 5, Type = "Vegetable" };
+                    pizza999.Ingredients.Add(Salad);
                     break;
             }
             switch (Size_Selection.SelectedItem.ToString())
             {
                 case "Small":
-                    var SmallSize = new Ingredient() { Name = "Small", Price = 10, Type = "Size" };
+                    Ingredient SmallSize = new Ingredient() { Name = "Small", Price = 10, Type = "Size" };
                     pizza999.Ingredients.Add(SmallSize);
                     break;
                 case "Medium":
-                    var MediumSize = new Ingredient() { Name = "Medium", Price = 15, Type = "Size" };
+                    Ingredient MediumSize = new Ingredient() { Name = "Medium", Price = 15, Type = "Size" };
                     pizza999.Ingredients.Add(MediumSize);
                     break;
                 case "Large":
-                    var LargeSize = new Ingredient() { Name = "Large", Price = 20, Type = "Size" };
+                    Ingredient LargeSize = new Ingredient() { Name = "Large", Price = 20, Type = "Size" };
                     pizza999.Ingredients.Add(LargeSize);
                     break;
             }
@@ -114,23 +144,18 @@ namespace Uge_14_Pizzeria
             // adds the custom pizza to the checkout list and right panel
             try 
             {
-                int price = pizza999.GetPrice;
-                string allingredients = "";
+                pizza999.Price = pizza999.GetPrice;
                 try
                 {
-                    foreach (Ingredient I in pizza999.Ingredients)
-                    {
-                        allingredients += I.Name + ", ";
-                    }
+                    // adds custompizza to checkOutList
+                    PizzaViewModel.checkOutList.Add(pizza999);
                 }
                 catch (Exception er)
                 {
                     MessageBox.Show(er.ToString());
                 }
 
-                // adds custompizza to checkOutList
-                PizzaViewModel.checkOutList.Add(pizza999);
-                ((MainWindow)Application.Current.MainWindow).ListView2.Items.Add(pizza999.Name + " " + " - " + allingredients + " - " + price + "Kr");
+                //((MainWindow)Application.Current.MainWindow).ListView2.Items.Add(pizza999.Name + " " + " - " + allingredients + " - " + price + "Kr");
 
             }
             catch (Exception er)

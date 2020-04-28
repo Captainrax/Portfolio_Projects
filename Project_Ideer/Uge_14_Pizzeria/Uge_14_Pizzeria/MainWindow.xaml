@@ -36,8 +36,8 @@
         <ListView  ItemsSource="{Binding}" HorizontalAlignment="Stretch" Margin="2" Name="listView1" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="0"></ListView>
 
         <!--right list-->
-        <Label Content="Check Out" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"/>
-        <ListView Grid.Row="1" Grid.Column="1" Margin="2" Name="ListView2"></ListView>
+        <Label Content="Your order" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"/>
+        <ListView ItemsSource="{Binding}" Grid.Row="1" Grid.Column="1" Margin="2" Name="ListView2"></ListView>
 
         <StackPanel Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Top"  MinHeight="30" Orientation="Horizontal">
             <Button Content="AddToCheckOut"  Name="BtnAddToCheckOut"    Click="BtnAddToCheckOut_Click" Height="30"/>
