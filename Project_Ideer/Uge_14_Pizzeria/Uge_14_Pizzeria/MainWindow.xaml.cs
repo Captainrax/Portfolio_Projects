@@ -42,43 +42,41 @@ namespace Uge_14_Pizzeria
             // coupon tooltip
             TooltipInfo.Text = "Coupon Code: \"FF\" (2 or more Pizzas and Drinks) \n Free foundation on the first pizza in the list";
 
-            var pizza1 = new Pizza("Pizza4")
+            var pizza1 = new Pizza("Pepperoni Pizza")
             {
                 Type = "Pizza",
                 Ingredients = new ObservableCollection<Ingredient>() 
                 {
                     new Ingredient() { Name = "Small", Price = 10, Type = "Size" },
-                    new Ingredient() { Name = "Traditional", Price = 5, Type = "Foundation" },
+                    new Ingredient() { Name = "Thin Crust", Price = 5, Type = "Foundation" },
                     new Ingredient() { Name = "TomatoSauce", Price = 5, Type = "Sauce" },
-                    new Ingredient() { Name = "Cheese", Price = 5, Type = "Cheese" },
-                    new Ingredient() { Name = "Ham", Price = 5, Type = "Protein" }, 
+                    new Ingredient() { Name = "Pepperoni", Price = 5, Type = "Protein" }, 
                 },
                 Serial = GenerateSerial()
             };
 
-            var pizza2 = new Pizza("Pizza5")
+            var pizza2 = new Pizza("Hawaiian pizza")
             {
                 Type = "Pizza",
                 Ingredients = new ObservableCollection<Ingredient>()
                 {
                     new Ingredient() { Name = "Medium", Price = 10, Type = "Size" },
-                    new Ingredient() { Name = "Traditional", Price = 5, Type = "Foundation" },
-                    new Ingredient() { Name = "TomatoSauce", Price = 5, Type = "Sauce" },
-                    new Ingredient() { Name = "Cheese", Price = 5, Type = "Cheese" },
-                    new Ingredient() { Name = "Onion", Price = 5, Type = "Vegetable" },
+                    new Ingredient() { Name = "Thin Crust", Price = 5, Type = "Foundation" },
+                    new Ingredient() { Name = "Mozzarella", Price = 5, Type = "Cheese" },
                     new Ingredient() { Name = "Ham", Price = 5, Type = "Protein" },
+                    new Ingredient() { Name = "Pineapple", Price = 5, Type = "Vegetable" },
                 },
                 Serial = GenerateSerial()
             };
 
-            var pizza3 = new Pizza("Pizza6")
+            var pizza3 = new Pizza("Calzone Pizza")
             {
                 Type = "Pizza",
                 Ingredients = new ObservableCollection<Ingredient>()
                 {
                     new Ingredient() { Name = "Large", Price = 10, Type = "Size" },
-                    new Ingredient() { Name = "Traditional", Price = 5, Type = "Foundation" },
-                    new Ingredient() { Name = "TomatoSauce", Price = 5, Type = "Sauce" },
+                    new Ingredient() { Name = "Thick Crust", Price = 5, Type = "Foundation" },
+                    new Ingredient() { Name = "Mozzarella", Price = 5, Type = "Cheese" },
                     new Ingredient() { Name = "Ham", Price = 5, Type = "Protein" },
                 },
                 Serial = GenerateSerial()
