@@ -260,13 +260,14 @@ namespace Uge_14_Pizzeria
                         if (P is Pizza)
                         {
                             // ToDo make the most expensive foundation from 1 pizza cost 0
-                            //int PizPrice = 0;
+
+                            int PizPrice = 0;
                             //foreach (Pizza Piz in PizzaViewModel.checkOutList)
                             //{
                             //    if (Piz.Price >= PizPrice)
                             //    {
                             //        PizPrice = Piz.Price;
-                                    
+
                             //    }
                             //}
 

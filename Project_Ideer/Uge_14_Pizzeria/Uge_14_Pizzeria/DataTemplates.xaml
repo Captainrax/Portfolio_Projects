@@ -4,7 +4,7 @@
                     x:Class="Uge_14_Pizzeria.DataTemplates"
                     x:ClassModifier="public">
     <!-- Pizza datatemplate -->
-    <DataTemplate DataType="{x:Type local:Pizza}" x:Name="Root">
+    <DataTemplate DataType="{x:Type local:Pizza}">
         <Grid x:Name="Root_Grid">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10*" />
