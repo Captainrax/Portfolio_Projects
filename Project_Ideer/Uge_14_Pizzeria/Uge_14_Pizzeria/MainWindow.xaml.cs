@@ -208,7 +208,6 @@ namespace Uge_14_Pizzeria
                 // Clears order
                 CouponApplied = false;
                 CouponEffect = "";
-                ListView2.Items.Clear();
                 PizzaViewModel.checkOutList.Clear();
 
                 PizzaViewModel.Update();
@@ -260,8 +259,20 @@ namespace Uge_14_Pizzeria
                     {
                         if (P is Pizza)
                         {
+                            // ToDo make the most expensive foundation from 1 pizza cost 0
+                            //int PizPrice = 0;
+                            //foreach (Pizza Piz in PizzaViewModel.checkOutList)
+                            //{
+                            //    if (Piz.Price >= PizPrice)
+                            //    {
+                            //        PizPrice = Piz.Price;
+                                    
+                            //    }
+                            //}
+
+
                             // generate new instance of a pizza, add selected pizza's ingredients to newly created pizza
-                            var couponpizza = new Pizza(P.Name)
+                            Pizza couponpizza = new Pizza(P.Name)
                             {
                                 Type = "Pizza",
                                 Ingredients = new ObservableCollection<Ingredient>(),
@@ -279,9 +290,9 @@ namespace Uge_14_Pizzeria
                             {
                                 if (I.Type == "Foundation")
                                 {
+                                    var TempTraditional = new Ingredient() { Name = I.Name, Price = 0, Type = "Foundation" };
                                     couponpizza.Ingredients.Remove(I);
 
-                                    var TempTraditional = new Ingredient() { Name = "Traditional", Price = 0, Type = "Foundation" };
 
                                     couponpizza.Ingredients.Add(TempTraditional);
                                     break;
@@ -305,6 +316,8 @@ namespace Uge_14_Pizzeria
         private void BtnClear_Click(object sender, RoutedEventArgs e)
         {
             //ListView2.Items.Clear();
+            CouponApplied = false;
+            CouponEffect = "";
             PizzaViewModel.checkOutList.Clear();
             PizzaViewModel.Update();
         }

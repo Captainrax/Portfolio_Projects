@@ -44,7 +44,7 @@ namespace Uge_14_Pizzeria
 
             IngredientsList = new ObservableCollection<Ingredient>()
             {
-                Thin_Crust, Thick_Crust,
+                Thin_Crust, Thick_Crust, Stuffed_Crust,
                 TomatoSauce, BBQDressing,
                 Mozzarella, Emmentaler,
                 Ham, Pepperoni,
