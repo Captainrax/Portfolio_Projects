@@ -60,6 +60,7 @@ namespace Uge_14_Pizzeria
             // new instance of a pizza so it dosnt get affected by other things
             for (int x = 1; Convert.ToInt32(AmountOfPizza.Text) >= x ; x++)
             {
+
                 Pizza pizza999 = new Pizza("Custom Pizza")
                 {
                     Type = "Pizza",
@@ -146,7 +147,7 @@ namespace Uge_14_Pizzeria
                 // adds the custom pizza to the checkout list and right panel
                 try
                 {
-                    pizza999.Price = pizza999.GetPrice;
+                    pizza999.Price = pizza999.UpdatePrice;
                     try
                     {
                         // adds custompizza to checkOutList

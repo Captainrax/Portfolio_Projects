@@ -32,25 +32,26 @@
         </StackPanel>
         <StackPanel  Grid.Column="0" Grid.Row="1" MinWidth="100">
             <Label Name="LabelQuestion2" Content="Sauce: "/>
-            <ComboBox SelectedIndex="1" SelectionChanged="SelectionChanged"  Margin="10" Name="Sauce_Selection" ItemsSource="{Binding Sauce_List}"/>
+            <ComboBox SelectedIndex="2" SelectionChanged="SelectionChanged"  Margin="10" Name="Sauce_Selection" ItemsSource="{Binding Sauce_List}"/>
         </StackPanel>
         <StackPanel  Grid.Column="0" Grid.Row="2" MinWidth="100">
             <Label Name="LabelQuestion3" Content="Cheese: "/>
-            <ComboBox SelectedIndex="1" SelectionChanged="SelectionChanged"  Margin="10" Name="Cheese_Selection" ItemsSource="{Binding Cheese_List}"/>
+            <ComboBox SelectedIndex="2" SelectionChanged="SelectionChanged"  Margin="10" Name="Cheese_Selection" ItemsSource="{Binding Cheese_List}"/>
         </StackPanel>
         <StackPanel  Grid.Column="0" Grid.Row="3" MinWidth="100">
             <Label Name="LabelQuestion4" Content="Proteins: "/>
-            <ComboBox SelectedIndex="1" SelectionChanged="SelectionChanged" Margin="10" Name="Proteins_Selection" ItemsSource="{Binding Proteins_List}"/>
+            <ComboBox SelectedIndex="2" SelectionChanged="SelectionChanged" Margin="10" Name="Proteins_Selection" ItemsSource="{Binding Proteins_List}"/>
         </StackPanel>
         <StackPanel  Grid.Column="0" Grid.Row="4" MinWidth="100">
             <Label Name="LabelQuestion5" Content="Vegetables: "/>
-            <ComboBox SelectedIndex="1" SelectionChanged="SelectionChanged"  Margin="10" Name="Vegetables_Selection" ItemsSource="{Binding Vegetables_List}"/>
+            <ComboBox SelectedIndex="2" SelectionChanged="SelectionChanged"  Margin="10" Name="Vegetables_Selection" ItemsSource="{Binding Vegetables_List}"/>
         </StackPanel>
         <StackPanel  Grid.Column="0" Grid.Row="5" MinWidth="100">
             <Label Name="LabelQuestion6" Content="Size: "/>
             <ComboBox SelectedIndex="0" SelectionChanged="SelectionChanged" Margin="10" Name="Size_Selection" ItemsSource="{Binding Size_List}"/>
         </StackPanel>
-        <StackPanel Grid.Column="0" Grid.Row="6" MinWidth="100" Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Grid.Column="0" Grid.Row="6" MinWidth="100" Orientation="Horizontal">
+            <TextBlock  Text="Amount of Pizza's:   " MinHeight="20" MinWidth="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <TextBlock  Name="AmountOfPizza" Text="1" MinHeight="20" MinWidth="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <WrapPanel Orientation="Vertical">
                 <Button Content="^" Padding="0" Name="AmountPlus" Click="AmountPlus_Click" MinHeight="10" MinWidth="20"/>

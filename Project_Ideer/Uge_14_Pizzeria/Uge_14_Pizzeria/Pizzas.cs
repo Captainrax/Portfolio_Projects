@@ -45,7 +45,7 @@ namespace Uge_14_Pizzeria
         public int GetPrice
         {
             get{
-                int allingredients = Price;
+                int allingredients = 0;
                 foreach (Ingredient I in Ingredients)
                 {
                     allingredients += I.Price;
