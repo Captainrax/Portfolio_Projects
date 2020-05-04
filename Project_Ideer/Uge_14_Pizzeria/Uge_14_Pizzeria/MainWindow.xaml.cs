@@ -60,7 +60,7 @@ namespace Uge_14_Pizzeria
                 Type = "Pizza",
                 Ingredients = new ObservableCollection<Ingredient>()
                 {
-                    new Ingredient() { Name = "Medium", Price = 10, Type = "Size" },
+                    new Ingredient() { Name = "Medium", Price = 15, Type = "Size" },
                     new Ingredient() { Name = "Thin Crust", Price = 5, Type = "Foundation" },
                     new Ingredient() { Name = "Mozzarella", Price = 5, Type = "Cheese" },
                     new Ingredient() { Name = "Ham", Price = 5, Type = "Protein" },
@@ -74,7 +74,7 @@ namespace Uge_14_Pizzeria
                 Type = "Pizza",
                 Ingredients = new ObservableCollection<Ingredient>()
                 {
-                    new Ingredient() { Name = "Large", Price = 10, Type = "Size" },
+                    new Ingredient() { Name = "Large", Price = 20, Type = "Size" },
                     new Ingredient() { Name = "Thick Crust", Price = 5, Type = "Foundation" },
                     new Ingredient() { Name = "Mozzarella", Price = 5, Type = "Cheese" },
                     new Ingredient() { Name = "Ham", Price = 5, Type = "Protein" },
@@ -125,9 +125,7 @@ namespace Uge_14_Pizzeria
                         {
                             temppizza.Ingredients.Add(I);
                         }
-
-                        // added visually to the right panel(checkout)
-                        //ListView2.Items.Add(temppizza.Name + " - " + temppizza.GetIngredients + " - " + temppizza.GetPrice + "Kr");
+                        temppizza.Price = temppizza.UpdatePrice;
 
                         // added to the checkOutList
                         PizzaViewModel.checkOutList.Add(temppizza);
