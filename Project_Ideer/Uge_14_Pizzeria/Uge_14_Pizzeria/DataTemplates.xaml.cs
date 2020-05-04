@@ -32,8 +32,6 @@ namespace Uge_14_Pizzeria
 
                 var TempSmallSize = new Ingredient() { Name = "Small", Price = 10, Type = "Size" };
                 selected.Ingredients.Add(TempSmallSize);
-                // update PizzaPrice element somehow
-                //selected.Price = selected.UpdatePrice; // this works, now get it to display the new price somehow
             }
         }
         private void Medium_Selected(object sender, RoutedEventArgs e)
@@ -52,8 +50,6 @@ namespace Uge_14_Pizzeria
                 }
                 var TempMediumSize = new Ingredient() { Name = "Medium", Price = 15, Type = "Size" };
                 selected.Ingredients.Add(TempMediumSize);
-                // update PizzaPrice element somehow
-                //selected.Price = selected.UpdatePrice; // this works, now get it to display the new price somehow
             }
         }
         private void Large_Selected(object sender, RoutedEventArgs e)
@@ -72,15 +68,7 @@ namespace Uge_14_Pizzeria
                 var TempLargeSize = new Ingredient() { Name = "Large", Price = 20, Type = "Size" };
                 selected.Ingredients.Add(TempLargeSize);
 
-                //ToDo update PizzaPrice element somehow
-                //selected.Price = selected.UpdatePrice; // this works, now get it to display the new price somehow
-                
-                //TextBlock tb = sender as TextBlock;
 
-                // look into UserControl maybe?
-
-                //MessageBox.Show(tb.Text);
-                
             }
         }
 
@@ -90,49 +78,18 @@ namespace Uge_14_Pizzeria
 
         }
 
-        //ToDo when clicking on the ComboBox, switch the selected item in ListView1 to the parent element of ComboBox
         private void SizeSelection_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
-            var cb = sender as ComboBox;
-
-            // todo this
-
             if (e.ClickCount == 1)
             {
+                // this freaking works holy moly
 
-                //MessageBox.Show(cb.FindName("PizzaPrice").ToString());
+                var item = (sender as FrameworkElement).DataContext;
+                int index = ((MainWindow)Application.Current.MainWindow).listView1.Items.IndexOf(item);
 
-                if (cb.FindName("PizzaPrice").ToString() == "PizzaPrice")
-                {
-
-                }
-                // somehow select parent element from listview1
-
-                //MessageBox.Show(cb.Parent.ToString());
-
-                //((MainWindow)Application.Current.MainWindow).listView1.SelectedIndex ;
-
-
-                //((MainWindow)Application.Current.MainWindow).listView1.SelectedItem = cb.Parent;
-
+                ((MainWindow)Application.Current.MainWindow).listView1.SelectedIndex = index;
+                //MessageBox.Show(index.ToString());
             }
-
-            // trying to make to so when you click on the combobox it sets the focus(or selected) to the parent element
-
-
-            //FrameworkElement ctrl = control; //or whatever you're passing in, since all controls are FrameworkElements.
-
-            //// Move to a parent that can take focus
-            //FrameworkElement parent = (FrameworkElement)ctrl.Parent;
-            //while (parent != null && parent is IInputElement
-            //                  && !((IInputElement)parent).Focusable)
-            //{
-            //    parent = (FrameworkElement)parent.Parent;
-            //}
-
-            //DependencyObject scope = FocusManager.GetFocusScope(ctrl); //can pass in ctrl here because FrameworkElement inherits from DependencyObject
-            //FocusManager.SetFocusedElement(scope, parent as IInputElement);
         }
 
     }
