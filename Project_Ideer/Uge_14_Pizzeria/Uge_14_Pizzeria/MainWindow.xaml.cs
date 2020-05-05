@@ -253,61 +253,51 @@ namespace Uge_14_Pizzeria
 
                 if (pizzacount >= 2 && drinkcount >= 2 && CouponApplied == false)
                 {
+                    IFoodItem TempPizza = new Pizza("Error")
+                    {
+                        Type = "Pizza",
+                        Ingredients = new ObservableCollection<Ingredient>(),
+                        Serial = GenerateSerial()
+                    };
                     foreach (IFoodItem P in PizzaViewModel.checkOutList)
                     {
                         if (P is Pizza)
                         {
                             // ToDo make the most expensive foundation from 1 pizza cost 0
 
-                            //int HighestTotalPrice = 0;
-                            //foreach (Pizza Piz in PizzaViewModel.checkOutList)
-                            //{
-                            //    if (Piz.Price >= HighestTotalPrice)
-                            //    {
-                            //        HighestTotalPrice = Piz.Price;
-
-                            //    }
-                            //}
-
-
-                            // generate new instance of a pizza, add selected pizza's ingredients to newly created pizza
-                            Pizza couponpizza = new Pizza(P.Name)
+                            if (P.GetPrice >= TempPizza.GetPrice)
                             {
-                                Type = "Pizza",
-                                Ingredients = new ObservableCollection<Ingredient>(),
-                                Serial = GenerateSerial()
-                            };
-
-                            foreach (Ingredient I in P.Ingredients.ToList())
-                            {
-                                couponpizza.Ingredients.Add(I);
+                                TempPizza = P;
+                                TempPizza.Name = P.Name;
                             }
-                            // remove "old" pizza
-                            PizzaViewModel.checkOutList.Remove(P);
-                            // replace old ingredient with a new instance of the same with new price
-                            foreach (Ingredient I in couponpizza.Ingredients)
-                            {
-                                if (I.Type == "Foundation")
-                                {
-                                    var TempTraditional = new Ingredient() { Name = I.Name, Price = 0, Type = "Foundation" };
-                                    couponpizza.Ingredients.Remove(I);
+                            MessageBox.Show(TempPizza.GetPrice.ToString() + TempPizza.Name);
 
-
-                                    couponpizza.Ingredients.Add(TempTraditional);
-                                    break;
-                                }
-                            }
                             // add new pizza
-                            PizzaViewModel.checkOutList.Add(couponpizza);
-                            PizzaViewModel.Update();
-                            CouponApplied = true;
-                            CouponEffect += "1 Free Foundation -5 kr.";
+                            //PizzaViewModel.checkOutList.Add(couponpizza);
+
+                            //CouponApplied = true;
+                            //CouponEffect += "1 Free Foundation -5 kr.";
+
                             //ToDo add couponeffect to list
                             //PizzaViewModel.checkOutList.Add(CouponEffect);
 
+                        }
+                    }
+                    string PreviousFoundationName = "";
+                    foreach (Ingredient I in TempPizza.Ingredients)
+                    {
+                        if (I.Type == "Foundation")
+                        {
+                            PreviousFoundationName = I.Name;
+                            TempPizza.Ingredients.Remove(I);
                             break;
                         }
                     }
+
+                    Ingredient tempfoundation = new Ingredient() { Name = PreviousFoundationName, Price = 0, Type = "Foundation" };
+                    TempPizza.Ingredients.Add(tempfoundation);
+                    PizzaViewModel.Update();
+
                 }
             }
         }
