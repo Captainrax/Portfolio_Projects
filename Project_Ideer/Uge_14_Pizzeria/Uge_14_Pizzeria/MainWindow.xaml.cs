@@ -265,7 +265,7 @@ namespace Uge_14_Pizzeria
                         {
                             // ToDo make the most expensive foundation from 1 pizza cost 0
 
-                            if (P.GetPrice >= TempPizza.GetPrice)
+                            if (P.GetPrice > TempPizza.GetPrice)
                             {
                                 TempPizza = P;
                                 TempPizza.Name = P.Name;
@@ -275,8 +275,6 @@ namespace Uge_14_Pizzeria
                             // add new pizza
                             //PizzaViewModel.checkOutList.Add(couponpizza);
 
-                            //CouponApplied = true;
-                            //CouponEffect += "1 Free Foundation -5 kr.";
 
                             //ToDo add couponeffect to list
                             //PizzaViewModel.checkOutList.Add(CouponEffect);
@@ -298,6 +296,8 @@ namespace Uge_14_Pizzeria
                     TempPizza.Ingredients.Add(tempfoundation);
                     PizzaViewModel.Update();
 
+                    CouponApplied = true;
+                    CouponEffect += "1 Free Foundation -5 kr.";
                 }
             }
         }
