@@ -40,7 +40,7 @@ namespace Uge_14_Pizzeria
             TotalOrderPrice.DataContext = PizzaViewModel.totalOrderAmount;
             ListView2.DataContext = PizzaViewModel.checkOutList;
             // coupon tooltip
-            TooltipInfo.Text = "Coupon Code: \"FF\" (2 or more Pizzas and Drinks) \n Free foundation on the first pizza in the list";
+            TooltipInfo.Text = "Coupon Code: \"FF\" (2 or more Pizzas and Drinks) \n Free Crust on the most expensive pizza";
 
             var pizza1 = new Pizza("Pepperoni Pizza")
             {
@@ -341,11 +341,11 @@ namespace Uge_14_Pizzeria
         }
 
         public static int totalOrderAmount;
-        // runs when whenever any change is made
+        // run it when making changes that you want to update (numbers n stuff)
         public static void Update()
         {
             int totalprice = 0;
-            foreach (IFoodItem U in PizzaViewModel.checkOutList)
+            foreach (IFoodItem U in checkOutList)
             {
                 totalprice += U.GetPrice;
             }

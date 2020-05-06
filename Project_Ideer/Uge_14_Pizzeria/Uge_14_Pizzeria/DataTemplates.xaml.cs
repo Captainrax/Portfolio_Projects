@@ -92,5 +92,14 @@ namespace Uge_14_Pizzeria
             }
         }
 
+        private void ButtonRemoveSelection_Click(object sender, RoutedEventArgs e)
+        {
+
+            var item = (sender as FrameworkElement).DataContext;
+            int index = ((MainWindow)Application.Current.MainWindow).ListView2.Items.IndexOf(item);
+
+            PizzaViewModel.checkOutList.RemoveAt(index);
+            PizzaViewModel.Update();
+        }
     }
 }
