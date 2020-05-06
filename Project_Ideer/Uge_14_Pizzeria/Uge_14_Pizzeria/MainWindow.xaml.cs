@@ -22,7 +22,6 @@ namespace Uge_14_Pizzeria
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static ObservableCollection<IFoodItem> OrderMenu; // Left Panel
         readonly HandleData DATA = new HandleData();
         // only 1 coupon can be applied at once
         public bool CouponApplied = false;
@@ -32,11 +31,12 @@ namespace Uge_14_Pizzeria
         {
             PizzaViewModel.checkOutList = new ObservableCollection<IFoodItem>();
             PizzaViewModel.totalOrderAmount = new int();
+
             InitializeComponent();
-            OrderMenu = DATA.Get();
+            PizzaViewModel.orderMenu = DATA.Get();
 
             // setting datacontexts (should move everything into 1 viewmodel an set bindings from that, would simplify things)
-            this.DataContext = OrderMenu;
+            this.DataContext = PizzaViewModel.orderMenu;
             TotalOrderPrice.DataContext = PizzaViewModel.totalOrderAmount;
             ListView2.DataContext = PizzaViewModel.checkOutList;
             // coupon tooltip
@@ -95,12 +95,12 @@ namespace Uge_14_Pizzeria
                 Price = 25
             };
 
-            OrderMenu.Add(pizza1);
-            OrderMenu.Add(pizza2);
-            OrderMenu.Add(pizza3);
-            OrderMenu.Add(Drink1);
-            OrderMenu.Add(Drink2);
-            OrderMenu.Add(Drink3);
+            PizzaViewModel.orderMenu.Add(pizza1);
+            PizzaViewModel.orderMenu.Add(pizza2);
+            PizzaViewModel.orderMenu.Add(pizza3);
+            PizzaViewModel.orderMenu.Add(Drink1);
+            PizzaViewModel.orderMenu.Add(Drink2);
+            PizzaViewModel.orderMenu.Add(Drink3);
             pizza1.Price = pizza1.GetPrice;
             pizza2.Price = pizza2.GetPrice;
             pizza3.Price = pizza3.GetPrice;
@@ -163,7 +163,7 @@ namespace Uge_14_Pizzeria
         {
             // returns 1 higher than current highest Serial Number(checks left panel and right panel)
             int serialcount = 0;
-            foreach (IFoodItem U in OrderMenu)
+            foreach (IFoodItem U in PizzaViewModel.orderMenu)
             {
                 if (U.Serial >= serialcount)
                 {
@@ -259,30 +259,24 @@ namespace Uge_14_Pizzeria
                         Ingredients = new ObservableCollection<Ingredient>(),
                         Serial = GenerateSerial()
                     };
-                    foreach (IFoodItem P in PizzaViewModel.checkOutList)
+                    foreach (IFoodItem P in PizzaViewModel.checkOutList) // find the most expensive pizza an replace it with TempPizza
                     {
                         if (P is Pizza)
                         {
-                            // ToDo make the most expensive foundation from 1 pizza cost 0
-
                             if (P.GetPrice > TempPizza.GetPrice)
                             {
                                 TempPizza = P;
                                 TempPizza.Name = P.Name;
                             }
-                            MessageBox.Show(TempPizza.GetPrice.ToString() + TempPizza.Name);
 
-                            // add new pizza
-                            //PizzaViewModel.checkOutList.Add(couponpizza);
-
+                            //MessageBox.Show(TempPizza.GetPrice.ToString() + TempPizza.Name);
 
                             //ToDo add couponeffect to list
                             //PizzaViewModel.checkOutList.Add(CouponEffect);
-
                         }
                     }
                     string PreviousFoundationName = "";
-                    foreach (Ingredient I in TempPizza.Ingredients)
+                    foreach (Ingredient I in TempPizza.Ingredients) // remove old ingredient, saves name
                     {
                         if (I.Type == "Foundation")
                         {
@@ -319,6 +313,17 @@ namespace Uge_14_Pizzeria
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public static ObservableCollection<IFoodItem> orderMenu; // Left Panel
+
+        public ObservableCollection<IFoodItem> OrderMenu
+        {
+            get { return orderMenu; }
+            set
+            {
+                orderMenu = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("OrderMenu"));
+            }
+        }
         public ObservableCollection<IFoodItem> CheckOutList
         {
             get { return checkOutList; }
@@ -332,6 +337,7 @@ namespace Uge_14_Pizzeria
         public PizzaViewModel()
         {
             CheckOutList = new ObservableCollection<IFoodItem>();
+            OrderMenu = new ObservableCollection<IFoodItem>();
         }
 
         public static int totalOrderAmount;
