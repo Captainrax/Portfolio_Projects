@@ -93,6 +93,7 @@
         <Grid x:Name="Root_Grid">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10*" />
+                <ColumnDefinition Width="40" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -148,7 +149,7 @@
             <TextBlock Grid.Row="2" Grid.Column="0" Height="23" HorizontalAlignment="Left" Text="{Binding Path=Price, StringFormat=Price: {0}}" VerticalAlignment="Center" x:Name="PizzaPrice"/>
 
             <!--Remove Selection-->
-            <Button Content="Remove" Grid.Row="3" Click="ButtonRemoveSelection_Click"/>
+            <Button Content="X" Grid.Row="0" Grid.Column="1" Click="ButtonRemoveSelection_Click" Margin="10,0,0,0" Width="20" Height="20" Background="Red"/>
         </Grid>
     </DataTemplate>
 </ResourceDictionary>
