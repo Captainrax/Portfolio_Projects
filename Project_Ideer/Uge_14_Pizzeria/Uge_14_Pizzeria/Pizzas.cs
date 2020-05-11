@@ -16,6 +16,8 @@ namespace Uge_14_Pizzeria
 
         public ObservableCollection<Ingredient> Ingredients { get; set; }
         public int GetPrice { get; }
+        public void SaveIngredients();
+        public void LoadIngredients();
     }
 
     public class Pizza : IFoodItem
@@ -23,6 +25,7 @@ namespace Uge_14_Pizzeria
         public string Type { get; set; }
         public string Name { get; set; }
         public ObservableCollection<Ingredient> Ingredients { get; set; }
+        public ObservableCollection<Ingredient> SavedIngredients { get; set; }
         public int Price { get; set; }
         public int Serial { get; set; }
 
@@ -63,6 +66,24 @@ namespace Uge_14_Pizzeria
                     updatedprice += I.Price;
                 }
                 return updatedprice;
+            }
+        }
+        public void SaveIngredients() // saves current ingredients
+        {
+            SavedIngredients.Clear();
+            foreach (Ingredient I in Ingredients)
+            {
+                Ingredient Temp = new Ingredient() { Name = I.Name, Price = I.Price, Type = I.Type }; // creates new instances of ingredients, incase orgininal gets deleted.
+                SavedIngredients.Add(Temp);
+            }
+        }
+        public void LoadIngredients() // loads saved ingredients
+        {
+            Ingredients.Clear();
+            foreach (Ingredient I in SavedIngredients)
+            {
+                Ingredient Temp = new Ingredient() { Name = I.Name, Price = I.Price, Type = I.Type };
+                Ingredients.Add(Temp);
             }
         }
         
@@ -107,6 +128,13 @@ namespace Uge_14_Pizzeria
             {
                 return Price;
             }
+        }
+        public void SaveIngredients() // saves current ingredients
+        {
+        }
+        public void LoadIngredients() // loads saved ingredients
+        {
+
         }
     }
 }

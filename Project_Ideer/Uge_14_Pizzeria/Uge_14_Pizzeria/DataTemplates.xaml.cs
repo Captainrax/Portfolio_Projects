@@ -72,7 +72,6 @@ namespace Uge_14_Pizzeria
             }
         }
 
-        // this could also be used for updating the price tag
         private void Size_SelectionChanged(object sender, RoutedEventArgs e)
         {
 
@@ -92,7 +91,7 @@ namespace Uge_14_Pizzeria
             }
         }
 
-        private void ButtonRemoveSelection_Click(object sender, RoutedEventArgs e)
+        private void ButtonRemoveSelection_Click(object sender, RoutedEventArgs e) // removes it self
         {
 
             var item = (sender as FrameworkElement).DataContext;

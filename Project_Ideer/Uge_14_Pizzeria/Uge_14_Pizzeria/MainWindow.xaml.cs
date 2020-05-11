@@ -271,10 +271,11 @@ namespace Uge_14_Pizzeria
 
                             //MessageBox.Show(TempPizza.GetPrice.ToString() + TempPizza.Name);
 
-                            //ToDo add couponeffect to list
-                            //PizzaViewModel.checkOutList.Add(CouponEffect);
                         }
                     }
+                    // maybe use a backgroundworker for this, would probably make it easier to todo an look at.
+                    TempPizza.SaveIngredients(); // saves current pizza ingredients
+
                     string PreviousFoundationName = "";
                     foreach (Ingredient I in TempPizza.Ingredients) // remove old ingredient, saves name
                     {
@@ -304,6 +305,7 @@ namespace Uge_14_Pizzeria
             PizzaViewModel.checkOutList.Clear();
             PizzaViewModel.Update();
         }
+
     }
 
     //added the List to a viewmodel to get it to update when adding new fooditems
