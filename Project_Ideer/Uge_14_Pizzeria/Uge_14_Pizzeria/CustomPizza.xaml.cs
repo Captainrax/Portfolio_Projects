@@ -147,82 +147,6 @@ namespace Uge_14_Pizzeria
                     Ingredient LargeSize = new Ingredient() { Name = "Large", Price = 20, Type = "Size" };
                     pizza999.Ingredients.Add(LargeSize);
                 }
-
-                //switch (Foundation_Selection.SelectedItem.ToString())
-                //{
-                //    case "Thin Crust":
-                //        Ingredient Thin_Crust = new Ingredient() { Name = "Thin Crust", Price = 5, Type = "Foundation" };
-                //        pizza999.Ingredients.Add(Thin_Crust);
-                //        break;
-                //    case "Thick Crust":
-                //        Ingredient Thick_Crust = new Ingredient() { Name = "Thick Crust", Price = 5, Type = "Foundation" };
-                //        pizza999.Ingredients.Add(Thick_Crust);
-                //        break;
-                //    case "Stuffed Crust":
-                //        Ingredient Stuffed_Crust = new Ingredient() { Name = "Stuffed Crust", Price = 5, Type = "Foundation" };
-                //        pizza999.Ingredients.Add(Stuffed_Crust);
-                //        break;
-                //}
-                //switch (Sauce_Selection.SelectedItem.ToString())
-                //{
-                //    case "TomatoSauce":
-                //        Ingredient TomatoSauce = new Ingredient() { Name = "TomatoSauce", Price = 5, Type = "Sauce" };
-                //        pizza999.Ingredients.Add(TomatoSauce);
-                //        break;
-                //    case "BBQDressing":
-                //        Ingredient BBQDressing = new Ingredient() { Name = "BBQDressing", Price = 5, Type = "Sauce" };
-                //        pizza999.Ingredients.Add(BBQDressing);
-                //        break;
-                //}
-                //switch (Cheese_Selection.SelectedItem.ToString())
-                //{
-                //    case "Mozzarella":
-                //        Ingredient Mozzarella = new Ingredient() { Name = "Mozzarella", Price = 5, Type = "Cheese" };
-                //        pizza999.Ingredients.Add(Mozzarella);
-                //        break;
-                //    case "Emmentaler":
-                //        Ingredient Emmentaler = new Ingredient() { Name = "Emmentaler", Price = 5, Type = "Cheese" };
-                //        pizza999.Ingredients.Add(Emmentaler);
-                //        break;
-                //}
-                //switch (Proteins_Selection.SelectedItem.ToString())
-                //{
-                //    case "Ham":
-                //        Ingredient Ham = new Ingredient() { Name = "Ham", Price = 5, Type = "Protein" };
-                //        pizza999.Ingredients.Add(Ham);
-                //        break;
-                //    case "Pepperoni":
-                //        Ingredient Pepperoni = new Ingredient() { Name = "Pepperoni", Price = 5, Type = "Protein" };
-                //        pizza999.Ingredients.Add(Pepperoni);
-                //        break;
-                //}
-                //switch (Vegetables_Selection.SelectedItem.ToString())
-                //{
-                //    case "Onion":
-                //        Ingredient Onion = new Ingredient() { Name = "Onion", Price = 5, Type = "Vegetable" };
-                //        pizza999.Ingredients.Add(Onion);
-                //        break;
-                //    case "Salad":
-                //        Ingredient Salad = new Ingredient() { Name = "Salad", Price = 5, Type = "Vegetable" };
-                //        pizza999.Ingredients.Add(Salad);
-                //        break;
-                //}
-                //switch (Size_Selection.SelectedItem.ToString())
-                //{
-                //    case "Small":
-                //        Ingredient SmallSize = new Ingredient() { Name = "Small", Price = 10, Type = "Size" };
-                //        pizza999.Ingredients.Add(SmallSize);
-                //        break;
-                //    case "Medium":
-                //        Ingredient MediumSize = new Ingredient() { Name = "Medium", Price = 15, Type = "Size" };
-                //        pizza999.Ingredients.Add(MediumSize);
-                //        break;
-                //    case "Large":
-                //        Ingredient LargeSize = new Ingredient() { Name = "Large", Price = 20, Type = "Size" };
-                //        pizza999.Ingredients.Add(LargeSize);
-                //        break;
-                //}
-
                 // adds the custom pizza to the checkout list
                 try
                 {
@@ -263,12 +187,6 @@ namespace Uge_14_Pizzeria
             RB_Vegetables1.IsChecked = false;
             RB_Vegetables2.IsChecked = false;
             RB_Size1.IsChecked = true;
-            //Foundation_Selection.SelectedItem = Foundation_Selection.SelectedIndex = 0;
-            //Sauce_Selection.SelectedItem = Sauce_Selection.SelectedIndex = 2; // Nothing
-            //Cheese_Selection.SelectedItem = Cheese_Selection.SelectedIndex = 2; // Nothing
-            //Proteins_Selection.SelectedItem = Proteins_Selection.SelectedIndex = 2; // Nothing
-            //Vegetables_Selection.SelectedItem = Vegetables_Selection.SelectedIndex = 2; // Nothing
-            //Size_Selection.SelectedItem = Size_Selection.SelectedIndex = 0;
             AmountOfPizza.Text = "1";
         }
 		private void Window_ContentRendered(object sender, EventArgs e)

@@ -24,8 +24,8 @@ namespace Uge_14_Pizzeria
     {
         readonly HandleData DATA = new HandleData();
         // only 1 coupon can be applied at once
-        public bool CouponApplied = false;
-        public string CouponEffect = "";
+        public static bool DiscountApplied = false;
+        public static string DiscountEffect = "";
 
         public MainWindow()
         {
@@ -40,7 +40,7 @@ namespace Uge_14_Pizzeria
             TotalOrderPrice.DataContext = PizzaViewModel.totalOrderAmount;
             ListView2.DataContext = PizzaViewModel.checkOutList;
             // coupon tooltip
-            TooltipInfo.Text = "Coupon Code: \"FF\" (2 or more Pizzas and Drinks) \n Free Crust on the most expensive pizza";
+            TooltipInfo.Text = "Discount Code: \"FF\" (2 or more Pizzas and Drinks) \n Free Crust on the most expensive pizza";
 
             var pizza1 = new Pizza("Pepperoni Pizza")
             {
@@ -195,17 +195,17 @@ namespace Uge_14_Pizzeria
                     OrderList += U.Name + " - " + U.GetPrice + "\n";
                 }
                 // Displays Final order
-                if (CouponEffect != "")
+                if (DiscountEffect != "")
                 {
-                    MessageBox.Show(OrderInfo +"\n"+ OrderList + CouponEffect + "\n" + "Total Price: " + totalprice.ToString() + " Kr.");
+                    MessageBox.Show(OrderInfo +"\n"+ OrderList + DiscountEffect + "\n" + "Total Price: " + totalprice.ToString() + " Kr.");
                 } else
                 {
                     MessageBox.Show(OrderList + "Total Price: " + totalprice.ToString() + " Kr.");
                 }
                 totalprice = 0;
                 // Clears order
-                CouponApplied = false;
-                CouponEffect = "";
+                DiscountApplied = false;
+                DiscountEffect = "";
                 PizzaViewModel.checkOutList.Clear();
 
                 PizzaViewModel.Update();
@@ -226,82 +226,16 @@ namespace Uge_14_Pizzeria
         }
 
         // applies coupon deals
-        private void BtnCoupon_Click(object sender, RoutedEventArgs e)
+        private void BtnDiscount_Click(object sender, RoutedEventArgs e)
         {
-            if (CouponText.Text == "FF")
-            {
-                var pizzacount = 0;
-                var drinkcount = 0;
-                Pizza ComparePizza = new Pizza("ComparePizza");
-                Drink CompareDrink = new Drink("CompareDrink");
-
-                foreach (IFoodItem P in PizzaViewModel.checkOutList)
-                {
-                    if(P.GetType() == ComparePizza.GetType())
-                    {
-                        pizzacount++;
-                    }
-                }
-                foreach (IFoodItem P in PizzaViewModel.checkOutList)
-                {
-                    if (P.GetType() == CompareDrink.GetType())
-                    {
-                        drinkcount++;
-                    }
-                }
-                // Discount for 2 pizzas & 2 drinks, one pizza gets free Foundation
-
-                if (pizzacount >= 2 && drinkcount >= 2 && CouponApplied == false)
-                {
-                    IFoodItem TempPizza = new Pizza("Error")
-                    {
-                        Type = "Pizza",
-                        Ingredients = new ObservableCollection<Ingredient>(),
-                        Serial = GenerateSerial()
-                    };
-                    foreach (IFoodItem P in PizzaViewModel.checkOutList) // find the most expensive pizza an replace it with TempPizza
-                    {
-                        if (P is Pizza)
-                        {
-                            if (P.GetPrice > TempPizza.GetPrice)
-                            {
-                                TempPizza = P;
-                                TempPizza.Name = P.Name;
-                            }
-
-                            //MessageBox.Show(TempPizza.GetPrice.ToString() + TempPizza.Name);
-
-                        }
-                    }
-                    // maybe use a backgroundworker for this, would probably make it easier to todo an look at.
-                    TempPizza.SaveIngredients(); // saves current pizza ingredients
-
-                    string PreviousFoundationName = "";
-                    foreach (Ingredient I in TempPizza.Ingredients) // remove old ingredient, saves name
-                    {
-                        if (I.Type == "Foundation")
-                        {
-                            PreviousFoundationName = I.Name;
-                            TempPizza.Ingredients.Remove(I);
-                            break;
-                        }
-                    }
-
-                    Ingredient tempfoundation = new Ingredient() { Name = PreviousFoundationName, Price = 0, Type = "Foundation" };
-                    TempPizza.Ingredients.Add(tempfoundation);
-                    PizzaViewModel.Update();
-
-                    CouponApplied = true;
-                    CouponEffect += "1 Free Foundation -5 kr.";
-                }
-            }
+            Discounts.Discount1();
         }
         // Clears checkOutList of items
         private void BtnClear_Click(object sender, RoutedEventArgs e)
         {
             //ListView2.Items.Clear();
-            CouponApplied = false;
-            CouponEffect = "";
+            DiscountApplied = false;
+            DiscountEffect = "";
             PizzaViewModel.checkOutList.Clear();
             PizzaViewModel.Update();
         }

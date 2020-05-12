@@ -18,6 +18,7 @@ namespace Uge_14_Pizzeria
         public int GetPrice { get; }
         public void SaveIngredients();
         public void LoadIngredients();
+        public bool DiscountApplied { get; set; }
     }
 
     public class Pizza : IFoodItem
@@ -26,6 +27,7 @@ namespace Uge_14_Pizzeria
         public string Name { get; set; }
         public ObservableCollection<Ingredient> Ingredients { get; set; }
         public ObservableCollection<Ingredient> SavedIngredients { get; set; }
+        public bool DiscountApplied { get; set; }
         public int Price { get; set; }
         public int Serial { get; set; }
 
@@ -33,6 +35,7 @@ namespace Uge_14_Pizzeria
         public Pizza(String Name)
         {
             this.Name = Name;
+            this.SavedIngredients = new ObservableCollection<Ingredient>();
         }
         public string GetIngredients
         {
@@ -129,6 +132,8 @@ namespace Uge_14_Pizzeria
                 return Price;
             }
         }
+        // these probably arent needed here unless i decide to make custom drinks(?)
+        public bool DiscountApplied { get; set; }
         public void SaveIngredients() // saves current ingredients
         {
         }
