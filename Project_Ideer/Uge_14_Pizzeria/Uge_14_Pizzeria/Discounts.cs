@@ -76,10 +76,12 @@ namespace Uge_14_Pizzeria
                     PizzaViewModel.Update();
 
                     MainWindow.DiscountApplied = true;
-                    MainWindow.DiscountEffect += "1 Free Foundation -5 kr.";
+                    MainWindow.DiscountEffect += "\n Discounts: \n 1 Free Foundation -5 kr. \n";
                 }
             }
         }
+
+
         
     }
 }

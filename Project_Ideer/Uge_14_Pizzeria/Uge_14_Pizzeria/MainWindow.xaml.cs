@@ -142,6 +142,20 @@ namespace Uge_14_Pizzeria
                 MessageBox.Show(er.ToString());
             }
 
+            foreach (IFoodItem I in PizzaViewModel.checkOutList)
+            {
+                if (I.DiscountApplied == true)
+                {
+                    I.LoadIngredients();
+                    I.DiscountApplied = false;
+
+                    DiscountApplied = false;
+                    DiscountEffect = "";
+                    Discounts.Discount1();
+
+                }
+            }
+
             // Adds Drinks to checkOutList
             try
             {
