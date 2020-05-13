@@ -79,6 +79,11 @@ namespace Uge_14_Pizzeria
                     MainWindow.DiscountEffect += "\n Discounts: \n 1 Free Foundation -5 kr. \n";
                 }
             }
+
+            foreach (IFoodItem I in PizzaViewModel.checkOutList)
+            {
+                I.Price[0] = I.GetPrice;
+            }
         }
 
 

@@ -33,6 +33,7 @@ namespace Uge_14_Pizzeria
                 var TempSmallSize = new Ingredient() { Name = "Small", Price = 10, Type = "Size" };
                 selected.Ingredients.Add(TempSmallSize);
             }
+            SizeUpdatePrice();
         }
         private void Medium_Selected(object sender, RoutedEventArgs e)
         {
@@ -51,6 +52,7 @@ namespace Uge_14_Pizzeria
                 var TempMediumSize = new Ingredient() { Name = "Medium", Price = 15, Type = "Size" };
                 selected.Ingredients.Add(TempMediumSize);
             }
+            SizeUpdatePrice();
         }
         private void Large_Selected(object sender, RoutedEventArgs e)
         {
@@ -67,14 +69,19 @@ namespace Uge_14_Pizzeria
                 }
                 var TempLargeSize = new Ingredient() { Name = "Large", Price = 20, Type = "Size" };
                 selected.Ingredients.Add(TempLargeSize);
-
-
+            }
+            SizeUpdatePrice();
+        }
+        public void SizeUpdatePrice()
+        {
+            foreach (IFoodItem I in PizzaViewModel.orderMenu)
+            {
+                I.Price[0] = I.GetPrice;
             }
         }
-
         private void Size_SelectionChanged(object sender, RoutedEventArgs e)
         {
-
+            SizeUpdatePrice();
         }
 
         private void SizeSelection_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -99,6 +106,7 @@ namespace Uge_14_Pizzeria
 
             PizzaViewModel.checkOutList.RemoveAt(index);
             PizzaViewModel.Update();
+            ((MainWindow)Application.Current.MainWindow).UpdateDiscount(); // update discounts
         }
     }
 }

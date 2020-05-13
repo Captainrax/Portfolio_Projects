@@ -150,7 +150,7 @@ namespace Uge_14_Pizzeria
                 // adds the custom pizza to the checkout list
                 try
                 {
-                    pizza999.Price = pizza999.UpdatePrice;
+                    pizza999.Price[0] = pizza999.UpdatePrice;
                     try
                     {
                         // adds custompizza to checkOutList

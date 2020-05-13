@@ -29,17 +29,19 @@ namespace Uge_14_Pizzeria
 
         public MainWindow()
         {
+            InitializeComponent();
             PizzaViewModel.checkOutList = new ObservableCollection<IFoodItem>();
             PizzaViewModel.totalOrderAmount = new int();
 
-            InitializeComponent();
             PizzaViewModel.orderMenu = DATA.Get();
 
             // setting datacontexts (should move everything into 1 viewmodel an set bindings from that, would simplify things)
             this.DataContext = PizzaViewModel.orderMenu;
             TotalOrderPrice.DataContext = PizzaViewModel.totalOrderAmount;
             ListView2.DataContext = PizzaViewModel.checkOutList;
-            // coupon tooltip
+
+
+            // Discount tooltip
             TooltipInfo.Text = "Discount Code: \"FF\" (2 or more Pizzas and Drinks) \n Free Crust on the most expensive pizza";
 
             var pizza1 = new Pizza("Pepperoni Pizza")
@@ -60,7 +62,7 @@ namespace Uge_14_Pizzeria
                 Type = "Pizza",
                 Ingredients = new ObservableCollection<Ingredient>()
                 {
-                    new Ingredient() { Name = "Medium", Price = 15, Type = "Size" },
+                    new Ingredient() { Name = "Small", Price = 10, Type = "Size" },
                     new Ingredient() { Name = "Thin Crust", Price = 5, Type = "Foundation" },
                     new Ingredient() { Name = "Mozzarella", Price = 5, Type = "Cheese" },
                     new Ingredient() { Name = "Ham", Price = 5, Type = "Protein" },
@@ -74,7 +76,7 @@ namespace Uge_14_Pizzeria
                 Type = "Pizza",
                 Ingredients = new ObservableCollection<Ingredient>()
                 {
-                    new Ingredient() { Name = "Large", Price = 20, Type = "Size" },
+                    new Ingredient() { Name = "Small", Price = 10, Type = "Size" },
                     new Ingredient() { Name = "Thick Crust", Price = 5, Type = "Foundation" },
                     new Ingredient() { Name = "Mozzarella", Price = 5, Type = "Cheese" },
                     new Ingredient() { Name = "Ham", Price = 5, Type = "Protein" },
@@ -84,26 +86,33 @@ namespace Uge_14_Pizzeria
 
             var Drink1 = new Drink("Coca Cola - 0.5L")
             {
-                Price = 15
+                Price = new ObservableCollection<int>()
             };
             var Drink2 = new Drink("Coca Cola - 1L")
             {
-                Price = 20
+                Price = new ObservableCollection<int>()
             };
             var Drink3 = new Drink("Coca Cola - 1.5L")
             {
-                Price = 25
+                Price = new ObservableCollection<int>()
             };
+            Drink1.Price.Add(15);
+            Drink2.Price.Add(20);
+            Drink3.Price.Add(25);
+
+            PizzaViewModel.Update();
 
             PizzaViewModel.orderMenu.Add(pizza1);
             PizzaViewModel.orderMenu.Add(pizza2);
             PizzaViewModel.orderMenu.Add(pizza3);
+            pizza1.Price.Add(0);
+            pizza2.Price.Add(0);
+            pizza3.Price.Add(0);
             PizzaViewModel.orderMenu.Add(Drink1);
             PizzaViewModel.orderMenu.Add(Drink2);
             PizzaViewModel.orderMenu.Add(Drink3);
-            pizza1.Price = pizza1.GetPrice;
-            pizza2.Price = pizza2.GetPrice;
-            pizza3.Price = pizza3.GetPrice;
+
+
         }
         // add selected item to checkout list
         private void BtnAddToCheckOut_Click(object sender, RoutedEventArgs e)
@@ -121,11 +130,12 @@ namespace Uge_14_Pizzeria
                             Ingredients = new ObservableCollection<Ingredient>(),
                             Serial = GenerateSerial()
                         };
-                        foreach(Ingredient I in selectedunit.Ingredients) 
+                        temppizza.Price.Add(0);
+                        foreach (Ingredient I in selectedunit.Ingredients) 
                         {
                             temppizza.Ingredients.Add(I);
                         }
-                        temppizza.Price = temppizza.UpdatePrice;
+                        temppizza.Price[0] = temppizza.UpdatePrice;
 
                         // added to the checkOutList
                         PizzaViewModel.checkOutList.Add(temppizza);
@@ -142,26 +152,13 @@ namespace Uge_14_Pizzeria
                 MessageBox.Show(er.ToString());
             }
 
-            foreach (IFoodItem I in PizzaViewModel.checkOutList)
-            {
-                if (I.DiscountApplied == true)
-                {
-                    I.LoadIngredients();
-                    I.DiscountApplied = false;
-
-                    DiscountApplied = false;
-                    DiscountEffect = "";
-                    Discounts.Discount1();
-
-                }
-            }
+            UpdateDiscount(); // update discounts
 
             // Adds Drinks to checkOutList
             try
             {
                 if (listView1.SelectedItem is Drink selectedunit)
                 {
-                    //ListView2.Items.Add(selectedunit.Name + " - " + selectedunit.Price + "Kr");
                     PizzaViewModel.checkOutList.Add(selectedunit);
                 }
             }
@@ -171,6 +168,22 @@ namespace Uge_14_Pizzeria
             }
             // updates totalorderamount
             PizzaViewModel.Update();
+        }
+        public void UpdateDiscount()
+        {
+            // Handles Discounts
+            foreach (IFoodItem I in PizzaViewModel.checkOutList)
+            {
+                if (I.DiscountApplied == true)
+                {
+                    I.LoadIngredients(); // loads old ingredients without the discount
+                    I.DiscountApplied = false;
+
+                    DiscountApplied = false;
+                    DiscountEffect = "";
+                    Discounts.Discount1(); // applies the discount agian
+                }
+            }
         }
 
         public static int GenerateSerial()
@@ -237,6 +250,7 @@ namespace Uge_14_Pizzeria
             newcustompizza.ShowDialog();
 
             PizzaViewModel.Update();
+            UpdateDiscount(); // update discounts
         }
 
         // applies coupon deals
@@ -302,6 +316,12 @@ namespace Uge_14_Pizzeria
             totalOrderAmount = totalprice;
 
             ((MainWindow)Application.Current.MainWindow).TotalOrderPrice.Content = totalOrderAmount;
+
+
+            foreach (IFoodItem I in orderMenu)
+            {
+                I.Price[0] = I.GetPrice;
+            }
         }
     }
 

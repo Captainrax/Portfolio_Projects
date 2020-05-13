@@ -13,6 +13,7 @@ namespace Uge_14_Pizzeria
         public string Type { get; set; }
         string Name { get; set; }
         int Serial { get; set; }
+        public ObservableCollection<int> Price { get; set; }
 
         public ObservableCollection<Ingredient> Ingredients { get; set; }
         public int GetPrice { get; }
@@ -28,7 +29,7 @@ namespace Uge_14_Pizzeria
         public ObservableCollection<Ingredient> Ingredients { get; set; }
         public ObservableCollection<Ingredient> SavedIngredients { get; set; }
         public bool DiscountApplied { get; set; }
-        public int Price { get; set; }
+        public ObservableCollection<int> Price { get; set; }
         public int Serial { get; set; }
 
         // Constructor
@@ -36,8 +37,9 @@ namespace Uge_14_Pizzeria
         {
             this.Name = Name;
             this.SavedIngredients = new ObservableCollection<Ingredient>();
+            this.Price = new ObservableCollection<int>();
         }
-        public string GetIngredients
+        public string GetIngredients // for display in datatemplates
         {
             get{
                 string allingredients = "";
@@ -48,7 +50,7 @@ namespace Uge_14_Pizzeria
                 return allingredients;
             }
         }
-        public int GetPrice
+        public int GetPrice // for updating the price because the databinding dosnt wanna do it...
         {
             get{
                 int allingredients = 0;
@@ -68,6 +70,7 @@ namespace Uge_14_Pizzeria
                 {
                     updatedprice += I.Price;
                 }
+                Price[0] = updatedprice;
                 return updatedprice;
             }
         }
@@ -76,7 +79,7 @@ namespace Uge_14_Pizzeria
             SavedIngredients.Clear();
             foreach (Ingredient I in Ingredients)
             {
-                Ingredient Temp = new Ingredient() { Name = I.Name, Price = I.Price, Type = I.Type }; // creates new instances of ingredients, incase orgininal gets deleted.
+                Ingredient Temp = new Ingredient() { Name = I.Name, Price = I.Price, Type = I.Type }; // creates new instances of ingredients, incase Original gets deleted.
                 SavedIngredients.Add(Temp);
             }
         }
@@ -114,7 +117,7 @@ namespace Uge_14_Pizzeria
         // ToDo implement Ingredients list for Different Sizes
         public string Type { get; set; }
         public string Name { get; set; }
-        public int Price { get; set; }
+        public ObservableCollection<int> Price { get; set; }
         // probably dosnt need an ingredient list
         public ObservableCollection<Ingredient> Ingredients { get; set; }
         public int Serial { get; set; }
@@ -123,13 +126,14 @@ namespace Uge_14_Pizzeria
         public Drink(String Name)
         {
             this.Name = Name;
+            this.Price = new ObservableCollection<int>();
         }
 
         public int GetPrice
         {
             get
             {
-                return Price;
+                return Price[0];
             }
         }
         // these probably arent needed here unless i decide to make custom drinks(?)

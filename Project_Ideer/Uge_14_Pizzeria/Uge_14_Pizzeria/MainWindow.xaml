@@ -33,7 +33,7 @@
         
         <!--left list-->
         <Label Content="Order Menu" Grid.Column="0" HorizontalAlignment="Center"/>
-        <ListView  ItemsSource="{Binding}"  HorizontalAlignment="Stretch" Margin="2" Name="listView1" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="0"></ListView>
+        <ListView ItemsSource="{Binding}" HorizontalAlignment="Stretch" Margin="2" Name="listView1" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="0"></ListView>
 
         <!--right list-->
         <Label Content="Your order" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"/>
