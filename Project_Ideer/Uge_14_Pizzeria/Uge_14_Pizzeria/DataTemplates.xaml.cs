@@ -104,9 +104,23 @@ namespace Uge_14_Pizzeria
             var item = (sender as FrameworkElement).DataContext;
             int index = ((MainWindow)Application.Current.MainWindow).ListView2.Items.IndexOf(item);
 
-            PizzaViewModel.checkOutList.RemoveAt(index);
+            foreach (IFoodItem I in PizzaViewModel.checkOutList)
+            {
+                if (I.DiscountApplied == true)
+                {
+                    I.LoadIngredients(); // loads old ingredients without the discount
+                    I.DiscountApplied = false;
+
+                    PizzaViewModel.checkOutList.RemoveAt(index);
+
+                    MainWindow.DiscountApplied = false;
+                    MainWindow.DiscountEffect = "";
+                    Discounts.Discount1(); // applies the discount agian
+                    break;
+                }
+            }
+
             PizzaViewModel.Update();
-            ((MainWindow)Application.Current.MainWindow).UpdateDiscount(); // update discounts
         }
     }
 }
