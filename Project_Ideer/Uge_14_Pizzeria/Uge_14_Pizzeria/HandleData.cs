@@ -7,6 +7,7 @@ using System.Text;
 
 namespace Uge_14_Pizzeria
 {
+    // this file is used for adding IFoodItems an ingredients from local files, currently reading an empty file.
     public class HandleData
     {
         private ObservableCollection<IFoodItem> DataBase; // simulated database (handles saving an loading initially)
@@ -14,7 +15,7 @@ namespace Uge_14_Pizzeria
         private ObservableCollection<IFoodItem> _publicList; // "Public" list that gets used (data being used in current session)
 
 
-        public static string SaveFolder = Path.Combine(Environment.CurrentDirectory, "PizzaData");
+        public static string SaveFolder = Path.Combine(Environment.CurrentDirectory, "PizzaData"); // file path
         public static string savedata = "PizzaData.JSON";
         public static string fileName = SaveFolder + "\\" + savedata;
         public HandleData()

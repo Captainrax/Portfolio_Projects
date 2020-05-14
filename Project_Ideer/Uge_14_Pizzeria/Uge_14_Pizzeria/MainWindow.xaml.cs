@@ -306,6 +306,7 @@ namespace Uge_14_Pizzeria
 
         public static int totalOrderAmount;
         // run it when making changes that you want to update (numbers n stuff)
+        // theres probably a better way to do this with PropertyChanged?.
         public static void Update()
         {
             int totalprice = 0;

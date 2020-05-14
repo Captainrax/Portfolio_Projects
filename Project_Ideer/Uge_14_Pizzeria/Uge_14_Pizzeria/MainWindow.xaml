@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:Uge_14_Pizzeria"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000">
-    <!--trying to get totalorderprice to work-->
     <Window.DataContext>
         <local:PizzaViewModel/>
     </Window.DataContext>
@@ -38,7 +37,8 @@
         <!--right list-->
         <Label Content="Your order" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"/>
         <ListView ItemsSource="{Binding}" ItemTemplate="{StaticResource CheckOutPizzaTemplate}" Grid.Row="1" Grid.Column="1" Margin="2" Name="ListView2"></ListView>
-
+        
+        <!--bottom panel-->
         <StackPanel Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Top"  MinHeight="30" Orientation="Horizontal">
             <Button Content="AddToCheckOut"  Name="BtnAddToCheckOut"    Click="BtnAddToCheckOut_Click" Height="30"/>
             <Button Content="AddCustomPizza"  Name="BtnCustomPizza"    Click="BtnCustomPizza_Click" Height="30" Margin="100,0,0,0" />

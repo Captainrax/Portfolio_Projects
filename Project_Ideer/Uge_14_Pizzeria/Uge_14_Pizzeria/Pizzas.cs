@@ -143,7 +143,6 @@ namespace Uge_14_Pizzeria
         }
         public void LoadIngredients() // loads saved ingredients
         {
-
         }
     }
 }

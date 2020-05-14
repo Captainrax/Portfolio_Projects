@@ -150,6 +150,7 @@ namespace Uge_14_Pizzeria
                 // adds the custom pizza to the checkout list
                 try
                 {
+                    pizza999.Price.Add(0);
                     pizza999.Price[0] = pizza999.UpdatePrice;
                     try
                     {
@@ -174,7 +175,7 @@ namespace Uge_14_Pizzeria
 
             DialogResult = true;
 		}
-		private void BtnDialogClear_Click(object sender, RoutedEventArgs e)
+		private void BtnDialogClear_Click(object sender, RoutedEventArgs e) // reset button (Clear)
 		{
             // it works.
             RB_Crust1.IsChecked = true;
@@ -197,6 +198,7 @@ namespace Uge_14_Pizzeria
         {
             // this might not be needed, keeping it for now
         }
+
         // handles the amount of custom pizza's you wanna add in one go
         private void AmountPlus_Click(object sender, RoutedEventArgs e)
         {
@@ -240,6 +242,7 @@ namespace Uge_14_Pizzeria
 
             Getingredients(CustomPizza.IngredientsList);
         }
+        // adds all ingredients from (CustomPizza.IngredientsList) to each respective category 
         public void Getingredients(ObservableCollection<Ingredient> obsv)
         {
             foreach (Ingredient I in obsv)
@@ -264,12 +267,6 @@ namespace Uge_14_Pizzeria
                     Size_List.Add(I.Name);
                 }
             }
-            // adds "nothing" option so it dosnt get a null exeception
-            string NothingOption = "Nothing";
-            Sauce_List.Add(NothingOption);
-            Cheese_List.Add(NothingOption);
-            Proteins_List.Add(NothingOption);
-            Vegetables_List.Add(NothingOption);
         }
     }
 }

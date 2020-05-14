@@ -51,12 +51,11 @@ namespace Uge_14_Pizzeria
                                 TempPizza = P;
                                 TempPizza.Name = P.Name;
                             }
-
+                            //debug
                             //MessageBox.Show(TempPizza.GetPrice.ToString() + TempPizza.Name);
-
                         }
                     }
-                    // maybe use a backgroundworker for this, would probably make it easier to todo an look at.
+
                     TempPizza.SaveIngredients(); // saves current pizza ingredients
                     TempPizza.DiscountApplied = true;
 
@@ -70,7 +69,7 @@ namespace Uge_14_Pizzeria
                             break;
                         }
                     }
-
+                    // add discounted ingredient
                     Ingredient tempfoundation = new Ingredient() { Name = PreviousFoundationName, Price = 0, Type = "Foundation" };
                     TempPizza.Ingredients.Add(tempfoundation);
                     PizzaViewModel.Update();
@@ -85,8 +84,5 @@ namespace Uge_14_Pizzeria
                 I.Price[0] = I.GetPrice;
             }
         }
-
-
-        
     }
 }

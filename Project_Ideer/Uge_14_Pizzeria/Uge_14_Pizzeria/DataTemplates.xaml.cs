@@ -72,7 +72,7 @@ namespace Uge_14_Pizzeria
             }
             SizeUpdatePrice();
         }
-        public void SizeUpdatePrice()
+        public void SizeUpdatePrice() // updates price on size change from combobox
         {
             foreach (IFoodItem I in PizzaViewModel.orderMenu)
             {
@@ -84,6 +84,7 @@ namespace Uge_14_Pizzeria
             SizeUpdatePrice();
         }
 
+        // selectes the listviewitem when clicking on the combobox
         private void SizeSelection_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ClickCount == 1)
@@ -104,6 +105,7 @@ namespace Uge_14_Pizzeria
             var item = (sender as FrameworkElement).DataContext;
             int index = ((MainWindow)Application.Current.MainWindow).ListView2.Items.IndexOf(item);
 
+            // checks if a discount is applied then removes an tries to reapply discount
             foreach (IFoodItem I in PizzaViewModel.checkOutList)
             {
                 if (I.DiscountApplied == true)
