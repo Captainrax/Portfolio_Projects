@@ -71,7 +71,11 @@ namespace Uge_14_Pizzeria
                     }
                     // add discounted ingredient
                     Ingredient tempfoundation = new Ingredient() { Name = PreviousFoundationName, Price = 0, Type = "Foundation" };
-                    TempPizza.Ingredients.Add(tempfoundation);
+                    TempPizza.Ingredients.Insert(1,tempfoundation);
+
+                    //Discount tempdiscount = new Discount("Discount");
+
+                    //PizzaViewModel.checkOutList.Add(tempdiscount);
                     PizzaViewModel.Update();
 
                     MainWindow.DiscountApplied = true;

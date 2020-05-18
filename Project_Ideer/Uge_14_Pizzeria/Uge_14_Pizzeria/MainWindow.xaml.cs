@@ -257,6 +257,7 @@ namespace Uge_14_Pizzeria
         private void BtnDiscount_Click(object sender, RoutedEventArgs e)
         {
             Discounts.Discount1();
+            PizzaViewModel.Update();
         }
         // Clears checkOutList of items
         private void BtnClear_Click(object sender, RoutedEventArgs e)
@@ -318,12 +319,13 @@ namespace Uge_14_Pizzeria
 
             ((MainWindow)Application.Current.MainWindow).TotalOrderPrice.Content = totalOrderAmount;
 
+            
 
             foreach (IFoodItem I in orderMenu)
             {
                 I.Price[0] = I.GetPrice;
             }
         }
+        
     }
-
 }

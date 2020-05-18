@@ -101,7 +101,7 @@ namespace Uge_14_Pizzeria
 
         private void ButtonRemoveSelection_Click(object sender, RoutedEventArgs e) // removes it self
         {
-            bool RemoveLimit = false;
+            bool RemoveLimit = false; // only lets you remove one item at a time
 
             var item = (sender as FrameworkElement).DataContext;
             int index = ((MainWindow)Application.Current.MainWindow).ListView2.Items.IndexOf(item);

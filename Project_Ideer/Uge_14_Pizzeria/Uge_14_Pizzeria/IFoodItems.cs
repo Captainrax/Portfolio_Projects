@@ -145,4 +145,36 @@ namespace Uge_14_Pizzeria
         {
         }
     }
+    public class Discount : IFoodItem // for displaying what discounts are active
+    {
+        public string Type { get; set; }
+        public string Name { get; set; }
+        public ObservableCollection<int> Price { get; set; }
+        public ObservableCollection<Ingredient> Ingredients { get; set; }
+        public int Serial { get; set; }
+        // Constructor
+        public Discount(String Name)
+        {
+            this.Name = Name;
+            this.Price = new ObservableCollection<int>
+            {
+                0
+            };
+        }
+        public int GetPrice
+        {
+            get
+            {
+                return Price[0];
+            }
+        }
+        // these probably arent needed here unless i decide to make custom drinks(?)
+        public bool DiscountApplied { get; set; }
+        public void SaveIngredients() // saves current ingredients
+        {
+        }
+        public void LoadIngredients() // loads saved ingredients
+        {
+        }
+    }
 }
