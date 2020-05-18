@@ -116,7 +116,7 @@ namespace Uge_14_Pizzeria
 
                     PizzaViewModel.checkOutList.RemoveAt(index);
                     RemoveLimit = true;
-
+                    MainWindow.DiscountList.Clear();
                     MainWindow.DiscountApplied = false;
                     MainWindow.DiscountEffect = "";
                     Discounts.Discount1(); // applies the discount agian

@@ -155,4 +155,21 @@
 
         </Grid>
     </DataTemplate>
+    <!-- Discount datatemplate -->
+    <DataTemplate DataType="{x:Type local:Discount}" x:Key="DiscountTemplate">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <WrapPanel Grid.Row="0" Grid.Column="0">
+                <TextBlock Height="23" HorizontalAlignment="Left" Text="{Binding Path=Name}"   VerticalAlignment="Center" />
+                <TextBlock Height="23" HorizontalAlignment="Left" Text="{Binding Path=Price[0]}" Margin="10,0,0,0"  VerticalAlignment="Center" />
+            </WrapPanel>
+
+        </Grid>
+    </DataTemplate>
 </ResourceDictionary>

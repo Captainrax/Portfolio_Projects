@@ -22,6 +22,8 @@ namespace Uge_14_Pizzeria
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static ObservableCollection<Discount> DiscountList = new ObservableCollection<Discount>();
+
         readonly HandleData DATA = new HandleData();
         // only 1 coupon can be applied at once
         public static bool DiscountApplied = false;
@@ -39,6 +41,8 @@ namespace Uge_14_Pizzeria
             this.DataContext = PizzaViewModel.orderMenu;
             TotalOrderPrice.DataContext = PizzaViewModel.totalOrderAmount;
             ListView2.DataContext = PizzaViewModel.checkOutList;
+
+            ListView3.DataContext = DiscountList; // Discount List
 
 
             // Discount tooltip
@@ -179,6 +183,8 @@ namespace Uge_14_Pizzeria
                     I.LoadIngredients(); // loads old ingredients without the discount
                     I.DiscountApplied = false;
 
+                    DiscountList.Clear();
+
                     DiscountApplied = false;
                     DiscountEffect = "";
                     Discounts.Discount1(); // applies the discount agian
@@ -234,6 +240,7 @@ namespace Uge_14_Pizzeria
                 DiscountApplied = false;
                 DiscountEffect = "";
                 PizzaViewModel.checkOutList.Clear();
+                DiscountList.Clear();
 
                 PizzaViewModel.Update();
             }
@@ -266,6 +273,7 @@ namespace Uge_14_Pizzeria
             DiscountApplied = false;
             DiscountEffect = "";
             PizzaViewModel.checkOutList.Clear();
+            DiscountList.Clear();
             PizzaViewModel.Update();
         }
 
