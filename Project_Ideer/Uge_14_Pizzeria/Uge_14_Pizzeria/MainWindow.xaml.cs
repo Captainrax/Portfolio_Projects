@@ -96,7 +96,7 @@ namespace Uge_14_Pizzeria
             {
                 Price = new ObservableCollection<int>()
             };
-            Drink1.Price.Add(15);
+            Drink1.Price.Add(15); // initialize variables
             Drink2.Price.Add(20);
             Drink3.Price.Add(25);
 
@@ -105,7 +105,7 @@ namespace Uge_14_Pizzeria
             PizzaViewModel.orderMenu.Add(pizza1);
             PizzaViewModel.orderMenu.Add(pizza2);
             PizzaViewModel.orderMenu.Add(pizza3);
-            pizza1.Price.Add(0);
+            pizza1.Price.Add(0); // initialize variables
             pizza2.Price.Add(0);
             pizza3.Price.Add(0);
             PizzaViewModel.orderMenu.Add(Drink1);

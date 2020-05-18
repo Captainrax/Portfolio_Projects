@@ -101,6 +101,7 @@ namespace Uge_14_Pizzeria
 
         private void ButtonRemoveSelection_Click(object sender, RoutedEventArgs e) // removes it self
         {
+            bool RemoveLimit = false;
 
             var item = (sender as FrameworkElement).DataContext;
             int index = ((MainWindow)Application.Current.MainWindow).ListView2.Items.IndexOf(item);
@@ -114,12 +115,17 @@ namespace Uge_14_Pizzeria
                     I.DiscountApplied = false;
 
                     PizzaViewModel.checkOutList.RemoveAt(index);
+                    RemoveLimit = true;
 
                     MainWindow.DiscountApplied = false;
                     MainWindow.DiscountEffect = "";
                     Discounts.Discount1(); // applies the discount agian
                     break;
                 }
+            }
+            if (RemoveLimit == false)
+            {
+                PizzaViewModel.checkOutList.RemoveAt(index);
             }
 
             PizzaViewModel.Update();
