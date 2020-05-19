@@ -93,7 +93,7 @@
         <Grid x:Name="Root_Grid">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10*" />
-                <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="50*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -103,7 +103,7 @@
             </Grid.RowDefinitions>
 
             <!--Name Display-->
-            <TextBlock Grid.Row="0" Grid.Column="0" Height="23" HorizontalAlignment="Left" Text="{Binding Path=Name, StringFormat=Pizza: {0}}"   VerticalAlignment="Center" />
+            <TextBlock Grid.Row="0" Grid.Column="0" Height="23" HorizontalAlignment="Left" Text="{Binding Path=Name}"   VerticalAlignment="Center" />
 
             <!--Ingredients List-->
             <ListView Name="IngredientsList" ItemsSource="{Binding Ingredients}" Focusable="False" Grid.Row="1" Grid.Column="0">
@@ -130,8 +130,7 @@
                 <ListView.Style>
                     <Style TargetType="ListView">
                         <Style.Triggers>
-                            <Trigger Property="HasItems"
-                                    Value="False">
+                            <Trigger Property="HasItems" Value="False">
                                 <Setter Property="Template">
                                     <Setter.Value>
                                         <ControlTemplate TargetType="ListView">
@@ -149,8 +148,22 @@
             <TextBlock Grid.Row="2" Grid.Column="0" Height="23" HorizontalAlignment="Left" Text="{Binding Path=Price[0], StringFormat=Price: {0}}" VerticalAlignment="Center" x:Name="PizzaPrice"/>
 
             <!--Remove Selection-->
-            <Button Name="RemoveButton" Content="X" Grid.Row="0" Grid.Column="1" Click="ButtonRemoveSelection_Click" Margin="10,0,0,0" Width="20" Height="20" Background="Red">
-
+            <Button Name="RemoveButton" Content="X" Grid.Row="0" Grid.Column="1" Click="ButtonRemoveSelection_Click" Margin="10,0,0,0" Width="20" Height="20" Background="Red"/>
+            
+            <!--Modifiy Selection-->
+            <Button Name="EditButton" Content="Edit" Grid.Row="1" Grid.Column="1" Click="ButtonEditSelection_Click" Margin="10,0,0,0" Width="50">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="IsEnabled" Value="True"/>
+                        <Setter Property="Height" Value="20"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding HasItems,ElementName=IngredientsList}" Value="False">
+                                <Setter Property="IsEnabled" Value="False"/>
+                                <Setter Property="Height" Value="0"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
 
         </Grid>

@@ -54,7 +54,7 @@ namespace Uge_14_Pizzeria
                 Ingredients = new ObservableCollection<Ingredient>() 
                 {
                     new Ingredient() { Name = "Small", Price = 10, Type = "Size" },
-                    new Ingredient() { Name = "Thin Crust", Price = 5, Type = "Foundation" },
+                    new Ingredient() { Name = "Thin Crust", Price = 5, Type = "Crust" },
                     new Ingredient() { Name = "TomatoSauce", Price = 5, Type = "Sauce" },
                     new Ingredient() { Name = "Pepperoni", Price = 5, Type = "Protein" }, 
                 },
@@ -67,7 +67,7 @@ namespace Uge_14_Pizzeria
                 Ingredients = new ObservableCollection<Ingredient>()
                 {
                     new Ingredient() { Name = "Small", Price = 10, Type = "Size" },
-                    new Ingredient() { Name = "Thin Crust", Price = 5, Type = "Foundation" },
+                    new Ingredient() { Name = "Thin Crust", Price = 5, Type = "Crust" },
                     new Ingredient() { Name = "Mozzarella", Price = 5, Type = "Cheese" },
                     new Ingredient() { Name = "Ham", Price = 5, Type = "Protein" },
                     new Ingredient() { Name = "Pineapple", Price = 5, Type = "Vegetable" },
@@ -81,7 +81,7 @@ namespace Uge_14_Pizzeria
                 Ingredients = new ObservableCollection<Ingredient>()
                 {
                     new Ingredient() { Name = "Small", Price = 10, Type = "Size" },
-                    new Ingredient() { Name = "Thick Crust", Price = 5, Type = "Foundation" },
+                    new Ingredient() { Name = "Thick Crust", Price = 5, Type = "Crust" },
                     new Ingredient() { Name = "Mozzarella", Price = 5, Type = "Cheese" },
                     new Ingredient() { Name = "Ham", Price = 5, Type = "Protein" },
                 },

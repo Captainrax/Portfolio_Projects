@@ -60,27 +60,30 @@ namespace Uge_14_Pizzeria
                     TempPizza.DiscountApplied = true;
 
                     string PreviousFoundationName = "";
+                    int PreviousPrice = 0;
                     foreach (Ingredient I in TempPizza.Ingredients) // remove old ingredient, saves name
                     {
-                        if (I.Type == "Foundation")
+                        if (I.Type == "Crust")
                         {
                             PreviousFoundationName = I.Name;
+                            PreviousPrice = I.Price;
                             TempPizza.Ingredients.Remove(I);
                             break;
                         }
                     }
                     // add discounted ingredient
-                    Ingredient tempfoundation = new Ingredient() { Name = PreviousFoundationName, Price = 0, Type = "Foundation" };
-                    TempPizza.Ingredients.Insert(1,tempfoundation);
+                    Ingredient tempfoundation = new Ingredient() { Name = PreviousFoundationName, Price = 0, Type = "Crust" };
+                    TempPizza.Ingredients.Insert(1, tempfoundation);
 
-                    Discount tempdiscount = new Discount("Discount");
+                    Discount tempdiscount = new Discount("Discount: " + PreviousFoundationName); // this can probably look better
+                    tempdiscount.Price[0] = PreviousPrice;
 
                     MainWindow.DiscountList.Add(tempdiscount);
 
                     PizzaViewModel.Update();
 
                     MainWindow.DiscountApplied = true;
-                    MainWindow.DiscountEffect += "\n Discounts: \n 1 Free Foundation -5 kr. \n";
+                    MainWindow.DiscountEffect += "\n Discounts: \n 1 Free Crust -5 kr. \n";
                 }
             }
             // force update price

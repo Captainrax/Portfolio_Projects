@@ -49,3 +49,6 @@ C:\Users\capta\Documents\GitHub\SKP_Projects\Project_Ideer\Uge_14_Pizzeria\Uge_1
 C:\Users\capta\Documents\GitHub\SKP_Projects\Project_Ideer\Uge_14_Pizzeria\Uge_14_Pizzeria\obj\Debug\netcoreapp3.1\Uge_14_Pizzeria.dll
 C:\Users\capta\Documents\GitHub\SKP_Projects\Project_Ideer\Uge_14_Pizzeria\Uge_14_Pizzeria\obj\Debug\netcoreapp3.1\Uge_14_Pizzeria.pdb
 C:\Users\capta\Documents\GitHub\SKP_Projects\Project_Ideer\Uge_14_Pizzeria\Uge_14_Pizzeria\obj\Debug\netcoreapp3.1\Uge_14_Pizzeria.genruntimeconfig.cache
+C:\Users\capta\Documents\GitHub\SKP_Projects\Project_Ideer\Uge_14_Pizzeria\Uge_14_Pizzeria\obj\Debug\netcoreapp3.1\EditPizza.g.cs
+C:\Users\capta\Documents\GitHub\SKP_Projects\Project_Ideer\Uge_14_Pizzeria\Uge_14_Pizzeria\obj\Debug\netcoreapp3.1\EditPizza.baml
+C:\Users\capta\Documents\GitHub\SKP_Projects\Project_Ideer\Uge_14_Pizzeria\Uge_14_Pizzeria\obj\Debug\netcoreapp3.1\Uge_14_Pizzeria.csprojAssemblyReference.cache

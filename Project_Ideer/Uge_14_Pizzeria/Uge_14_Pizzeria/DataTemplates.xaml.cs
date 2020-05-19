@@ -130,5 +130,22 @@ namespace Uge_14_Pizzeria
 
             PizzaViewModel.Update();
         }
+
+        private void ButtonEditSelection_Click(object sender, RoutedEventArgs e)
+        {
+            var item = (sender as FrameworkElement).DataContext;
+
+
+
+            EditPizza editpizza = new EditPizza();
+
+            EditPizza.CustomizePizza((IFoodItem)item);
+
+            editpizza.ShowDialog();
+
+            PizzaViewModel.Update();
+
+            ((MainWindow)Application.Current.MainWindow).UpdateDiscount(); // update discounts
+        }
     }
 }

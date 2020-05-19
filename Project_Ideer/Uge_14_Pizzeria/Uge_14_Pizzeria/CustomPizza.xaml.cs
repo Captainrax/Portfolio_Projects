@@ -74,17 +74,17 @@ namespace Uge_14_Pizzeria
                 // Foundations (only 1 can be selected through xaml)
                 if (RB_Crust1.IsChecked == true)
                 {
-                    Ingredient Thin_Crust = new Ingredient() { Name = "Thin Crust", Price = 5, Type = "Foundation" };
+                    Ingredient Thin_Crust = new Ingredient() { Name = "Thin Crust", Price = 5, Type = "Crust" };
                     pizza999.Ingredients.Add(Thin_Crust);
                 }
                 if (RB_Crust2.IsChecked == true)
                 {
-                    Ingredient Thick_Crust = new Ingredient() { Name = "Thick Crust", Price = 5, Type = "Foundation" };
+                    Ingredient Thick_Crust = new Ingredient() { Name = "Thick Crust", Price = 5, Type = "Crust" };
                     pizza999.Ingredients.Add(Thick_Crust);
                 }
                 if (RB_Crust3.IsChecked == true)
                 {
-                    Ingredient Stuffed_Crust = new Ingredient() { Name = "Stuffed Crust", Price = 5, Type = "Foundation" };
+                    Ingredient Stuffed_Crust = new Ingredient() { Name = "Stuffed Crust", Price = 5, Type = "Crust" };
                     pizza999.Ingredients.Add(Stuffed_Crust);
                 }
                 // Sauces

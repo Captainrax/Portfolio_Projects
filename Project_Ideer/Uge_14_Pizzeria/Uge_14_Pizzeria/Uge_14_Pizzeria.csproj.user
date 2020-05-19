@@ -10,9 +10,15 @@
     <Compile Update="CustomPizza.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="EditPizza.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="CustomPizza.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="EditPizza.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
