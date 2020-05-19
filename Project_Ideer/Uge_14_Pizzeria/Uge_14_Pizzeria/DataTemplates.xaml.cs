@@ -136,7 +136,6 @@ namespace Uge_14_Pizzeria
             var item = (sender as FrameworkElement).DataContext;
 
 
-
             EditPizza editpizza = new EditPizza();
 
             EditPizza.CustomizePizza((IFoodItem)item);

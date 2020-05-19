@@ -54,6 +54,7 @@
             <!--<ComboBox SelectedIndex="2" SelectionChanged="SelectionChanged"  Margin="10" Name="Vegetables_Selection" ItemsSource="{Binding Vegetables_List}"/>-->
             <RadioButton Name="RB_Vegetables1" GroupName="Vegetables1" Content="{Binding Path=Vegetables_List[0]}"/>
             <RadioButton Name="RB_Vegetables2" GroupName="Vegetables2" Content="{Binding Path=Vegetables_List[1]}"/>
+            <RadioButton Name="RB_Vegetables3" GroupName="Vegetables3" Content="{Binding Path=Vegetables_List[2]}"/>
         </StackPanel>
         <StackPanel  Grid.Column="0" Grid.Row="5" MinWidth="100">
             <Label Name="LabelQuestion6" Content="Size: "/>

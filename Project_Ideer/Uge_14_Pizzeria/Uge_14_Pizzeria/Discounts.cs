@@ -75,7 +75,7 @@ namespace Uge_14_Pizzeria
                     Ingredient tempfoundation = new Ingredient() { Name = PreviousFoundationName, Price = 0, Type = "Crust" };
                     TempPizza.Ingredients.Insert(1, tempfoundation);
 
-                    Discount tempdiscount = new Discount("Discount: " + PreviousFoundationName); // this can probably look better
+                    Discount tempdiscount = new Discount("Discount: " + PreviousFoundationName + "  -"); // this can probably look better
                     tempdiscount.Price[0] = PreviousPrice;
 
                     MainWindow.DiscountList.Add(tempdiscount);

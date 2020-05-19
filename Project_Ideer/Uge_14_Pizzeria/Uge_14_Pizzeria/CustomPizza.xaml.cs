@@ -37,6 +37,7 @@ namespace Uge_14_Pizzeria
             Ingredient Pepperoni = new Ingredient() { Name = "Pepperoni", Price = 5, Type = "Protein" };
             Ingredient Onion = new Ingredient() { Name = "Onion", Price = 5, Type = "Vegetable" };
             Ingredient Salad = new Ingredient() { Name = "Salad", Price = 5, Type = "Vegetable" };
+            Ingredient Pineapple = new Ingredient() { Name = "Pineapple", Price = 5, Type = "Vegetable" };
 
             Ingredient SmallSize = new Ingredient() { Name = "Small", Price = 10, Type = "Size" };
             Ingredient MediumSize = new Ingredient() { Name = "Medium", Price = 15, Type = "Size" };
@@ -48,7 +49,7 @@ namespace Uge_14_Pizzeria
                 TomatoSauce, BBQDressing,
                 Mozzarella, Emmentaler,
                 Ham, Pepperoni,
-                Onion, Salad,
+                Onion, Salad, Pineapple,
                 SmallSize, MediumSize, LargeSize
             };
 
@@ -131,21 +132,26 @@ namespace Uge_14_Pizzeria
                     Ingredient Salad = new Ingredient() { Name = "Salad", Price = 5, Type = "Vegetable" };
                     pizza999.Ingredients.Add(Salad);
                 }
+                if (RB_Vegetables3.IsChecked == true)
+                {
+                    Ingredient Pineapple = new Ingredient() { Name = "Pineapple", Price = 5, Type = "Vegetable" };
+                    pizza999.Ingredients.Add(Pineapple);
+                }
                 // Sizes (only 1 can be selected through xaml)
                 if (RB_Size1.IsChecked == true)
                 {
                     Ingredient SmallSize = new Ingredient() { Name = "Small", Price = 10, Type = "Size" };
-                    pizza999.Ingredients.Add(SmallSize);
+                    pizza999.Ingredients.Insert(0, SmallSize);
                 }
                 if (RB_Size2.IsChecked == true)
                 {
                     Ingredient MediumSize = new Ingredient() { Name = "Medium", Price = 15, Type = "Size" };
-                    pizza999.Ingredients.Add(MediumSize);
+                    pizza999.Ingredients.Insert(0, MediumSize);
                 }
                 if (RB_Size3.IsChecked == true)
                 {
                     Ingredient LargeSize = new Ingredient() { Name = "Large", Price = 20, Type = "Size" };
-                    pizza999.Ingredients.Add(LargeSize);
+                    pizza999.Ingredients.Insert(0, LargeSize);
                 }
                 // adds the custom pizza to the checkout list
                 try
