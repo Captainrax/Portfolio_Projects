@@ -26,39 +26,33 @@
 
         <StackPanel   Grid.Column="0" Grid.Row="0" MinWidth="100">
             <Label Name="LabelQuestion1" Content="Foundation: "/>
-            <!--<ComboBox SelectedIndex="0" SelectionChanged="SelectionChanged" Margin="10" Name="Foundation_Selection" ItemsSource="{Binding Foundation_List}"/>-->
             <RadioButton Name="RB_Crust1" GroupName="Crust" IsChecked="True" Content="{Binding Path=Foundation_List[0]}"/>
             <RadioButton Name="RB_Crust2" GroupName="Crust" Content="{Binding Path=Foundation_List[1]}"/>
             <RadioButton Name="RB_Crust3" GroupName="Crust" Content="{Binding Path=Foundation_List[2]}"/>
         </StackPanel>
         <StackPanel  Grid.Column="0" Grid.Row="1" MinWidth="100">
             <Label Name="LabelQuestion2" Content="Sauce: "/>
-            <!--<ComboBox SelectedIndex="2" SelectionChanged="SelectionChanged"  Margin="10" Name="Sauce_Selection" ItemsSource="{Binding Sauce_List}"/>-->
-            <RadioButton Name="RB_Sauce1" GroupName="Sauce1" Content="{Binding Path=Sauce_List[0]}"/>
-            <RadioButton Name="RB_Sauce2" GroupName="Sauce2" Content="{Binding Path=Sauce_List[1]}"/>
+            <CheckBox Name="RB_Sauce1" Content="{Binding Path=Sauce_List[0]}"/>
+            <CheckBox Name="RB_Sauce2" Content="{Binding Path=Sauce_List[1]}"/>
         </StackPanel>
         <StackPanel  Grid.Column="0" Grid.Row="2" MinWidth="100">
             <Label Name="LabelQuestion3" Content="Cheese: "/>
-            <!--<ComboBox SelectedIndex="2" SelectionChanged="SelectionChanged"  Margin="10" Name="Cheese_Selection" ItemsSource="{Binding Cheese_List}"/>-->
-            <RadioButton Name="RB_Cheese1" GroupName="Cheese1" Content="{Binding Path=Cheese_List[0]}"/>
-            <RadioButton Name="RB_Cheese2" GroupName="Cheese2" Content="{Binding Path=Cheese_List[1]}"/>
+            <CheckBox Name="RB_Cheese1" Content="{Binding Path=Cheese_List[0]}"/>
+            <CheckBox Name="RB_Cheese2" Content="{Binding Path=Cheese_List[1]}"/>
         </StackPanel>
         <StackPanel  Grid.Column="0" Grid.Row="3" MinWidth="100">
             <Label Name="LabelQuestion4" Content="Proteins: "/>
-            <!--<ComboBox SelectedIndex="2" SelectionChanged="SelectionChanged" Margin="10" Name="Proteins_Selection" ItemsSource="{Binding Proteins_List}"/>-->
-            <RadioButton Name="RB_Proteins1" GroupName="Proteins1" Content="{Binding Path=Proteins_List[0]}"/>
-            <RadioButton Name="RB_Proteins2" GroupName="Proteins2" Content="{Binding Path=Proteins_List[1]}"/>
+            <CheckBox Name="RB_Proteins1" Content="{Binding Path=Proteins_List[0]}"/>
+            <CheckBox Name="RB_Proteins2" Content="{Binding Path=Proteins_List[1]}"/>
         </StackPanel>
         <StackPanel  Grid.Column="0" Grid.Row="4" MinWidth="100">
             <Label Name="LabelQuestion5" Content="Vegetables: "/>
-            <!--<ComboBox SelectedIndex="2" SelectionChanged="SelectionChanged"  Margin="10" Name="Vegetables_Selection" ItemsSource="{Binding Vegetables_List}"/>-->
-            <RadioButton Name="RB_Vegetables1" GroupName="Vegetables1" Content="{Binding Path=Vegetables_List[0]}"/>
-            <RadioButton Name="RB_Vegetables2" GroupName="Vegetables2" Content="{Binding Path=Vegetables_List[1]}"/>
-            <RadioButton Name="RB_Vegetables3" GroupName="Vegetables3" Content="{Binding Path=Vegetables_List[2]}"/>
+            <CheckBox Name="RB_Vegetables1" Content="{Binding Path=Vegetables_List[0]}"/>
+            <CheckBox Name="RB_Vegetables2" Content="{Binding Path=Vegetables_List[1]}"/>
+            <CheckBox Name="RB_Vegetables3" Content="{Binding Path=Vegetables_List[2]}"/>
         </StackPanel>
         <StackPanel  Grid.Column="0" Grid.Row="5" MinWidth="100">
             <Label Name="LabelQuestion6" Content="Size: "/>
-            <!--<ComboBox SelectedIndex="0" SelectionChanged="SelectionChanged" Margin="10" Name="Size_Selection" ItemsSource="{Binding Size_List}"/>-->
             <RadioButton Name="RB_Size1" IsChecked="True" Content="{Binding Path=Size_List[0]}"/>
             <RadioButton Name="RB_Size2" Content="{Binding Path=Size_List[1]}"/>
             <RadioButton Name="RB_Size3" Content="{Binding Path=Size_List[2]}"/>
