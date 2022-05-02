@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Apple",
+    "price": 2.40,
+    "description": "It's a bloody apple"
+  },
+  {
+    "name": "Orange",
+    "price": 3.00,
+    "description": "Nice and orange"
+  },
+  {
+    "name": "Banana",
+    "price": 2.00,
+    "description": "Yea, you only get one"
+  },
+  {
+    "name": "TV",
+    "price": 199.99,
+    "description": ""
+  },
+  {
+    "name": "X-Box One",
+    "price": 299.99,
+    "description": ""
+  },
+  {
+    "name": "iPhone 6 Plus",
+    "price": 299.99,
+    "description": ""
+  },
+  {
+    "name": "Cup",
+    "price": 3.99,
+    "description": ""
+  },
+  {
+    "name": "Yogurt",
+    "price": 12.75,
+    "description": "Nice and not old"
+  },
+  {
+    "name": "Hat",
+    "price": 9.99,
+    "description": "Hold tight"
+  },
+  {
+    "name": "Shoe",
+    "price": 13.99,
+    "description": ""
+  }
+]
