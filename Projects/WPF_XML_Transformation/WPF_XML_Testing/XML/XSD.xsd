@@ -1,0 +1,109 @@
+﻿<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="TechCollege">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="teams">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="team" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="name"/>
+                    <xs:element type="xs:string" name="startdate"/>
+                    <xs:element type="xs:string" name="length"/>
+                    <xs:element type="xs:string" name="description"/>
+                    <xs:element name="subjects">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="subject" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="shorthand"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="students">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="student" maxOccurs="25" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="identity"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="teachers">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="teacher" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="init"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="subjects">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="subject" maxOccurs="unbounded" minOccurs="1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="shorthand"/>
+                    <xs:element type="xs:string" name="name"/>
+                    <xs:element type="xs:string" name="description"/>
+                    <xs:element type="xs:anyURI" name="URL"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="teachers">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="teacher" maxOccurs="100" minOccurs="1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="name"/>
+                    <xs:element type="xs:string" name="init"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="students">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="student" maxOccurs="1000" minOccurs="2">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="identity"/>
+                    <xs:element type="xs:string" name="name"/>
+                    <xs:element type="xs:short" name="born"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+

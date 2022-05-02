@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TechCollege xmlns="TechCollege">
+  <teams>
+    <team>
+      <name>team1</name>
+      <startdate>20/04/2021</startdate>
+      <length>3months</length>
+      <description>very cool team</description>
+      
+      <subjects>
+        <subject>
+          <shorthand>Art</shorthand>
+        </subject>
+        <subject>
+          <shorthand>Mat</shorthand>
+        </subject>
+      </subjects>
+      
+      <students>
+        <student>
+          <identity>rigr1992</identity>
+        </student>
+        <student>
+          <identity>dadi1983</identity>
+        </student>
+        <student>
+          <identity>maggi1995</identity>
+        </student>
+      </students>
+      
+      <teachers>
+        <teacher>
+          <init>Henk</init>
+        </teacher>
+      </teachers>
+      
+    </team>
+    
+    <team>
+      <name>team2</name>
+      <startdate>20/05/2021</startdate>
+      <length>3months</length>
+      <description>very cool team2</description>
+
+      <subjects>
+        <subject>
+          <shorthand>Art</shorthand>
+        </subject>
+        <subject>
+          <shorthand>Sci</shorthand>
+        </subject>
+      </subjects>
+
+      <students>
+        <student>
+          <identity>rigr1992</identity>
+        </student>
+        <student>
+          <identity>maggi1995</identity>
+        </student>
+      </students>
+
+      <teachers>
+        <teacher>
+          <init>Sinb</init>
+        </teacher>
+      </teachers>
+      
+    </team>
+  </teams>
+
+  <subjects>
+    <subject>
+      <shorthand>Sci</shorthand>
+      <name>Science</name>
+      <description>science and stuff</description>
+      <URL>http://google.com</URL>
+    </subject>
+    <subject>
+      <shorthand>Mat</shorthand>
+      <name>Maths</name>
+      <description>numbers 'n shit</description>
+      <URL>http://google.com</URL>
+    </subject>
+    <subject>
+      <shorthand>Art</shorthand>
+      <name>Arts and Crafts</name>
+      <description>i drink paint</description>
+      <URL>http://google.com</URL>
+    </subject>
+  </subjects>
+  
+  <teachers>
+    <teacher>
+      <name>Kramer</name>
+      <init>Henk</init>
+    </teacher>
+    <teacher>
+      <name>Simon</name>
+      <init>Sinb</init>
+    </teacher>
+  </teachers>
+  
+  <students>
+    <student>
+      <identity>rigr1992</identity>
+      <name>Rick Grimes</name>
+      <born>1992</born>
+    </student>
+    <student>
+      <identity>dadi1983</identity>
+      <name>Daryl Dixon</name>
+      <born>1983</born>
+    </student>
+    <student>
+      <identity>maggi1995</identity>
+      <name>Maggie</name>
+      <born>1995</born>
+    </student>
+  </students>
+</TechCollege>

@@ -1,0 +1,9 @@
+C:\Andreas\School\H2\OOP\Gennemgaende_opgave\Gennemgaende_opgave\bin\Debug\Gennemgaende_opgave.exe.config
+C:\Andreas\School\H2\OOP\Gennemgaende_opgave\Gennemgaende_opgave\bin\Debug\Gennemgaende_opgave.exe
+C:\Andreas\School\H2\OOP\Gennemgaende_opgave\Gennemgaende_opgave\bin\Debug\Gennemgaende_opgave.pdb
+C:\Andreas\School\H2\OOP\Gennemgaende_opgave\Gennemgaende_opgave\obj\Debug\Gennemgaende_opgave.csprojAssemblyReference.cache
+C:\Andreas\School\H2\OOP\Gennemgaende_opgave\Gennemgaende_opgave\obj\Debug\Gennemgaende_opgave.exe
+C:\Andreas\School\H2\OOP\Gennemgaende_opgave\Gennemgaende_opgave\obj\Debug\Gennemgaende_opgave.pdb
+C:\Andreas\School\H2\OOP\Gennemgaende_opgave\Gennemgaende_opgave\bin\Debug\Newtonsoft.Json.dll
+C:\Andreas\School\H2\OOP\Gennemgaende_opgave\Gennemgaende_opgave\bin\Debug\Newtonsoft.Json.xml
+C:\Andreas\School\H2\OOP\Gennemgaende_opgave\Gennemgaende_opgave\obj\Debug\Gennemgaende_opgave.csproj.CopyComplete

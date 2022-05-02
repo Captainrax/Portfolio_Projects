@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "jYIBcQqV0nh2OEqBs7pg6k77ylKydywSA527K1TCvMJ4mJzKGRjIljc/978sDYQDkSr4iuP7QYok5wazaz8gFA==",
+  "success": true,
+  "projectFilePath": "C:\\Andreas\\School\\H2\\GUI\\Andreas_østgård_gennemganede_opgave\\WPF_GUI\\WPF_GUI\\WPF_GUI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\capta\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\capta\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.22\\microsoft.netcore.app.host.win-x64.3.1.22.nupkg.sha512"
+  ],
+  "logs": []
+}

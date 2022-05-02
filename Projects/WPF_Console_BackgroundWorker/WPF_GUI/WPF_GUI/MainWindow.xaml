@@ -1,0 +1,47 @@
+﻿<Window x:Class="WPF_GUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_GUI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="400" MinHeight="300" MinWidth="400" MaxWidth="500">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="DataTemplates.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </Window.Resources>
+
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Name="MainwindowGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="27" />
+            <RowDefinition Height="27" />
+            <RowDefinition Height="27" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="100*" />
+        </Grid.RowDefinitions>
+
+        <ContentControl ContentTemplate="{StaticResource UnitClass}" Name="contentContro1" Content="{Binding}" Grid.ColumnSpan="2" 
+              Grid.RowSpan="3" Height="100" VerticalAlignment="Stretch" />
+
+        <StackPanel Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Stretch" MinHeight="60">
+            <Button Content="Insert"  Name="BtnInsert"    Click="BtnInsert_Click" />
+            <Button Content="Update"  Name="BtnUpdate"    Click="BtnUpdate_Click" />
+            <Button Content="Remove"  Name="BtnRemove"    Click="BtnRemove_Click" />
+        </StackPanel>
+
+        <ListView ItemTemplate="{StaticResource UnitClass}" ItemsSource="{Binding}" Grid.Row="5" HorizontalAlignment="Stretch" Margin="10" Name="listView1" VerticalAlignment="Stretch" Grid.ColumnSpan="2">
+
+        </ListView>
+
+
+    </Grid>
+</Window>

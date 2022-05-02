@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Custom Wow items</title>
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type='text/css'>
+  </head>
+<body class="bodyclass">
+
+<div class="wrapper">
+
+  <div class="box" id="fixshit">
+    <button class="menubuttons" id="reloadbutton">Reload Grid</button>
+    <div></div>
+    <button class="menubuttons" id="deleteitem">Delete Last</button>
+    <div></div>
+    <div></div>
+    <div></div>
+    
+  </div>
+  
+  <div class="box" id="itembox">
+
+  <div class="itemgrid">
+    <div class="grid">
+
+      <div class="item" id="inventoryitem1">
+        <div class="item-content">
+          <div>
+            <span class="tooltiptext">
+              <pre class="Header" id="legendary">Thunderfury, Blessed Blade of the Windseeker</pre>
+              <p class="itemtext">Binds when picked up</p>
+              <p class="itemtext">Unique</p>
+              <pre class="itemtext">One-Hand                                                        Sword</pre>
+              <pre class="itemtext">44 - 115 Damage                                      Speed 1.90</pre>
+              <pre class="itemtext">+16 - 30 Nature Damage</pre>
+              <p class="itemtext">(53.95 damage per second)</p>
+              <p class="itemtext">+5 Agility</p>
+              <p class="itemtext">+8 Stamina</p>
+              <p class="itemtext">+8 Fire Resistance</p>
+              <p class="itemtext">+9 Nature Resistance</p>
+              <p class="itemtext">Durability 125 / 125</p>
+              <p class="itemtext">Requires Level 60</p>
+              <p class="effecttext">Chance on hit:
+                Blasts your enemy with lightning,
+                dealing 300 Nature damage and then jumping to additional nearby enemies.
+                Each jump reduces that victim's Nature resistance by 25. Affects 5 targets.
+                Your primary target is also consumed by a cyclone,
+                slowing its attack speed by 20% for 12 sec.</p></span>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+</div>
+
+  <div class="box" id="thirdbox">
+   :pondery:
+  </div>
+
+<div class="box" id="createitembox1">
+  
+      <div class="itemnavbar">
+          <nav>
+            <ul class="itemnavlist">
+                <li><button class="createinnerbutton" id="createweapon1"> Weapon </button></li>
+                <li><button class="createinnerbutton" id="createarmor1"> Armor  </button></li>
+                <li><button class="createinnerbutton" id="createother1"> Other  </button></li>
+            </ul>
+          </nav>
+      </div> 
+
+ <div id="createitem1">
+
+  <div class="stats">
+    <input class="itemName" id="itemName1" type="text" placeholder="Name">
+      <input class="itemDamage" id="itemDamageMin" type="text" placeholder="Min Dmg">
+      <input class="itemDamage" id="itemDamageMax" type="text" placeholder="Max Dmg">
+    <input class="itemSpeed" id="itemSpeed1" type="text" placeholder="Speed">
+      <input class="itemBonus" id="itemBonusMin" type="text" placeholder="Bonus Min">
+      <input class="itemBonus" id="itemBonusMax" type="text" placeholder="Bonus Max">
+    <input class="itemStat1" id="itemStat11" type="text" placeholder="Stat">
+    <input class="itemStat2" id="itemStat21" type="text" placeholder="Stat">
+    <input class="itemStat3" id="itemStat31" type="text" placeholder="Stat">
+    <input class="itemStat4" id="itemStat41" type="text" placeholder="Stat">
+    <input class="itemDurability" id="itemDurability1" type="text" placeholder="Durability">
+    <input class="itemLevel" id="itemLevel1" type="text" placeholder="Level Requirement">
+    <textarea class="itemEffect" id="itemEffect1" type="text" placeholder="Equip effect / Chance on hit"></textarea>
+  </div>
+ 
+  <div class="itemstatselection"> 
+
+        <div>
+          <select class="itemRarity" id="itemRarity1">
+              <option value="legendary">Legendary</option>
+              <option value="epic">Epic</option>
+              <option value="rare">Rare</option>
+              <option value="uncommon">Uncommon</option>
+              <option value="common">Common</option>
+          </select>
+        </div>
+
+      <div>
+        <select class="itemUnique" id="itemUnique1">
+            <option value="Unique Equipped">Unique Equipped</option>
+            <option value="">Not Unique</option>
+        </select>
+      </div>
+
+      <div>
+          <select class="itemBinding" id="itemBinding1">
+              <option value="Binds when equipped">Bind on Equip</option>
+              <option value="Binds when picked up">Bind on pick up</option>
+              <option value="">No Bind</option>
+          </select>
+      </div>
+
+      <div>
+          <select class="itemBonusType" id="itemBonusType">
+              <option value=" Arcane Damage">Nature Damage</option>
+              <option value=" Frost Damage">Frost Damage</option>
+              <option value=" Fire Damage">Fire Damage</option>
+              <option value=" Nature Damage">Nature Damage</option>
+              <option value=" Shadow Damage">Shadow Damage</option>
+          </select>
+      </div>
+
+      <div>
+          <select class="itemWield" id="itemWield1">
+              <option value="Main hand">Main hand</option>
+              <option value="Held In Off-hand">Held In Off-hand</option>
+              <option value="One-Hand">One-Hand</option>
+              <option value="Two-Hand">Two-Hand</option>
+              <option value="Ranged">Ranged</option>
+          </select>
+        </div>
+
+      <div>
+          <select class="itemWeaponType" id="itemWeaponType1">
+              <option value="Axe">Axe</option>
+              <option value="Mace">Mace</option>
+              <option value="Sword">Sword</option>
+              <option value="Dagger">Dagger</option>
+              <option value="Fist Weapon">Fist Weapon</option>
+              <option value="Polearm">Polearm</option>
+              <option value="Staff">Staff</option>
+              <option value="Wand">Wand</option>
+              <option value="Thrown">Thrown</option>
+              <option value="Bow">Bow</option>
+              <option value="Gun">Gun</option>
+          </select>
+      </div>
+
+      <button class="additem" id="additem1"><span>Create</span></button>
+  </div>
+    <div class="main-img">
+      <img src="styles/item_icons/icon14.png" id="currenticon1">
+    </div>
+  </div> 
+</div>
+
+<div class="box"  id="createitembox2">
+
+      <div class="itemnavbar">
+        <nav>
+          <ul class="itemnavlist">
+              <li><button class="createinnerbutton" id="createweapon2"> Weapon </button></li>
+              <li><button class="createinnerbutton" id="createarmor2"> Armor  </button></li>
+              <li><button class="createinnerbutton" id="createother2"> Other  </button></li>
+          </ul>
+        </nav>
+      </div> 
+
+      <div id="createitem2">
+
+        <div class="stats">
+          <input class="itemName" id="itemName2" type="text" placeholder="Name">
+          <input class="itemStat1" id="itemStat12" type="text" placeholder="Stat">
+          <input class="itemStat2" id="itemStat22" type="text" placeholder="Stat">
+          <input class="itemStat3" id="itemStat32" type="text" placeholder="Stat">
+          <input class="itemStat4" id="itemStat42" type="text" placeholder="Stat">
+          <input class="itemStat5" id="itemStat52" type="text" placeholder="Stat">
+          <input class="itemDurability" id="itemDurability2" type="text" placeholder="Durability">
+          <input class="itemLevel" id="itemLevel2" type="text" placeholder="Level Requirement">
+          <textarea class="itemEffectArmor" id="itemEffect21" type="text" placeholder="Equip effect / Chance on hit"></textarea>
+          <textarea class="itemEffectArmor" id="itemEffect22" type="text" placeholder="Equip effect / Chance on hit"></textarea>
+        </div>
+
+      <div class="itemstatselection"> 
+
+          <div>
+              <select class="itemRarity" id="itemRarity2">
+                  <option value="legendary">Legendary</option>
+                  <option value="epic">Epic</option>
+                  <option value="rare">Rare</option>
+                  <option value="uncommon">Uncommon</option>
+                  <option value="common">Common</option>
+              </select>
+            </div>
+
+            <div>
+                <select class="itemUnique" id="itemUnique2">
+                    <option value="Unique Equipped">Unique Equipped</option>
+                    <option value="">Not Unique</option>
+                </select>
+              </div>
+
+          <div>
+              <select class="itemBinding" id="itemBinding2">
+                  <option value="Binds when equipped">Bind on Equip</option>
+                  <option value="Binds when picked up">Bind on pick up</option>
+                  <option value="">No Bind</option>
+              </select>
+          </div>
+
+          <div>
+              <select class="itemWield" id="itemArmorType2">
+                  <option value="Plate">Plate</option>
+                  <option value="Mail">Mail</option>
+                  <option value="Leather">Leather</option>
+                  <option value="Cloth">Cloth</option>
+                  <option value="Shield">Shield</option>
+                  <option value="">No Type</option>
+              </select>
+            </div>
+    
+          <div>
+              <select class="itemWeaponType" id="itemArmor2">
+                  <option value="Helm">Helm</option>
+                  <option value="Neck">Neck</option>
+                  <option value="Shoulder">Shoulder</option>
+                  <option value="Cloak">Cloak</option>
+                  <option value="Chest">Chest</option>
+                  <option value="Shirt">Shirt</option>
+                  <option value="Tabard">Tabard</option>
+                  <option value="Wrist">Wrist</option>
+                  <option value="Hands">Hands</option>
+                  <option value="Waist">Waist</option>
+                  <option value="Legs">Legs</option>
+                  <option value="Boots">Boots</option>
+                  <option value="Ring">Ring</option>
+                  <option value="Trinket">Trinket</option>
+                  <option value="Libram">Libram</option>
+                  <option value="Off Hand">Off Hand</option>
+                  <option value="">No Type</option>
+              </select>
+          </div>
+
+          <button class="additem" id="additem2"><span>Create</span></button>
+      </div>
+
+      <div class="main-img">
+          <img src="styles/item_icons/icon14.png" id="currenticon2">
+    </div>
+
+    </div>
+</div>
+
+<div class="box" id="createitembox3">
+       
+      <div class="itemnavbar">
+        <nav>
+          <ul class="itemnavlist">
+              <li><button class="createinnerbutton" id="createweapon3"> Weapon </button></li>
+              <li><button class="createinnerbutton" id="createarmor3"> Armor  </button></li>
+              <li><button class="createinnerbutton" id="createother3"> Other  </button></li>
+          </ul>
+        </nav>
+    </div> 
+
+<div id="createitem3">
+
+  <div class="stats">
+    <input class="itemName" id="itemName3" type="text" placeholder="Name">
+    <input class="itemStat1" id="itemStat13" type="text" placeholder="Stat">
+    <input class="itemStat2" id="itemStat23" type="text" placeholder="Stat">
+    <input class="itemStat3" id="itemStat33" type="text" placeholder="Stat">
+    <input class="itemStat4" id="itemStat43" type="text" placeholder="Stat">
+    <input class="itemDurability" id="itemDurability3" type="text" placeholder="Durability">
+    <input class="itemLevel" id="itemLevel3" type="text" placeholder="Level Requirement">
+    <textarea class="itemEffectOther" id="itemEffect3" type="text" placeholder="Equip effect / Chance on hit"></textarea>
+  </div>
+
+<div class="itemstatselection"> 
+
+    <div>
+        <select class="itemRarity" id="itemRarity3">
+            <option value="legendary">Legendary</option>
+            <option value="epic">Epic</option>
+            <option value="rare">Rare</option>
+            <option value="uncommon">Uncommon</option>
+            <option value="common">Common</option>
+        </select>
+      </div>
+
+    <div>
+      <select class="itemUnique" id="itemUnique3">
+          <option value="Unique Equipped">Unique Equipped</option>
+          <option value="">Not Unique</option>
+      </select>
+    </div>
+
+    <div>
+        <select class="itemBinding" id="itemBinding3">
+            <option value="Binds when equipped">Bind on Equip</option>
+            <option value="Binds when picked up">Bind on pick up</option>
+            <option value="">No Bind</option>
+        </select>
+    </div>
+        <button class="additem" id="additem3"><span>Create</span></button>
+  </div>
+
+    <div class="main-img">
+      <img src="styles/item_icons/icon14.png" id="currenticon3">
+    </div>
+
+  </div>
+</div>
+
+  <div class="box" id="iconbox">
+    
+      <div class="iconselection">
+        <div class="icons"></div>
+      </div>
+
+  </div>
+
+  <div class="box" id="todobox">
+    <ul id="todolist">
+      <h2 class="todoheader" id="todoheadertop">ToDo - List</h2>
+      <p class="todotext">The Grand Instructor has given you a list of tasks to complete.</p>
+      <h2 class="todoheader">Quest Objectives</h2>
+      <li id="completed">Working Drag and Drop Grid prototype (Complete)</li>
+      <li id="completed">Img+tooltip for items (Complete)</li>
+      <li id="completed">Button to generate new items (Complete)</li>
+      <li id="completed">Make all the Inputs Work for the weapons (Completed)</li>
+      <li id="completed">Formulate DPS (92.2 damage per second) (Completed)</li>
+      <li id="completed">Make seperate pages for each type of item (Completed)</li>
+      <li id="completed">Allow choice of icons (Completed)</li>
+      <li id="completed">Delete button for items (Completed)</li>
+      <h2 class="todoheader">Rewards</h2>
+      <p class="todotext">You will recieve:</p>
+      <p class="todotext" id="questreward">Experience:</p><p id="xpquesttext">100</p>
+    </ul>
+  </div>
+  
+</div>
+
+
+    <script src="https://unpkg.com/web-animations-js@2.3.1/web-animations.min.js"></script>
+    <script src="https://unpkg.com/hammerjs@2.0.8/hammer.min.js"></script>
+    <script src="https://unpkg.com/muuri@0.7.1/dist/muuri.min.js"></script> 
+    <script src="scripts/main.js"></script>
+    <script src="scripts/createitem.js"></script>
+    <script src="scripts/createitemarmor.js"></script>
+    <script src="scripts/createitemother.js"></script>
+  </body>
+</html>

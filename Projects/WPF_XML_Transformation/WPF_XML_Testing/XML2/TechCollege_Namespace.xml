@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TechCollege xmlns="TechCollege" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <rooms>
+    <room rid="1" name="room1" building="building1"/>
+    <room rid="2" name="room2" building="building1"/>
+    <room rid="3" name="room1" building="building2"/>
+  </rooms>
+
+  <classes>
+
+    <class cid="1" rid="1">
+      <name>class1</name>
+      <startdate>20/04/2021</startdate>
+      <length>3months</length>
+      <description>very cool class1</description>
+
+      <students>
+        <student studentid="1" cid="1">
+          <login>rigr1992</login>
+          <name>Rick Grimes</name>
+        </student>
+        <student studentid="2" cid="1">
+          <login>rigr1992</login>
+          <name>Rick dGrimes</name>
+        </student>
+        <student studentid="3" cid="1">
+          <login>rigr1992</login>
+          <name>Rick aGrimes</name>
+        </student>
+      </students>
+    </class>
+
+    <class cid="2" rid="2">
+      <name>class2</name>
+      <startdate>20/05/2021</startdate>
+      <length>3months</length>
+      <description>very cool class2</description>
+
+      <students>
+        <student studentid="2" cid="2">
+          <login>rigr1992</login>
+          <name>Daryl Dixon</name>
+        </student>
+      </students>
+    </class>
+    <class cid="3" rid="2">
+      <name>class3</name>
+      <startdate>20/05/2021</startdate>
+      <length>3months</length>
+      <description>very cool class3</description>
+
+      <students>
+        <student studentid="3" cid="3">
+          <login>rigr1992</login>
+          <name>Maggie</name>
+        </student>
+      </students>
+    </class>
+  </classes>
+
+  <subjects>
+    <subject sid="1" cid="1" shorthand="Science">
+      <name>Science</name>
+      <description>science and stuff</description>
+      <URL>http://google.com</URL>
+    </subject>
+    <subject sid="2" cid="1" shorthand="Math">
+      <name>Maths</name>
+      <description>numbers 'n shit</description>
+      <URL>http://google.com</URL>
+    </subject>
+    <subject sid="3" cid="2" shorthand="Programming">
+      <name>Programming</name>
+      <description>i drink paint</description>
+      <URL>http://google.com</URL>
+    </subject>
+  </subjects>
+
+  <students>
+    <student studentid="1" cid="1">
+      <login>rigr1992</login>
+      <name>Rick Grimes</name>
+      <born>1992</born>
+    </student>
+    <student studentid="2" cid="2">
+      <login>dadi1983</login>
+      <name>Daryl Dixon</name>
+      <born>1983</born>
+    </student>
+    <student studentid="3" cid="1">
+      <login>magg1995</login>
+      <name>Maggie</name>
+      <born>1995</born>
+    </student>
+    <student studentid="4" cid="3">
+      <login>Simo1994</login>
+      <name>Simon</name>
+      <born>1994</born>
+    </student>
+    <student studentid="5" cid="2">
+      <login>Simo1994</login>
+      <name>Simon</name>
+      <born>1994</born>
+    </student>
+  </students>
+
+</TechCollege>

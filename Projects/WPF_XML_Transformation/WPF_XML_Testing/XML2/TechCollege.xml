@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<TechCollege xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <students>
+    <student studentid="1" cid="1">
+      <name>Rick Grimes</name>
+      <login>rigr1992</login>
+      <born>1992</born>
+    </student>
+    <student studentid="2" cid="2">
+      <name>Daryl Dixon</name>
+      <login>dadi1983</login>
+      <born>1983</born>
+    </student>
+    <student studentid="3" cid="1">
+      <name>Maggie</name>
+      <login>magg1995</login>
+      <born>1995</born>
+    </student>
+    <student studentid="4" cid="3">
+      <name>Simon</name>
+      <login>Simo1994</login>
+      <born>1994</born>
+    </student>
+    <student studentid="5" cid="2">
+      <name>Jack</name>
+      <login>Jack1991</login>
+      <born>1991</born>
+    </student>
+    <student studentid="6" cid="2">
+      <name>Clack</name>
+      <login>Clac1996</login>
+      <born>1996</born>
+    </student>
+  </students>
+  <subjects>
+    <subject sid="1" cid="1" shorthand="Science">
+      <name>Science</name>
+      <description>science and stuff</description>
+      <URL>http://google.com</URL>
+    </subject>
+    <subject sid="2" cid="1" shorthand="Math">
+      <name>Maths</name>
+      <description>numbers 'n shit</description>
+      <URL>http://google.com</URL>
+    </subject>
+    <subject sid="3" cid="2" shorthand="Programming">
+      <name>Programming</name>
+      <description>i drink paint</description>
+      <URL>http://google.com</URL>
+    </subject>
+  </subjects>
+  <classes>
+    <class cid="1" rid="1">
+      <name>class1</name>
+      <startdate>20/04/2021</startdate>
+      <length>3months</length>
+      <description>very cool class1</description>
+    </class>
+    <class cid="2" rid="2">
+      <name>class2</name>
+      <startdate>20/05/2021</startdate>
+      <length>3months</length>
+      <description>very cool class2</description>
+    </class>
+    <class cid="3" rid="2">
+      <name>class3</name>
+      <startdate>20/05/2021</startdate>
+      <length>3months</length>
+      <description>very cool class3</description>
+    </class>
+  </classes>
+  <rooms>
+    <room rid="1" name="room1" building="building1" />
+    <room rid="2" name="room2" building="building1" />
+    <room rid="3" name="room1" building="building2" />
+  </rooms>
+</TechCollege>

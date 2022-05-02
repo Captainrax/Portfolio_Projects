@@ -1,0 +1,9 @@
+C:\Andreas\School\H2\OOP\Gennemgaende_opgave\Gennemgaende_opgave\bin\Release\Gennemgaende_opgave.exe.config
+C:\Andreas\School\H2\OOP\Gennemgaende_opgave\Gennemgaende_opgave\bin\Release\Gennemgaende_opgave.exe
+C:\Andreas\School\H2\OOP\Gennemgaende_opgave\Gennemgaende_opgave\bin\Release\Gennemgaende_opgave.pdb
+C:\Andreas\School\H2\OOP\Gennemgaende_opgave\Gennemgaende_opgave\bin\Release\Newtonsoft.Json.dll
+C:\Andreas\School\H2\OOP\Gennemgaende_opgave\Gennemgaende_opgave\bin\Release\Newtonsoft.Json.xml
+C:\Andreas\School\H2\OOP\Gennemgaende_opgave\Gennemgaende_opgave\obj\Release\Gennemgaende_opgave.csproj.CoreCompileInputs.cache
+C:\Andreas\School\H2\OOP\Gennemgaende_opgave\Gennemgaende_opgave\obj\Release\Gennemgaende_opgave.csproj.CopyComplete
+C:\Andreas\School\H2\OOP\Gennemgaende_opgave\Gennemgaende_opgave\obj\Release\Gennemgaende_opgave.exe
+C:\Andreas\School\H2\OOP\Gennemgaende_opgave\Gennemgaende_opgave\obj\Release\Gennemgaende_opgave.pdb

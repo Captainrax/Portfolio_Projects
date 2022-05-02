@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "tI3LUNYHDFli7sMMFhTg25D51LO6+HEBKUr7xKYPXcn2tXBOd/SvhKTsn/3jwx3bnfbSDO+yC8QNehEl2tHCmA==",
+  "success": true,
+  "projectFilePath": "C:\\Andreas\\School\\H3\\XML2\\WPF_XML_Testing\\WPF_XML_Testing\\WPF_XML_Testing.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\capta\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.22\\microsoft.netcore.app.host.win-x64.3.1.22.nupkg.sha512"
+  ],
+  "logs": []
+}
